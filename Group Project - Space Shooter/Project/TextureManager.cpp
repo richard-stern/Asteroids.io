@@ -7,7 +7,7 @@ TextureManager* TextureManager::m_pTextureManager = nullptr;
 
 
 
-TextureManager::Pair::Pair(Texture* pTexture, char* szPath)
+TextureManager::Pair::Pair(Texture* pTexture, const char* szPath)
 {
 	m_pTexture = pTexture;
 	m_szPath = szPath;
@@ -31,7 +31,7 @@ Texture* TextureManager::LoadTexture(const char* szTextureName)
 	}
 	//Else if loop is exited, then it is not found
 
-	m_Textures.PushBack(new Pair(new Texture(szPath), szPath)); //Create a new pair, as well as the texture and assign its path
+	m_Textures.PushBack(new Pair(new Texture(szPath), szPath) ); //Create a new pair, as well as the texture and assign its path
 	return m_Textures.Last()->m_pTexture;//Return the last texture, that was just created
 }
 

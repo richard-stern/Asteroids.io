@@ -13,10 +13,10 @@ class TextureManager
 	struct Pair //Pairs the Texture along with its path. Easier to search for the texture this way
 	{
 		Texture* m_pTexture;
-		char* m_szPath;
+		const char* m_szPath;
 
 		//Constructor and Destructor
-		Pair(Texture* pTexture, char* szPath);
+		Pair(Texture* pTexture, const char* szPath);
 		~Pair();
 	};
 
