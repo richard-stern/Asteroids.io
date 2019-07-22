@@ -27,6 +27,7 @@ public:
 	void SetPosition(Vector2 pos);
 	void SetPosition(float x, float y);
 	void SetRotation(float radians);
+	void SetRotation(Vector2 radians);
 	void SetScale(Vector2 scale);
 	void SetVisible(bool visible);
 	void SetWrapAndRespawn(bool value);

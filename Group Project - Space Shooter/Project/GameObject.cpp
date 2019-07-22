@@ -75,6 +75,11 @@ void GameObject::SetRotation(float radians)
 	_localTransform.setRotateZ(radians);
 }
 
+void GameObject::SetRotation(Vector2 direction)
+{
+	_localTransform.setRotateZ(direction);
+}
+
 void GameObject::SetScale(Vector2 scale)
 {
 	_localTransform.setScale(scale);
