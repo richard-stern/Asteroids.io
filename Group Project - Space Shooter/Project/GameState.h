@@ -9,7 +9,7 @@ class GameState : public BaseState //change when find out what basestate name is
 public:
 	GameState();
 	virtual ~GameState();
-protected:
+
 	void Enter();
 	void Exit();
 
