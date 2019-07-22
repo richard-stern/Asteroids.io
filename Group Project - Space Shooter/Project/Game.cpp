@@ -1,15 +1,22 @@
 #include "Game.h"
 #include "RenderManager.h"
 #include "StateMachine.h"
+#include "CollisionManager.h"
 
 Game::Game(unsigned int windowWidth, unsigned int windowHeight, bool fullscreen, const char *title) : Application(windowWidth, windowHeight, fullscreen, title)
 {
 	m_pStateMachine = new StateMachine();
+
+	// Create the collision manager.
+	CollisionManager::Create();
 }
 
 Game::~Game()
 {
 	delete m_pStateMachine;
+
+	// Delete the collision manager.
+	CollisionManager::Destroy();
 }
 
 void Game::Update(float deltaTime)
