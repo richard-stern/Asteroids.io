@@ -2,6 +2,7 @@
 #include "RenderManager.h"
 #include "StateMachine.h"
 #include "CollisionManager.h"
+#include "GUI.h"
 
 Game::Game(unsigned int windowWidth, unsigned int windowHeight, bool fullscreen, const char *title) : Application(windowWidth, windowHeight, fullscreen, title)
 {
@@ -36,6 +37,13 @@ void Game::Draw()
 
 	//Render everything.
 	m_pStateMachine->Draw();
+
+
+
+
+
+	// Displays FPS
+	GUI::Instance()->DisplayFPS(pRenderManager);
 
 	//End the render pass.
 	pRenderManager->End();
