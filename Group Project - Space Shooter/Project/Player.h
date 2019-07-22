@@ -11,5 +11,7 @@ public:
 private:
 	void Update(float fDeltaTime);
 	void OnCollision(GameObject* pOtherObject);
-	float fSpeed;
+	float m_fSpeed;
+	float m_fHealth;
+	int m_nLives;
 };
