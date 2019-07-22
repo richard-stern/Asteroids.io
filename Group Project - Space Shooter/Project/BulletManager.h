@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "Vector2"
+#include "Vector2.h"
 
 //How many bullets should be in the bullet pool
 #define BULLET_POOL_SIZE 50 
