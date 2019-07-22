@@ -2,16 +2,16 @@
 // Leanne Vorster
 #include "GameOverState.h"
 #include <iostream>
-#include "Button.h"
 #include "GUI.h"
 
 GameOverState::GameOverState() : BaseState()
 {
-	m_font = new Font("./font/consalas.ttf");
+	m_font = new Font("./Fonts/hobo_32px.fnt");
 }
 GameOverState::~GameOverState()
 {
 	// clean up the project
+	delete m_font;
 }
 void GameOverState ::Enter()
 {

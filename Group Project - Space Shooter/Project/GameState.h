@@ -1,5 +1,6 @@
 #pragma once
 #include "RenderManager.h"
+
 #include "BaseState.h"
 #include "Level.h"
 #include "GUI.h"
