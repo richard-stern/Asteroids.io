@@ -21,6 +21,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataStructuresLib\DataStructuresLib.vcxproj">
+      <Project>{a00df622-8077-44d0-9921-a8a56712d17a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MathLib\MathLib.vcxproj">
+      <Project>{30708019-2b18-4243-811f-f98049dc1b8b}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0CEC3182-C003-432E-9914-F91528FDD262}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -68,7 +76,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)AIE_GL\include\;$(SolutionDir)Libraries\glfw3\include\GLFW\;$(SolutionDir)Libraries\glew\include\;$(ProjectDir)include\;$(ProjectDir);$(SolutionDir)Libraries\;$(SolutionDir)Libraries\libsndfile\include\;$(SolutionDir)Libraries\OpenAL\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)AIE_GL\include\;$(SolutionDir)Libraries\glfw3\include\GLFW\;$(SolutionDir)Libraries\glew\include\;$(ProjectDir)include\;$(ProjectDir);$(SolutionDir)Libraries\;$(SolutionDir)Libraries\libsndfile\include\;$(SolutionDir)Libraries\OpenAL\include\;$(SolutionDir)DataStructuresLib;$(SolutionDir)MathLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
