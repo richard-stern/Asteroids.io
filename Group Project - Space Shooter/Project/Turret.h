@@ -3,11 +3,13 @@
 // Turret class
 // Created by Grant Roberts
 //
-// This object is the turret that follows the player, pointing towards the mouse.
+// The turret that follows the player, pointing towards the mouse.
 // Will shoot a bullet when the left mouse button is pressed.
 //
 // Functions:
-//			  Update(float deltaTime) Update the turret.
+//			  Constructor().				Creates the turret.
+//			  Destructor().					Cleans up the turret after deletion.
+//			  Update(float deltaTime)		Update the turret.
 //--------------------------------------------------------------------------------
 
 #include "BulletManager.h"
