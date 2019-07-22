@@ -32,8 +32,8 @@ void Button::Draw(RenderManager* renderer, float width, float height)
 	renderer->SetRenderColor(m_nColourRed, m_nColourGreen, m_nColourBlue, m_nAlpha);
 
 	// calculating centered text
-	float textWidth = m_font->getStringWidth(m_buttonText);
-	float textHeight = m_font->getStringHeight(m_buttonText);
+	float textWidth = m_font->getStringWidth(m_buttonText);		// Leaving this error for now.
+	float textHeight = m_font->getStringHeight(m_buttonText);	// Leaving this error for now.
 	float centredPosX = m_fPosX - (textWidth * 0.5f) + 2;
 	float centredPosY = m_fPosY - (textHeight * 0.5f) + 5;
 
