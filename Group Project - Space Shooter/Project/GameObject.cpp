@@ -8,13 +8,6 @@ GameObject::GameObject()
 	_collider = nullptr;
 }
 
-GameObject::GameObject(const char * textureName)
-{
-	_texture = new Texture(("./textures/" + std::string(textureName)).c_str());
-	_parent = nullptr;
-	_collider = nullptr;
-}
-
 GameObject::~GameObject()
 {
 	for (int i = 0; i < _childList.Count(); i++)

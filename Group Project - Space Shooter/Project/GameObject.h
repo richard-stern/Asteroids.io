@@ -9,11 +9,17 @@ class GameObject
 {
 public:
 	GameObject();
-	GameObject(const char* textureName);
 	virtual ~GameObject();
 
 	virtual void Update(float deltaTime);
 	virtual void Draw();
+
+	//------------------------------------------------------------
+	// This is called by the collision manager when this gameObject
+	// collides with other collidable gameObjects.
+	// 'other' parameter is the gameObject that is colliding with
+	// this one. 
+	//------------------------------------------------------------
 	virtual void OnCollision(GameObject* other);
 
 	void UpdateGlobalTransform();
@@ -25,7 +31,21 @@ public:
 	void SetVelocity(Vector2 velocity);
 	void SetDrag(float drag);
 
+
+	//------------------------------------------------------------
+	// 'translation' parameter is the delta amount that the 
+	// gameObject should be moved.
+	// If you need to set the absolute position of the gameObject,
+	// use SetPosition() instead.
+	//------------------------------------------------------------
 	void Translate(Vector2 translation);
+
+	//------------------------------------------------------------
+	// 'radians' parameter is the delta amount that the 
+	// gameObject should be rotated.
+	// If you need to set the absolute rotation of the gameObject,
+	// use SetRotation() instead.
+	//------------------------------------------------------------
 	void Rotate(float radians);
 
 	void SetParent(GameObject* parent);
