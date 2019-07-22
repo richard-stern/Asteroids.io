@@ -1,11 +1,15 @@
 #pragma once
 #include "Actor.h"
+#include "RenderManager.h"
+
 
 class Player : public Actor
 {
 public:
-	Player();
+	Player(Vector2 v2Position);
 	~Player();
 private:
-	
+	void Update(float fDeltaTime);
+	void OnCollision(GameObject* pOtherObject);
+	float fSpeed;
 };
