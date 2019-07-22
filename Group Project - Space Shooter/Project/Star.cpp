@@ -6,6 +6,7 @@ Star::Star()
 	m_bWrapAndRespawn = true;
 	m_pTexture = m_pTextureManager->LoadTexture("star.png");
 }
+
 Star::~Star()
 {
 
