@@ -1,5 +1,9 @@
 #include "HealthPickup.h"
 #include <random>
+#include "Player.h"
+#include "Rock.h"
+#include "Enemy.h"
+#include "Bullet.h"
 
 HealthPickup::HealthPickup()
 {
@@ -15,14 +19,18 @@ HealthPickup::HealthPickup()
 
 HealthPickup::~HealthPickup()
 {
+	// Clean up.
+	m_bWrapAndRespawn = false;
+	m_bVisible = false;
 }
 
 void HealthPickup::OnCollision(Player* player)
 {
-	// If the health pickup is visible -> call the player's on collision function,
-	//									  passing in a pointer to this
-	if (m_bVisible)
-		player->OnCollision(*this);
+	// "Destroy" the pickup.
+	m_bVisible = false;
+
+	// The collision manager will/has called the OnCollision of the player,
+	// I don't need to do anything else.
 }
 
 void HealthPickup::OnCollision(Rock* rock)
