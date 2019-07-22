@@ -55,13 +55,13 @@ void StateMachine::ChangeState(EState currentstate)
 	switch (m_CurrentState)
 	{
 	case ESTATE_MENU:
-		m_pGameState->Enter();
+		m_pMenuState->Enter();
 		break;
 	case ESTATE_GAME:
-		m_pGameOverState->Enter();
+		m_pGameState->Enter();
 		break;
 	case ESTATE_GAMEOVER:
-		m_pMenuState->Enter();
+		m_pGameOverState->Enter();
 		break;
 	}
 
@@ -70,13 +70,13 @@ void StateMachine::ChangeState(EState currentstate)
 	switch (m_CurrentState)
 	{
 	case ESTATE_MENU:
-		m_pGameState->Exit();
+		m_pMenuState->Exit();
 		break;
 	case ESTATE_GAME:
-		m_pGameOverState->Exit();
+		m_pGameState->Exit();
 		break;
 	case ESTATE_GAMEOVER:
-		m_pMenuState->Exit();
+		m_pGameOverState->Exit();
 		break;
 	}
 }
