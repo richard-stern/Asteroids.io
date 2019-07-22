@@ -1,34 +1,35 @@
-#include "MenuButton.h"
+#include "Button.h"
 #include <string.h>
-MenuButton::MenuButton(const char* buttonText, float x, float y, float width, float height, float r, float g, float b)
+Button::Button(const char* buttonText, float x, float y, float width, float height, int r, int g, int b, int a)
 {
 	// stores copy of the text
 	strcpy_s(m_buttonText, 64, buttonText);
 
 	// loads the font
-	m_font = new aie::Font("./font/consolas.ttf", 24);
+	m_font = new Font("./Fonts/hobo_32px.fnt");
 
 	// stores position, width, height and colour
-	m_posX = x;
-	m_posY = y;
-	m_width = width;
-	m_height = height;
-	m_colourRed = r;
-	m_colourGreen = g;
-	m_colourBlue = b;
+	m_fPosX = x;
+	m_fPosY = y;
+	m_fWidth = width;
+	m_fHeight = height;
+	m_nColourRed = r;
+	m_nColourGreen = g;
+	m_nColourBlue = b;
+	m_nAlpha = a;
 }
 
-MenuButton::~MenuButton()
+Button::~Button()
 {
 	delete m_font;
 }
 
-void MenuButton::Draw(aie::Renderer2D* renderer, float width, float height)
+void Button::Draw(RenderManager* renderer, float width, float height)
 {
 	// grey interior
-	renderer->setRenderColour(0.9f, 0.9f, 0.9f);
+	renderer->SetRenderColor(185, 185, 185, 255);
 	renderer->drawBox(m_posX, m_posY, m_width, m_height);
-	renderer->setRenderColour(m_colourRed, m_colourGreen, m_colourBlue);
+	renderer->SetRenderColor(m_nColourRed, m_nColourGreen, m_nColourBlue, m_nAlpha);
 
 	// calculating centered text
 	float textWidth = m_font->getStringWidth(m_buttonText);
@@ -40,7 +41,7 @@ void MenuButton::Draw(aie::Renderer2D* renderer, float width, float height)
 	renderer->drawText(m_font, m_buttonText, centredPosX, centredPosY);
 }
 
-bool MenuButton::Update()
+bool Button::Update()
 {
 	aie::Input* input = aie::Input::getInstance();
 
