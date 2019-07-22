@@ -15,12 +15,10 @@
     <ClInclude Include="BaseState.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Button.h" />
-    <ClInclude Include="Cat.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="BulletManager.h" />
-    <ClInclude Include="Dog.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Game.h" />
