@@ -6,6 +6,11 @@
 
 Rock::Rock() : Actor(Vector2(rand(), rand()))
 {
+	// The rock will wrap and respawn in the level.
+	// So when it goes outside the level,
+	// it will be respawn and wrap around the level.
+	m_bWrapAndRespawn = true;
+
 	// Get the texture manager.
 	TextureManager* textMan;
 	textMan->Instance();
@@ -13,29 +18,34 @@ Rock::Rock() : Actor(Vector2(rand(), rand()))
 	// Random int for the type of rock.
 	int randRock = rand() % 3;
 
+	// Switch for which rock the asteroid will spawn as.
+	// The bullets do 50 damage, so the health of the asteroids is set to
 	switch (randRock)
 	{
 		// Small rock.
 	case 0:
 		m_pTexture = textMan->LoadTexture("rock_small.png");
 		// Takes one hit to destroy.
+		m_nMaxHealth = 50;
 		m_nHealth = 50;
 
 		// Medium rock.
 	case 1:
 		m_pTexture = textMan->LoadTexture("rock_medium.png");
 		// Takes two hits to destroy.
+		m_nMaxHealth = 100;
 		m_nHealth = 100;
 
 		// Large rock.
 	case 2:
 		m_pTexture = textMan->LoadTexture("rock_large.png");
 		// Takes three hits to destroy.
+		m_nMaxHealth = 150;
 		m_nHealth = 150;
 	}
 
-	// The velocity of the rock is set to 80.
-	SetVelocity(Vector2(80.0f, 80.0f));
+	// The velocity of the rock is set to a random number between 1 and 180.
+	SetVelocity(Vector2(rand() % 180 + 1, rand() % 180 + 1));
 }
 
 Rock::~Rock()
@@ -52,6 +62,12 @@ void Rock::OnCollision(Bullet* bullet)
 {
 	// Decrease the health of the rock by 50 (the damage of the bullet).
 	m_nHealth -= 50;
+
+	// If the rock's health is = or < 0 -> set visible to false.
+	// So the rock can be destroyed.
+	if (m_nHealth <= 0)
+		m_bVisible = false;
+
 	// Bounce the rock.
 	Bounce();
 }
