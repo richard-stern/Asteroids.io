@@ -1,71 +1,92 @@
 #include "Level.h"
 
 
-Level::Level(int nAsteroids)
+Level::Level(int nAsteroids, int nStars, int nEnemies, int nHealthPickups)
 {
+	//Creates the collision manager
+	m_pCollisionManager->Create();
+	m_pCollisionManager = CollisionManager::GetInstance();
+
+	//Creates the texture manager
+	m_pTextureManager->Create();
+	m_pTextureManager = TextureManager::Instance();
+
+	//Sets the amount of asteroids in the game
+	m_nAsteroids = nAsteroids;
+	m_nStars = nStars;
+	m_nEnemies = nEnemies;
+	m_nHealthPickups = nHealthPickups;
+	//Creates the player
 	m_pPlayer = new Player;
-	for
+
+	//Adds player to child list
+	AddChild(m_pPlayer);
+
+	//Creates the Rocks and adds them to child list
+	for (int i = 0; i < m_nAsteroids; ++i)
 	{
 		m_apRock[i] = new Rock;
+		AddChild(m_apRock[i]);
 	}
-	for
+	//Creates the Stars and adds them to child list
+	for (int i = 0; i < m_nStars; ++i)
 	{
 		m_apStar[i] = new Star;
+		AddChild(m_apStar[i]);
 	}
-	for
+	//Creates the Enemies and adds them to child list
+	for (int i = 0; i < m_nEnemies; ++i)
 	{
-		m_apEnemy[i] = new Enemy
+		m_apEnemy[i] = new Enemy;
+		AddChild(m_apEnemy[i]);
 	}
-	for
+	//Creates the Health pickups and adds them to child list
+	for (int i = 0; i < m_nHealthPickups; ++i)
 	{
-		m_apHPPickup = new HealthPickup;
+		m_apHPPickup[i] = new HealthPickup;
+		AddChild(m_apHPPickup[i]);
 	}
-	m_pCollisionManager = new CollisionManager;
-
-	m_pTextureManager = new TextureManager;
-
 	m_bWrapAndRespawn = false;
 }
 
 Level::~Level()
 {
 	delete m_pPlayer;
-	for
-	{
-		m_apRock;
-	}
-	for
-	{
-		m_apStar;
-	}
-	for
-	{
-		m_apEnemy
-	}
-	for
-	{
-		m_apHPPickup;
-	}
 
-	delete m_pCollisionManager;
+	for (int i = 0; i < m_nAsteroids; ++i)
+	{
+		delete m_apRock[i];
+		m_apRock[i] = nullptr;
+	}
+	delete[] m_apRock;
+	m_apRock = nullptr;
 
-	delete m_pTextureManager;
+	for (int i = 0; i < 20; ++i)
+	{
+		delete m_apStar[i];
+		m_apStar[i] = nullptr;
+	}
+	delete[] m_apStar;
+	m_apStar = nullptr;
+
+	for (int i = 0; i < 2; ++i)
+	{
+		delete m_apEnemy[i];
+		m_apEnemy[i] = nullptr;
+	}
+	delete[] m_apEnemy;
+	m_apEnemy = nullptr;
+
+	for (int i = 0; i < 3; ++i)
+	{
+		delete m_apHPPickup[i];
+		m_apHPPickup[i] = nullptr;
+	}
+	delete[] m_apHPPickup;
+	m_apHPPickup = nullptr;
+
+	m_pCollisionManager->Destroy();
+
+	m_pTextureManager->Destroy();
 }
 
-
-void Level::Update(float fDeltaTime)
-{
-	for (int i = 0; i < m_apChildren.size; ++i)
-	{
-		m_apChildren[i]->Update(fDeltaTime);
-	}
-}
-
-
-void Level::Draw(RenderManager* pRenderer)
-{
-	for (int i = 0; i < m_apChildren.size; ++i)
-	{
-		m_apChildren[i]->Draw(pRenderer);
-	}
-}

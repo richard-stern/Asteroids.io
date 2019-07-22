@@ -1,38 +1,24 @@
 #pragma once
 #include "RenderManager.h"
 #include <vector>
+#include "GameObject.h"
+#include "Player.h"
+#include "HealthPickup.h"
+#include "CollisionManager.h"
+#include "TextureManager.h"
+#include "Rock.h"
+#include "Star.h"
+#include "Enemy.h"
 
-
-class GameObject;
-
-class Player;
-
-class Rock;
-
-class Star;
-
-class Enemy;
-
-class HealthPickup;
-
-class CollisionManager;
-
-class TextureManager;
-
-class Level : GameObject
+class Level : public GameObject
 {
 public:
-	//Settable amount of asteroids in game
-	Level(int nAsteroids);
-
+	//Settable amount for objects in the game
+	Level(int nAsteroids, int nStars, int nEnemies, int nHealthPickups);
+	//Delete all game objects
 	~Level();
 
-	void Update(float fDeltaTime);
-
-	void Draw(RenderManager* pRenderer);
 private:
-	std::vector<GameObject*> m_apChildren;
-
 	Player* m_pPlayer;
 
 	Rock** m_apRock;
@@ -48,4 +34,7 @@ private:
 	TextureManager* m_pTextureManager;
 
 	int m_nAsteroids;
+	int m_nStars;
+	int m_nEnemies;
+	int m_nHealthPickups;
 };
