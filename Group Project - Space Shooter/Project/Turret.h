@@ -13,8 +13,7 @@
 //--------------------------------------------------------------------------------
 
 #include "BulletManager.h"
-
-class Actor;
+#include "Actor.h"
 
 class Turret : public Actor
 {

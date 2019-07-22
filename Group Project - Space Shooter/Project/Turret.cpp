@@ -8,7 +8,7 @@
 Turret::Turret() : Actor(m_pParent->GetPosition())
 {
 	// Ask the texture manager to load the turret texture for the turret.
-	TextureManager* textMan;
+	TextureManager* textMan = textMan->Instance();
 	m_pTexture = textMan->LoadTexture("turret.png");
 
 	// Create the bullet manager.

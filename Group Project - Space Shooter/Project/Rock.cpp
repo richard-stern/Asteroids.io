@@ -4,7 +4,7 @@
 #include "Actor.h"
 #include "Player.h"
 
-Rock::Rock() : Actor(Vector2(rand(), rand()))
+Rock::Rock() : Actor(Vector2((float)rand(), (float)rand()))
 {
 	// The rock will wrap and respawn in the level.
 	// So when it goes outside the level,
@@ -12,8 +12,7 @@ Rock::Rock() : Actor(Vector2(rand(), rand()))
 	m_bWrapAndRespawn = true;
 
 	// Get the texture manager.
-	TextureManager* textMan;
-	textMan->Instance();
+	TextureManager* textMan = textMan->Instance();
 
 	// Random int for the type of rock.
 	int randRock = rand() % 3;
@@ -45,7 +44,7 @@ Rock::Rock() : Actor(Vector2(rand(), rand()))
 	}
 
 	// The velocity of the rock is set to a random number between 1 and 180.
-	SetVelocity(Vector2(rand() % 180 + 1, rand() % 180 + 1));
+	SetVelocity(Vector2((float)(rand() % 180 + 1), (float)(rand() % 180 + 1)));
 }
 
 Rock::~Rock()
