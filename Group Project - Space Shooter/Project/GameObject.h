@@ -3,7 +3,6 @@
 #include "RenderManager.h"
 #include "Texture.h"
 #include "Matrix3.h"
-#include "Collider.h"
 
 class GameObject
 {
@@ -13,14 +12,6 @@ public:
 
 	virtual void Update(float deltaTime);
 	virtual void Draw(RenderManager* renderer);
-
-	//------------------------------------------------------------
-	// This is called by the collision manager when this gameObject
-	// collides with other collidable gameObjects.
-	// 'other' parameter is the gameObject that is colliding with
-	// this one. 
-	//------------------------------------------------------------
-	virtual void OnCollision(GameObject* other);
 
 	void UpdateGlobalTransform();
 
@@ -57,7 +48,6 @@ public:
 	float GetRotation();
 	Vector2 GetScale();
 	GameObject* GetParent();
-	Collider* GetCollider() { return m_pCollider; }
 	bool GetVisible() { return m_bVisible; }
 	bool GetWrapAndRespawn() { return m_bWrapAndRespawn; }
 	Vector2 GetVelocity() { return m_v2Velocity; }
@@ -71,8 +61,6 @@ protected:
 	Matrix3 _globalTransform;
 
 	Texture* m_pTexture;
-
-	Collider* m_pCollider;
 
 	bool m_bVisible;
 	bool m_bWrapAndRespawn;

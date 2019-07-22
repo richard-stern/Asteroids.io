@@ -5,7 +5,6 @@ GameObject::GameObject()
 {
 	m_pTexture = nullptr;
 	_parent = nullptr;
-	m_pCollider = nullptr;
 }
 
 GameObject::~GameObject()
@@ -13,21 +12,12 @@ GameObject::~GameObject()
 	for (int i = 0; i < _childList.Count(); i++)
 		if (_childList[i])
 			delete _childList[i];
-
-	if (m_pCollider)
-	{
-		delete m_pCollider;
-		m_pCollider = nullptr;
-	}
 }
 
 void GameObject::Update(float deltaTime)
 {
 	for (int i = 0; i < _childList.Count(); i++)
 		_childList[i]->Update(deltaTime);
-
-	if (m_pCollider)
-		m_pCollider->SetPosition(GetPosition());
 }
 
 void GameObject::Draw(RenderManager* renderer)
@@ -37,10 +27,6 @@ void GameObject::Draw(RenderManager* renderer)
 
 	for (int i = 0; i < _childList.Count(); i++)
 		_childList[i]->Draw(renderer);
-}
-
-void GameObject::OnCollision(GameObject * other)
-{
 }
 
 void GameObject::UpdateGlobalTransform()
