@@ -12,7 +12,7 @@ public:
 	virtual ~GameObject();
 
 	virtual void Update(float deltaTime);
-	virtual void Draw();
+	virtual void Draw(RenderManager* renderer);
 
 	//------------------------------------------------------------
 	// This is called by the collision manager when this gameObject
@@ -56,11 +56,11 @@ public:
 	float GetRotation();
 	Vector2 GetScale();
 	GameObject* GetParent();
-	Collider* GetCollider() { return _collider; }
-	bool GetVisible() { return _visible; }
-	bool GetWrapAndRespawn() { return _wrapAndRespawn; }
-	Vector2 GetVelocity() { return _velocity; }
-	float GetDrag() { return _drag; }
+	Collider* GetCollider() { return m_pCollider; }
+	bool GetVisible() { return m_bVisible; }
+	bool GetWrapAndRespawn() { return m_bWrapAndRespawn; }
+	Vector2 GetVelocity() { return m_v2Velocity; }
+	float GetDrag() { return m_fDrag; }
 
 protected:
 	GameObject* _parent;
@@ -69,13 +69,13 @@ protected:
 	Matrix3 _localTransform;
 	Matrix3 _globalTransform;
 
-	Texture* _texture;
+	Texture* m_pTexture;
 
-	Collider* _collider;
+	Collider* m_pCollider;
 
-	bool _visible;
-	bool _wrapAndRespawn;
-	Vector2 _velocity;
-	float _drag;
+	bool m_bVisible;
+	bool m_bWrapAndRespawn;
+	Vector2 m_v2Velocity;
+	float m_fDrag;
 };
 

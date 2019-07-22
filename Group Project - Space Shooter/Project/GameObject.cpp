@@ -3,9 +3,9 @@
 
 GameObject::GameObject()
 {
-	_texture = nullptr;
+	m_pTexture = nullptr;
 	_parent = nullptr;
-	_collider = nullptr;
+	m_pCollider = nullptr;
 }
 
 GameObject::~GameObject()
@@ -14,16 +14,16 @@ GameObject::~GameObject()
 		if (_childList[i])
 			delete _childList[i];
 
-	if (_texture)
+	if (m_pTexture)
 	{
-		delete _texture;
-		_texture = nullptr;
+		delete m_pTexture;
+		m_pTexture = nullptr;
 	}
 
-	if (_collider)
+	if (m_pCollider)
 	{
-		delete _collider;
-		_collider = nullptr;
+		delete m_pCollider;
+		m_pCollider = nullptr;
 	}
 }
 
@@ -32,18 +32,17 @@ void GameObject::Update(float deltaTime)
 	for (int i = 0; i < _childList.Count(); i++)
 		_childList[i]->Update(deltaTime);
 
-	if (_collider)
-		_collider->SetPosition(GetPosition());
+	if (m_pCollider)
+		m_pCollider->SetPosition(GetPosition());
 }
 
-void GameObject::Draw()
+void GameObject::Draw(RenderManager* renderer)
 {
-	RenderManager* renderer = RenderManager::Instance();
-	if (_texture)
-		renderer->DrawSpriteTransformed3x3(_texture, _globalTransform);
+	if (m_pTexture)
+		renderer->DrawSpriteTransformed3x3(m_pTexture, _globalTransform);
 
 	for (int i = 0; i < _childList.Count(); i++)
-		_childList[i]->Draw();
+		_childList[i]->Draw(renderer);
 }
 
 void GameObject::OnCollision(GameObject * other)
@@ -83,22 +82,22 @@ void GameObject::SetScale(Vector2 scale)
 
 void GameObject::SetVisible(bool visible)
 {
-	_visible = visible;
+	m_bVisible = visible;
 }
 
 void GameObject::SetWrapAndRespawn(bool value)
 {
-	_wrapAndRespawn = value;
+	m_bWrapAndRespawn = value;
 }
 
 void GameObject::SetVelocity(Vector2 velocity)
 {
-	_velocity = velocity;
+	m_v2Velocity = velocity;
 }
 
 void GameObject::SetDrag(float drag)
 {
-	_drag = drag;
+	m_fDrag = drag;
 }
 
 void GameObject::Translate(Vector2 translation)
