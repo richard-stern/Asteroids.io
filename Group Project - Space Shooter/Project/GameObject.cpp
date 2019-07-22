@@ -88,6 +88,16 @@ void GameObject::SetScale(Vector2 scale)
 	_localTransform.setScale(scale);
 }
 
+void GameObject::SetVelocity(Vector2 velocity)
+{
+	_velocity = velocity;
+}
+
+void GameObject::SetDrag(float drag)
+{
+	_drag = drag;
+}
+
 void GameObject::Translate(Vector2 translation)
 {
 	Vector2 currentPos = GetPosition();

@@ -22,6 +22,8 @@ public:
 	void SetPosition(float x, float y);
 	void SetRotation(float radians);
 	void SetScale(Vector2 scale);
+	void SetVelocity(Vector2 velocity);
+	void SetDrag(float drag);
 
 	void Translate(Vector2 translation);
 	void Rotate(float radians);
@@ -35,6 +37,8 @@ public:
 	GameObject* GetParent();
 	Collider* GetCollider() { return _collider; }
 
+	Vector2 GetVelocity() { return _velocity; }
+	float GetDrag() { return _drag; }
 
 protected:
 	GameObject* _parent;
@@ -47,5 +51,7 @@ protected:
 
 	Collider* _collider;
 
+	Vector2 _velocity;
+	float _drag;
 };
 
