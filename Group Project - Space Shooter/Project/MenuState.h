@@ -2,7 +2,7 @@
 #include "BaseState.h"
 
 /*
-	Base State Class
+	Menu State Class
 
 	Made by Thomas
 */
@@ -19,5 +19,9 @@ public:
 
 private:
 	StateMachine* m_pStateMachine;
+	Button* m_PlayButton;
+	Button* m_QuitButton;
+	Font* m_Font;
+	Application* m_App;
 };
 
