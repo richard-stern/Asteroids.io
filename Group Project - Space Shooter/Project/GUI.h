@@ -8,6 +8,7 @@
 										GUI::Instance()->GetScore()
 										GUI::Instance()->SetLives(int lives)
 										GUI::Instance()->Draw(RenderManager* renderer)
+										GUI::Instance()->DisplayFPS(RenderManager* renderer)
 
 							Made by Thomas
 */
@@ -26,12 +27,15 @@ public:
 	void SetLives(int lives);
 
 private:
-	static GUI *m_gInstance;
+	static GUI *m_pInstance;
 
 	int m_nHealth;
 	int m_nScore;
 	int m_nLives;
 	char m_kFPS[32];
+	char m_kHealth[32];
+	char m_kScore[32];
+	char m_kLives[32];
 
 	Font *m_fontGUI;
 	Application* app;
