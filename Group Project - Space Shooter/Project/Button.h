@@ -3,6 +3,11 @@
 #include "Font.h"
 #include "Input.h"
 
+/*		Button Class
+		
+		Made by Thomas
+*/
+
 class Button
 {
 public:
@@ -11,6 +16,7 @@ public:
 
 	void Draw(RenderManager* renderer, float width, float height);
 	bool Update();
+
 private:
 	// font and text
 	Font* m_font;
