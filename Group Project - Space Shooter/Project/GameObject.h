@@ -4,6 +4,19 @@
 #include "Texture.h"
 #include "Matrix3.h"
 
+enum GameObjectType
+{
+	Generic,
+	Star,
+	Level,
+	Player,
+	Turret,
+	Bullet,
+	Enemy,
+	HealthPickup,
+	Rock
+};
+
 class GameObject
 {
 public:
@@ -44,6 +57,7 @@ public:
 	void SetParent(GameObject* parent);
 	void AddChild(GameObject* child);
 
+	GameObjectType GetType() { return m_eType; }
 	Vector2 GetPosition();
 	float GetRotation();
 	Vector2 GetScale();
@@ -54,6 +68,7 @@ public:
 	float GetDrag() { return m_fDrag; }
 
 protected:
+	GameObjectType m_eType;
 	GameObject* m_pParent;
 	List<GameObject*> m_apChildList;
 
