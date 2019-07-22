@@ -21,11 +21,11 @@ BulletManager::~BulletManager()
 
 void BulletManager::ShootBullet(Vector2 v2StartPos, Vector2 v2StartDir)
 {
-	for (int i = 0; i < BULLET_POOL_SIZE; ++i)			//For all bullets in the pool,
+	for (int i = 0; i < BULLET_POOL_SIZE; ++i)	//For all bullets in the pool,
 	{
-		Bullet* pBullet = m_aBulletPool[i];				//Make a pointer to the current bullet, to avoid repeated index calls
+		Bullet* pBullet = m_aBulletPool[i];		//Make a pointer to the current bullet, to avoid repeated index calls
 
-		if (pBullet->GetVisibility() == false)			//If the bullet is inactive,
+		if (pBullet->GetVisible() == false)				//If the bullet is inactive,
 		{
 			pBullet->Shoot(v2StartPos, v2StartDir);		//Call the shoot function on the bullet
 			break;										//Stop searching for bullets
