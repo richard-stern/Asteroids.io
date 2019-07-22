@@ -56,13 +56,10 @@ void MenuState::Draw(RenderManager* pRenderManager) {
 	pRenderManager->DrawSprite(NULL, Camera::Instance()->GetWindowWidth() / 1.5f, Camera::Instance()->GetWindowHeight() / 3, 350, 100);
 
 	// Images
+	pRenderManager->SetRenderColor(255, 255, 255, 255);
 	pRenderManager->DrawSprite(m_PlyShip, Camera::Instance()->GetWindowWidth() / 2, Camera::Instance()->GetWindowHeight() / 5, 100, 100);
 	pRenderManager->DrawSprite(m_RockLarge, Camera::Instance()->GetWindowWidth() / 3, Camera::Instance()->GetWindowHeight() / 1, 250, 250);
 	pRenderManager->DrawSprite(m_RockMed, Camera::Instance()->GetWindowWidth() / 4, Camera::Instance()->GetWindowHeight() / 6, 150, 150);
-
-
-	// Reset Render Color
-	pRenderManager->SetRenderColor(255, 255, 255, 255);
 }
 
 void MenuState::Exit() {
