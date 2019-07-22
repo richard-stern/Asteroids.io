@@ -2,13 +2,13 @@
 
 Collider::Collider(ColliderType type, ELayer layer = ECOLLISIONLAYER_NONE)
 {
-	_type = type;
+	m_eType = type;
 	m_eLayer = layer;
 }
 
 void Collider::SetPosition(Vector2 position)
 {
-	_position = position;
+	m_v2Position = position;
 }
 
 Vector2 Collider::clamp(Vector2 position, Vector2 min, Vector2 max)

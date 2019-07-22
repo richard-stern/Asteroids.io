@@ -9,12 +9,12 @@ public:
 
 	void Draw();
 
-	float GetRadius() { return _radius; }
+	float GetRadius() { return m_fRadius; }
 
 	bool IsCollidingWith(Collider* other);
 
 private:
-	float _radius;
+	float m_fRadius;
 	bool IsColldingWithBox(BoxCollider* other);
 	bool IsCollidingWithCircle(CircleCollider* other);
 };

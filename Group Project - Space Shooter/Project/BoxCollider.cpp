@@ -4,7 +4,7 @@
 BoxCollider::BoxCollider(Vector2 extend)
 	: Collider(BoxColliderType)
 {
-	_extend = extend;
+	m_v2Extend = extend;
 }
 
 void BoxCollider::Draw()
@@ -19,12 +19,12 @@ void BoxCollider::Draw()
 
 Vector2 BoxCollider::GetMin()
 {
-	return _position - _extend;
+	return m_v2Position - m_v2Extend;
 }
 
 Vector2 BoxCollider::GetMax()
 {
-	return _position + _extend;
+	return m_v2Position + m_v2Extend;
 }
 
 bool BoxCollider::IsCollidingWith(Collider * other)

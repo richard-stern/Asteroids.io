@@ -2,7 +2,7 @@
 
 CircleCollider::CircleCollider(float radius) : Collider(CircleColliderType)
 {
-	_radius = radius;
+	m_fRadius = radius;
 }
 
 void CircleCollider::Draw()
@@ -38,8 +38,8 @@ bool CircleCollider::IsColldingWithBox(BoxCollider * other)
 bool CircleCollider::IsCollidingWithCircle(CircleCollider* other)
 {
 	Vector2 otherPosition = other->GetPosition();
-	float sqrDistance = (_position - otherPosition).magnitudeSqr();
-	float sqrTotalRadius = powf((_radius + other->GetRadius()), 2);
+	float sqrDistance = (m_v2Position - otherPosition).magnitudeSqr();
+	float sqrTotalRadius = powf((m_fRadius + other->GetRadius()), 2);
 
 	return sqrDistance <= sqrTotalRadius;
 }
