@@ -25,7 +25,7 @@ class CircleCollider;
 class Collider
 {
 public:
-	Collider(ColliderType type, ELayer layer);
+	Collider(ColliderType type, ELayer layer = ECOLLISIONLAYER_NONE);
 	virtual ~Collider() {};
 
 	ColliderType GetType() { return _type; }

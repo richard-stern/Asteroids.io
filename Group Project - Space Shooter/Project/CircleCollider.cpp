@@ -1,7 +1,6 @@
 #include "CircleCollider.h"
 
-CircleCollider::CircleCollider(float radius)
-	: Collider(CircleColliderType)
+CircleCollider::CircleCollider(float radius) : Collider(CircleColliderType)
 {
 	_radius = radius;
 }
@@ -20,7 +19,6 @@ bool CircleCollider::IsCollidingWith(Collider * other)
 	else
 		return IsColldingWithBox(static_cast<BoxCollider*>(other));
 }
-
 
 // Find the closest point on the AABB to the circle,
 // then compare it with the circle's radius
