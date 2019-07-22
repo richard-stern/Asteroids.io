@@ -1,32 +1,34 @@
 #include "HealthPickup.h"
 #include <random>
-#include "Player.h"
-#include "Rock.h"
-#include "Enemy.h"
-#include "Bullet.h"
+#include "Actor.h"
+#include "TextureManager.h"
 
-HealthPickup::HealthPickup()
+HealthPickup::HealthPickup() : Actor(Vector2(rand(), rand()))
 {
 	// Initialise variables that are going to be needed.
-	m_bWrapAndRespawn = true;
+	_wrapAndRespawn = true;
+	_visible = true;
 
-	m_v2Velocity.x = rand() % 10;
-	m_v2Velocity.y = rand() % 10;
+	// Sets the velocity in each direction to be somewhere between 1 and 10.
+	_velocity.x = rand() % 10 + 1;
+	_velocity.y = rand() % 10 + 1;
 
-	m_bVisible = true;
+	// Ask the texture manager to load the health pickup texture for the turret.
+	TextureManager* textMan;
+	_texture = textMan->LoadTexture("Powerup.png");
 }
 
 HealthPickup::~HealthPickup()
 {
 	// Clean up.
-	m_bWrapAndRespawn = false;
-	m_bVisible = false;
+	_wrapAndRespawn = false;
+	_visible = false;
 }
 
 void HealthPickup::OnCollision(Player* player)
 {
 	// Set visible to false.
-	m_bVisible = false;
+	_visible = false;
 }
 
 void HealthPickup::OnCollision(Rock* rock)
@@ -44,11 +46,11 @@ void HealthPickup::OnCollision(Enemy* enemy)
 void HealthPickup::OnCollision(Bullet* bullet)
 {
 	// Set visible to false.
-	m_bVisible = false;
+	_visible = false;
 }
 
 void HealthPickup::Bounce()
 {
-	// Reverse the direction of the pickup.
-	m_v2Velocity * -1;
+	// Reverse the direction of the pickup, basic bounce against object.
+	_velocity * -1;
 }
