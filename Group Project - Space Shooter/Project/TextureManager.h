@@ -25,9 +25,9 @@ public:
 
 	//---------------------------------------------
 	//LoadTexture
-	//Passes in the path to the texture. Searches the list for the path passed in and loads the one needed, and creating it if not found
+	//Passes in the name of the texture (No need to put full path in). Searches the list for the path passed in and loads the one needed, and creating it if not found
 	//---------------------------------------------
-	Texture* LoadTexture(char* szPath);
+	Texture* LoadTexture(const char* szTextureName);
 
 
 	//Singleton stuff
