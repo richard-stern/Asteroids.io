@@ -81,6 +81,16 @@ void GameObject::SetScale(Vector2 scale)
 	_localTransform.setScale(scale);
 }
 
+void GameObject::SetVisible(bool visible)
+{
+	_visible = visible;
+}
+
+void GameObject::SetWrapAndRespawn(bool value)
+{
+	_wrapAndRespawn = value;
+}
+
 void GameObject::SetVelocity(Vector2 velocity)
 {
 	_velocity = velocity;

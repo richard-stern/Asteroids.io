@@ -28,9 +28,10 @@ public:
 	void SetPosition(float x, float y);
 	void SetRotation(float radians);
 	void SetScale(Vector2 scale);
+	void SetVisible(bool visible);
+	void SetWrapAndRespawn(bool value);
 	void SetVelocity(Vector2 velocity);
 	void SetDrag(float drag);
-
 
 	//------------------------------------------------------------
 	// 'translation' parameter is the delta amount that the 
@@ -56,7 +57,8 @@ public:
 	Vector2 GetScale();
 	GameObject* GetParent();
 	Collider* GetCollider() { return _collider; }
-
+	bool GetVisible() { return _visible; }
+	bool GetWrapAndRespawn() { return _wrapAndRespawn; }
 	Vector2 GetVelocity() { return _velocity; }
 	float GetDrag() { return _drag; }
 
@@ -71,6 +73,8 @@ protected:
 
 	Collider* _collider;
 
+	bool _visible;
+	bool _wrapAndRespawn;
 	Vector2 _velocity;
 	float _drag;
 };
