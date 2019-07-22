@@ -23,5 +23,8 @@ private:
 	Button* m_QuitButton;
 	Font* m_Font;
 	Application* m_App;
+	Texture* m_PlyShip;
+	Texture* m_RockLarge;
+	Texture* m_RockMed;
 };
 
