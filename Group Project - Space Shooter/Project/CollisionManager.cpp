@@ -36,16 +36,16 @@ void CollisionManager::Update(float fDeltaTime)
 				Actor* pActor = m_prgColliders[i];
 				Actor* pOtherActor = m_prgColliders[j];
 
-				// Objects on the LAYER_NONE layer will never collide.
+				// Objects on the LAYER_NONE will never collide.
 				if (pActor->m_eLayer == ECOLLISIONLAYER_NONE || pOtherActor->m_eLayer == ECOLLISIONLAYER_NONE)
 					continue;
 
-				// Objects on the LAYER_PLAYER and LAYER_BULLLET layer will never collide. 
+				// Objects on LAYER_PLAYER and LAYER_BULLLET will never collide. 
 				if (pActor->m_eLayer == ECOLLISIONLAYER_PLAYER && pOtherActor->m_eLayer == ECOLLISIONLAYER_BULLET ||
 					pOtherActor->m_eLayer == ECOLLISIONLAYER_PLAYER && pActor->m_eLayer == ECOLLISIONLAYER_BULLET)
 					continue;
 
-				// Objects on the LAYER_ENEMY and LAYER_ROCK layer will never collide. 
+				// Objects on LAYER_ENEMY and LAYER_ROCK will never collide. 
 				if (pActor->m_eLayer == ECOLLISIONLAYER_ENEMY && pOtherActor->m_eLayer == ECOLLISIONLAYER_ROCK ||
 					pOtherActor->m_eLayer == ECOLLISIONLAYER_ENEMY && pActor->m_eLayer == ECOLLISIONLAYER_ROCK)
 					continue;
