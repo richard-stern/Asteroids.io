@@ -1,5 +1,6 @@
 #include "CollisionManager.h"
 #include "Vector2.h"
+#include <algorithm>
 
 CollisionManager* CollisionManager::m_pInstance = nullptr;
 
@@ -23,12 +24,12 @@ void CollisionManager::RemoveObject(Actor* pActor)
 	}
 }
 
-// Iterates over the collider array and checks for any intersections between them.
+// Iterates over the collider array and checks for intersection between them.
 void CollisionManager::Update(float fDeltaTime)
 {
 	for (int i = 0; i < m_prgColliders.size() - 1; ++i)
 	{
-		for (int j = 0; j < m_prgColliders.size() - 1; ++j)
+		for (int j = 1; j < m_prgColliders.size() - 1; ++j)
 		{
 			if (i != j)
 			{
@@ -36,17 +37,17 @@ void CollisionManager::Update(float fDeltaTime)
 				Actor* pOtherActor = m_prgColliders[j];
 
 				// Objects on the LAYER_NONE layer will never collide.
-				if (pActor->eLayer == ECOLLISIONLAYER_NONE || pOtherActor->eLayer == ECOLLISIONLAYER_NONE)
+				if (pActor->m_eLayer == ECOLLISIONLAYER_NONE || pOtherActor->m_eLayer == ECOLLISIONLAYER_NONE)
 					continue;
 
 				// Objects on the LAYER_PLAYER and LAYER_BULLLET layer will never collide. 
-				if (pActor->eLayer == ECOLLISIONLAYER_PLAYER && pOtherActor->eLayer == ECOLLISIONLAYER_BULLET ||
-					pOtherActor->eLayer == ECOLLISIONLAYER_PLAYER && pActor->eLayer == ECOLLISIONLAYER_BULLET)
+				if (pActor->m_eLayer == ECOLLISIONLAYER_PLAYER && pOtherActor->m_eLayer == ECOLLISIONLAYER_BULLET ||
+					pOtherActor->m_eLayer == ECOLLISIONLAYER_PLAYER && pActor->m_eLayer == ECOLLISIONLAYER_BULLET)
 					continue;
 
 				// Objects on the LAYER_ENEMY and LAYER_ROCK layer will never collide. 
-				if (pActor->eLayer == ECOLLISIONLAYER_ENEMY && pOtherActor->eLayer == ECOLLISIONLAYER_ROCK ||
-					pOtherActor->eLayer == ECOLLISIONLAYER_ENEMY && pActor->eLayer == ECOLLISIONLAYER_ROCK)
+				if (pActor->m_eLayer == ECOLLISIONLAYER_ENEMY && pOtherActor->m_eLayer == ECOLLISIONLAYER_ROCK ||
+					pOtherActor->m_eLayer == ECOLLISIONLAYER_ENEMY && pActor->m_eLayer == ECOLLISIONLAYER_ROCK)
 					continue;
 
 				// If both objects are visible and intersect, then call both the object's OnCollision function,
@@ -59,19 +60,4 @@ void CollisionManager::Update(float fDeltaTime)
 			}
 		}
 	}
-}
-
-// Checks for an intersection betweem two actors.
-bool CollisionManager::Intersection(Actor* pActor, Actor* pOtherActor)
-{
-	Vector2 v2ActorPosition = pActor->GetPosition();
-	Vector2 v2OtherActorPosition = pOtherActor->GetPosition();
-	float otherX = v2OtherActorPosition.x;
-	float otherY = v2OtherActorPosition.y;
-	float otherSize = pOtherActor->m_v2Max;
-	float otherX1 = otherX + otherSize;
-	float otherY1 = otherY + otherSize;
-
-	return (v2ActorPosition.x >= otherX || v2ActorPosition.x <= otherX1) &&
-		   (v2ActorPosition.y >= otherY || v2ActorPosition.y <= otherY1);
 }

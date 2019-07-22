@@ -1,21 +1,19 @@
 #pragma once
 #include <vector>
-#include "Actor.h"
 
 class CollisionManager
 {
 private:
+	CollisionManager();
 	static CollisionManager* m_pInstance;
 	std::vector<Actor*> m_prgColliders;
 
 public:
-	CollisionManager();
 	~CollisionManager();
 
 	void AddObject(Actor* pActor);
 	void RemoveObject(Actor* pActor);
 	void Update(float fDeltaTime);
-	bool Intersection(Actor* pActor, Actor* pOtherActor);
 
 	static void Create()
 	{
