@@ -54,11 +54,11 @@ public:
 	float GetDrag() { return m_fDrag; }
 
 protected:
-	GameObject* _parent;
-	List<GameObject*> _childList;
+	GameObject* m_pParent;
+	List<GameObject*> m_apChildList;
 
-	Matrix3 _localTransform;
-	Matrix3 _globalTransform;
+	Matrix3 m_m3LocalTransform;
+	Matrix3 m_m3GlobalTransform;
 
 	Texture* m_pTexture;
 

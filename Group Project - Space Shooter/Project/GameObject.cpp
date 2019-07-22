@@ -4,65 +4,65 @@
 GameObject::GameObject()
 {
 	m_pTexture = nullptr;
-	_parent = nullptr;
+	m_pParent = nullptr;
 }
 
 GameObject::~GameObject()
 {
-	for (int i = 0; i < _childList.Count(); i++)
-		if (_childList[i])
-			delete _childList[i];
+	for (int i = 0; i < m_apChildList.Count(); i++)
+		if (m_apChildList[i])
+			delete m_apChildList[i];
 }
 
 void GameObject::Update(float deltaTime)
 {
-	for (int i = 0; i < _childList.Count(); i++)
-		_childList[i]->Update(deltaTime);
+	for (int i = 0; i < m_apChildList.Count(); i++)
+		m_apChildList[i]->Update(deltaTime);
 }
 
 void GameObject::Draw(RenderManager* renderer)
 {
 	if (m_pTexture)
-		renderer->DrawSpriteTransformed3x3(m_pTexture, _globalTransform);
+		renderer->DrawSpriteTransformed3x3(m_pTexture, m_m3GlobalTransform);
 
-	for (int i = 0; i < _childList.Count(); i++)
-		_childList[i]->Draw(renderer);
+	for (int i = 0; i < m_apChildList.Count(); i++)
+		m_apChildList[i]->Draw(renderer);
 }
 
 void GameObject::UpdateGlobalTransform()
 {
-	if (_parent)
-		_globalTransform = _parent->_globalTransform * _localTransform;
+	if (m_pParent)
+		m_m3GlobalTransform = m_pParent->m_m3GlobalTransform * m_m3LocalTransform;
 	else
-		_globalTransform = _localTransform;
+		m_m3GlobalTransform = m_m3LocalTransform;
 
-	for (int i = 0; i < _childList.Count(); i++)
-		_childList[i]->UpdateGlobalTransform();
+	for (int i = 0; i < m_apChildList.Count(); i++)
+		m_apChildList[i]->UpdateGlobalTransform();
 }
 
 void GameObject::SetPosition(Vector2 pos)
 {
-	_localTransform.setPosition(pos);
+	m_m3LocalTransform.setPosition(pos);
 }
 
 void GameObject::SetPosition(float x, float y)
 {
-	_localTransform.setPosition(x, y);
+	m_m3LocalTransform.setPosition(x, y);
 }
 
 void GameObject::SetRotation(float radians)
 {
-	_localTransform.setRotateZ(radians);
+	m_m3LocalTransform.setRotateZ(radians);
 }
 
 void GameObject::SetRotation(Vector2 direction)
 {
-	_localTransform.setRotateZ(direction);
+	m_m3LocalTransform.setRotateZ(direction);
 }
 
 void GameObject::SetScale(Vector2 scale)
 {
-	_localTransform.setScale(scale);
+	m_m3LocalTransform.setScale(scale);
 }
 
 void GameObject::SetVisible(bool visible)
@@ -98,23 +98,23 @@ void GameObject::Rotate(float radians)
 
 void GameObject::SetParent(GameObject * parent)
 {
-	_parent = parent;
+	m_pParent = parent;
 	parent->AddChild(this);
 }
 
 void GameObject::AddChild(GameObject * child)
 {
-	_childList.PushBack(child);
+	m_apChildList.PushBack(child);
 }
 
 Vector2 GameObject::GetPosition()
 {
-	return _localTransform.getPosition();
+	return m_m3LocalTransform.getPosition();
 }
 
 float GameObject::GetRotation()
 {
-	return _localTransform.getRotation();
+	return m_m3LocalTransform.getRotation();
 }
 
 Vector2 GameObject::GetScale()
@@ -124,5 +124,5 @@ Vector2 GameObject::GetScale()
 
 GameObject * GameObject::GetParent()
 {
-	return _parent;
+	return m_pParent;
 }
