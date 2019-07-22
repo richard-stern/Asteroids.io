@@ -3,6 +3,7 @@
 #include "GameOverState.h"
 #include <iostream>
 #include "Button.h"
+#include "GUI.h"
 
 GameOverState::GameOverState() : BaseState()
 {
@@ -23,7 +24,13 @@ void GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 void GameOverState ::Draw (RenderManager* pRenderManager)
 {
 	std::cout << "draw game over state" << std::endl;
+
 	// score
+	char endScoreText[32];
+	int totalscore = GUI::Instance->GetScore();
+	sprintf(endScoreText,   "your score is %i", totalscore);
+	pRenderManager->DrawText(m_font, 0, 400, 500);
+	//play again button
 	pRenderManager->DrawText(m_font, "play again?", 400, 500);
 
 }
