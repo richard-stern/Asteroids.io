@@ -14,12 +14,6 @@ GameObject::~GameObject()
 		if (_childList[i])
 			delete _childList[i];
 
-	if (m_pTexture)
-	{
-		delete m_pTexture;
-		m_pTexture = nullptr;
-	}
-
 	if (m_pCollider)
 	{
 		delete m_pCollider;
