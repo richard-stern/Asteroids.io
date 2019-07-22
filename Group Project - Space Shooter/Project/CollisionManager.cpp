@@ -28,12 +28,17 @@ void CollisionManager::RemoveObject(Actor* pActor)
 // Iterates over the collider array and checks for intersection between them.
 void CollisionManager::Update(float fDeltaTime)
 {
-	for (int i = 0; i < m_prgColliders.size() - 1; ++i)
+	for (int i = 0; i < (int) m_prgColliders.size() - 1; ++i)
 	{
-		for (int j = 1; j < m_prgColliders.size() - 1; ++j)
+		for (int j = 1; j < (int) m_prgColliders.size() - 1; ++j)
 		{
 			if (i != j)
 			{
+				// Game object's we're checking.
+				GameObject* pGameObject = m_prgColliders[i];
+				GameObject* pOtherGameObject = m_prgColliders[j];
+
+				// Colliders of the game object's we're checking.
 				Collider* pCollider = m_prgColliders[i]->GetCollider();
 				Collider* pOtherCollider = m_prgColliders[j]->GetCollider();
 
@@ -52,11 +57,11 @@ void CollisionManager::Update(float fDeltaTime)
 					continue;
 
 				// If both objects are visible and intersect, then call both the object's OnCollision function,
-				// passing each other in as the parameters.
-				if (m_prgColliders[i]->IsVisible() && m_prgColliders[j]->IsVisible() && pCollider->IsCollidingWith(pOtherCollider))
+				// passing each other in as the parameter.
+				if (m_prgColliders[i]->GetVisible() && m_prgColliders[j]->GetVisible() && pCollider->IsCollidingWith(pOtherCollider))
 				{
-					m_prgColliders[i]->OnCollision(pOtherCollider);
-					m_prgColliders[j]->OnCollision(pCollider);
+					m_prgColliders[i]->OnCollision(pOtherGameObject);
+					m_prgColliders[j]->OnCollision(pGameObject);
 				}
 			}
 		}

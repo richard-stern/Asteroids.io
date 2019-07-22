@@ -5,6 +5,7 @@
 class Actor : public GameObject
 {
 public:
+	Actor();
 	Actor(Vector2 Position);
 	~Actor();
 		//Creation of a Update Function.

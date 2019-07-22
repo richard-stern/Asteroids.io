@@ -1,15 +1,14 @@
 #include "Actor.h"
 
+Actor::Actor() {}
+
 Actor::Actor(Vector2 Position)
 {
 	SetPosition(Position);
 	m_pCollider = nullptr;
-
 }
 
-Actor::~Actor()
-{
-}
+Actor::~Actor(){}
 
 void Actor::Update(float fDeltaTime)
 {
