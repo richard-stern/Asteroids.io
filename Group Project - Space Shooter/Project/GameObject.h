@@ -57,7 +57,7 @@ public:
 	float GetRotation();
 	Vector2 GetScale();
 	GameObject* GetParent();
-	Collider* GetCollider() { return m_pCollider; }
+
 	bool GetVisible() { return m_bVisible; }
 	bool GetWrapAndRespawn() { return m_bWrapAndRespawn; }
 	Vector2 GetVelocity() { return m_v2Velocity; }
