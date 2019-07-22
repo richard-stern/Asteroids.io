@@ -34,6 +34,7 @@ private:
 	char m_kFPS[32];
 
 	Font *m_fontGUI;
+	Application* app;
 
 protected:
 	GUI();

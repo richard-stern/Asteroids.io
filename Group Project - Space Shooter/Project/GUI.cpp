@@ -26,11 +26,14 @@ GUI *GUI::Instance() {
 }
 
 void GUI::Draw(RenderManager* renderer) {
-	renderer->DrawText(m_fontGUI, "Health", camera->getWindowWidth() / 2, camera->getWindowHeight() / 2);
+	renderer->DrawText(m_fontGUI, "Health", app->getWindowWidth() / 2, app->getWindowHeight() / 2);
 }
 
 void GUI::DisplayFPS(RenderManager* renderer) {
-	sprintf_s(fps, 32, "FPS: %i", Application::GetFPS())
+	sprintf_s(m_kFPS, 32, "FPS: %i", app->GetFPS());
+	renderer->SetRenderColor(255, 0, 0, 255);
+	renderer->DrawText(m_fontGUI, m_kFPS, 0, 720 - 32);
+	renderer->SetRenderColor(0, 0, 0, 0);
 }
 
 void GUI::SetHealth(int health) {
