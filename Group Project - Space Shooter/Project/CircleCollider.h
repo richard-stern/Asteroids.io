@@ -2,8 +2,7 @@
 #include "Collider.h"
 #include "BoxCollider.h"
 
-class CircleCollider :
-	public Collider
+class CircleCollider : public Collider
 {
 public:
 	CircleCollider(float radius);

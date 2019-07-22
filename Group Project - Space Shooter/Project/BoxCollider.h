@@ -2,8 +2,7 @@
 #include "Collider.h"
 #include "CircleCollider.h"
 
-class BoxCollider :
-	public Collider
+class BoxCollider : public Collider
 {
 public:
 	BoxCollider(Vector2 extend);

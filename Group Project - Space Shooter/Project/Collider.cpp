@@ -1,8 +1,9 @@
 #include "Collider.h"
 
-Collider::Collider(ColliderType type)
+Collider::Collider(ColliderType type, ELayer layer = ECOLLISIONLAYER_NONE)
 {
 	_type = type;
+	m_eLayer = layer;
 }
 
 void Collider::SetPosition(Vector2 position)
@@ -18,4 +19,9 @@ Vector2 Collider::clamp(Vector2 position, Vector2 min, Vector2 max)
 	result.y = std::fmax(min.y, std::fmin(position.y, max.y));
 
 	return result;
+}
+
+void Collider::SetLayer(ELayer eLayer)
+{
+	m_eLayer = eLayer;
 }
