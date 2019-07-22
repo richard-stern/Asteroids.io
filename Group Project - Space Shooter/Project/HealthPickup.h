@@ -23,7 +23,7 @@ public:
 	// Params: the rock.
 	void OnCollision(Rock* rock);
 
-	// On collisoin with an enemy.
+	// On collision with an enemy.
 	// Params: the enemey.
 	void OnCollision(Enemy* enemy);
 
