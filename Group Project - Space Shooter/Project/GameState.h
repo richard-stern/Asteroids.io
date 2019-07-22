@@ -1,6 +1,8 @@
 #pragma once
 #include "RenderManager.h"
 #include "BaseState.h"
+#include "Level.h"
+#include "GUI.h"
 class GameState : public BaseState //change when find out what basestate name is
 {
 public:
