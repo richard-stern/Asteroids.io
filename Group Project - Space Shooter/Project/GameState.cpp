@@ -1,5 +1,5 @@
 #include "GameState.h"
-
+#include "StateMachine.h"
 class GameState;
 
 GameState::GameState()
@@ -18,8 +18,8 @@ GameState::~GameState()
 
 void GameState::Enter()
 {
-	level = new Level();
-	gui = new GUI();
+	level = new Level(30, 100, 2, 2);
+	gui = GUI::Instance();
 }
 void GameState::Exit()
 {
