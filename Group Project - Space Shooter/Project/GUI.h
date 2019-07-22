@@ -1,5 +1,15 @@
 #pragma once
 
+/*
+	Access functions like this ->		GUI::Instance()->SetHealth(int health)
+										GUI::Instance()->AddScore(int score)
+										GUI::Instance()->GetScore()
+										GUI::Instance()->SetLives(int lives)
+										GUI::Instance()->Draw(int health)
+
+							Made by Thomas
+*/
+
 class GUI {
 public:
 	~GUI();
@@ -21,16 +31,5 @@ private:
 
 protected:
 	GUI();
-
-
-	/*	Help
-		Access functions like this ->		GUI::Instance()->SetHealth(int health)
-											GUI::Instance()->AddScore(int score)
-											GUI::Instance()->GetScore()
-											GUI::Instance()->SetLives(int lives)
-											GUI::Instance()->Draw(int health)
-
-								Made by Thomas
-	*/
 };
 
