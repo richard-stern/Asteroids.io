@@ -14,7 +14,8 @@
 //			  OnCollision(Bullet* bullet)	Pickup collides with a bullet.
 //--------------------------------------------------------------------------------
 
-class Actor;
+#include "Actor.h"
+
 class Player;
 class Rock;
 class Enemy;
