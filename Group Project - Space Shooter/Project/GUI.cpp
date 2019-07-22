@@ -29,6 +29,10 @@ void GUI::Draw(RenderManager* renderer) {
 	renderer->DrawText(m_fontGUI, "Health", camera->getWindowWidth() / 2, camera->getWindowHeight() / 2);
 }
 
+void GUI::DisplayFPS(RenderManager* renderer) {
+	sprintf_s(fps, 32, "FPS: %i", Application::GetFPS())
+}
+
 void GUI::SetHealth(int health) {
 	m_nHealth = health;
 }

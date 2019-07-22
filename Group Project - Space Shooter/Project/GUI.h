@@ -2,6 +2,7 @@
 #include "RenderManager.h"
 
 /*
+								GUI Class
 	Access functions like this ->		GUI::Instance()->SetHealth(int health)
 										GUI::Instance()->AddScore(int score)
 										GUI::Instance()->GetScore()
@@ -18,6 +19,7 @@ public:
 	static GUI *Instance();
 	
 	void Draw(RenderManager* renderer);
+	void DisplayFPS(RenderManager* renderer);
 	void SetHealth(int health);
 	void AddScore(int score);
 	int GetScore();
@@ -29,6 +31,7 @@ private:
 	int m_nHealth;
 	int m_nScore;
 	int m_nLives;
+	char m_kFPS[32];
 
 	Font *m_fontGUI;
 
