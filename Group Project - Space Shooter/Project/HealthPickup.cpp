@@ -7,14 +7,13 @@
 
 HealthPickup::HealthPickup()
 {
+	// Initialise variables that are going to be needed.
 	m_bWrapAndRespawn = true;
 
 	m_v2Velocity.x = rand() % 10;
 	m_v2Velocity.y = rand() % 10;
 
 	m_bVisible = true;
-
-	m_pTexture = TextureManager.LoadTexture("./Images/Powerup.png");
 }
 
 HealthPickup::~HealthPickup()
@@ -26,11 +25,8 @@ HealthPickup::~HealthPickup()
 
 void HealthPickup::OnCollision(Player* player)
 {
-	// "Destroy" the pickup.
+	// Set visible to false.
 	m_bVisible = false;
-
-	// The collision manager will/has called the OnCollision of the player,
-	// I don't need to do anything else.
 }
 
 void HealthPickup::OnCollision(Rock* rock)
