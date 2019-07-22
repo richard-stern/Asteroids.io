@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-
-class CollisionManager
+#include "Actor.h"
+class CollisionManager : public Actor
 {
 private:
 	CollisionManager();
