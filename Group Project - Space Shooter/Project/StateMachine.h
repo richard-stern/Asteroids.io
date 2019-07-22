@@ -4,7 +4,12 @@
 #include "GameState.h"
 #include "GameOverState.h"
 
-enum EState;
+enum EState
+{
+	ESTATE_MENU,
+	ESTATE_GAME,
+	ESTATE_GAMEOVER
+};
 
 class StateMachine
 {
@@ -16,13 +21,6 @@ public:
 	void Draw(RenderManager* renderer);
 
 	void ChangeState(EState currentstate);
-
-	enum EState
-	{
-		ESTATE_MENU,
-		ESTATE_GAME,
-		ESTATE_GAMEOVER
-	};
 
 protected:
 	EState m_CurrentState;
