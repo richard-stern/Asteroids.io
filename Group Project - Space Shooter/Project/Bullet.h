@@ -1,31 +1,38 @@
+/*-----------------------------------------------------------------------------
+Aurthur:		Connor Young
+Destription:	Bullet functionality 
+
+Usage:			
+-------------------------------------------------------------------------------*/
+
 #pragma once
-//#include "Actor.h"
-//#include "TextureManager.h"
-//#include "Vector2.h" 
+#include "Actor.h"
+#include "Texture.h"
+#include "Vector2.h" 
 
+#define BULLET_LIFETIME 5
+#define BULLET_SPEED 100
+#define BULLET_DAMAGE 50
 
-
-class Bullet : //public class Actor
+class Bullet : public Actor
 {
 public:
-	Bullet(int bSetLifeTime /*, Texture* pTexture*/);
+	Bullet();
 	~Bullet();
 
-	//Update(float fDeltaTime)
+	void Update(float fDeltaTime);
 
-	
-
-	//void Shoot(Vector2 v2Pos, float fDir);
+	void Shoot(Vector2 v2Pos, Vector2 v2Dir);
 
 private:
-	//Texture* m_pTexture; 
-	int m_nLifeTime;
+	Texture* m_pTexture; 
 
+	float	m_fLifeTime; 
 
-	 
-	//Vector2 m_v2Pos;
-	//float m_fDir; 
+	float	m_fTimer; 
+	
+	float	m_fSpeed;
 
-
+	int		m_nDamage; 
 };
 
