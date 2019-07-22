@@ -5,15 +5,21 @@
 #include "Matrix3.h"
 #include "TextureManager.h"
 
-Turret::Turret() : Actor(_parent->GetPosition())
+Turret::Turret() : Actor(m_pParent->GetPosition())
 {
 	// Ask the texture manager to load the turret texture for the turret.
 	TextureManager* textMan;
-	_texture = textMan->LoadTexture("turret.png");
+	m_pTexture = textMan->LoadTexture("turret.png");
+
+	// Create the bullet manager.
+	m_pBulletManager = new BulletManager();
 }
 
 Turret::~Turret()
 {
+	//  Delete the bullet manager.
+	delete m_pBulletManager;
+	m_pBulletManager = nullptr;
 }
 
 void Turret::Update(float deltaTime)
@@ -31,27 +37,30 @@ void Turret::Update(float deltaTime)
 	mousePos.y = (float)input->GetMouseY();
 
 	// The position of the turret as a Vector3.
-	Vector3 position;
-	position = _localTransform[6];
+	Vector3 v3Position;
+	v3Position = m_m3LocalTransform[6];
 
 	// The direction of where the mouse is.
-	Vector3 direction = mousePos - position;
-	direction.normalise();
+	Vector3 v3Forward = mousePos - v3Position;
+	v3Forward.normalise();
 
 	// The foward direction of the turret as a Vector2.
-	Vector2 tempFoward;
-	tempFoward.x = direction.x;
-	tempFoward.y = direction.y;
-
-	// The position of the turret as a Vector2.
-	Vector2 tempPos;
-	tempPos.x = position.x;
-	tempPos.y = position.y;
-
+	Vector2 v2Foward;
+	v2Foward.x = v3Forward.x;
+	v2Foward.y = v3Forward.y;
+	
 	// Set the rotation of the turret's matrix.
-	_localTransform.setRotateZ(tempFoward);
+	m_m3LocalTransform.setRotateZ(v2Foward);
 
 	// If the left mouse button was pressed -> shoot a bullet.
 	if (input->WasMouseButtonPressed(INPUT_MOUSE_BUTTON_LEFT))
-		m_pBulletManager->ShootBullet(tempPos, tempFoward);
+	{	
+		// The position of the turret as a Vector2.
+		Vector2 v2Position;
+		v2Position.x = v3Position.x;
+		v2Position.y = v3Position.y;
+
+		// Call the shoot bullet function of the bullet manager.
+		m_pBulletManager->ShootBullet(v2Position, v2Foward);
+	}
 }
