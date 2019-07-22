@@ -2,6 +2,7 @@
 #include "Button.h"
 #include "Camera.h"
 #include "Texture.h"
+#include "StateMachine.h"
 
 MenuState::MenuState() {
 	m_PlayButton = nullptr;
@@ -37,10 +38,8 @@ void MenuState::Update(float deltaTime, StateMachine* p_StateMachine) {
 	if (m_QuitButton->Update())
 		m_App->Quit();
 
-	if (m_PlayButton->Update()) {
-		Exit();
-		m_pStateMachine->ChangeState(ESTATE_GAMEOVER);
-	}
+	if (m_PlayButton->Update())
+		m_pStateMachine->ChangeState(ESTATE_GAME);
 }
 
 void MenuState::Draw(RenderManager* pRenderManager) {
