@@ -1,11 +1,12 @@
 #pragma once
+#include "RenderManager.h"
 
 /*
 	Access functions like this ->		GUI::Instance()->SetHealth(int health)
 										GUI::Instance()->AddScore(int score)
 										GUI::Instance()->GetScore()
 										GUI::Instance()->SetLives(int lives)
-										GUI::Instance()->Draw(int health)
+										GUI::Instance()->Draw(RenderManager* renderer)
 
 							Made by Thomas
 */
@@ -16,7 +17,7 @@ public:
 
 	static GUI *Instance();
 	
-	void Draw();
+	void Draw(RenderManager* renderer);
 	void SetHealth(int health);
 	void AddScore(int score);
 	int GetScore();
@@ -28,6 +29,8 @@ private:
 	int m_nHealth;
 	int m_nScore;
 	int m_nLives;
+
+	Font *m_fontGUI;
 
 protected:
 	GUI();
