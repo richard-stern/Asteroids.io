@@ -2,10 +2,11 @@
 // Leanne Vorster
 #include "GameOverState.h"
 #include <iostream>
-
+#include "Button.h"
 
 GameOverState::GameOverState() : BaseState()
 {
+	m_font = new Font("./font/consalas.ttf");
 }
 GameOverState::~GameOverState()
 {
@@ -22,6 +23,9 @@ void GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 void GameOverState ::Draw (RenderManager* pRenderManager)
 {
 	std::cout << "draw game over state" << std::endl;
+	// score
+	pRenderManager->DrawText(m_font, "play again?", 400, 500);
+
 }
 void GameOverState ::Exit ()
 {
