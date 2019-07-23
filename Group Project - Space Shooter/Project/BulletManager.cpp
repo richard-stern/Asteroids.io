@@ -15,7 +15,11 @@ BulletManager::~BulletManager()
 	//Destroy the bullet pool
 	for (int i = 0; i < BULLET_POOL_SIZE; ++i)	//For all bullets in the pool,
 	{
-		delete m_aBulletPool[i];				//Delete each bullet
+		if (m_aBulletPool[i])					//If the bullet exists,
+		{
+			delete m_aBulletPool[i];			//Delete each bullet
+			m_aBulletPool[i] = nullptr;			//Set to nullptr
+		}
 	}
 }
 
