@@ -30,6 +30,7 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="Rock.h" />
     <ClInclude Include="Star.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="TextureManager.h" />
@@ -54,6 +55,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="Rock.cpp" />
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="TextureManager.cpp" />
