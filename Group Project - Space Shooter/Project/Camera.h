@@ -44,10 +44,6 @@ public:
 	//Get the game window Height as an int 
 	int GetWindowHeight() { return m_nWindowHeight; }
 
-	//Get the game window size as a Vector2
-	Vector2 GetWindowSize(); 
-
-
 
 private:
 	//Constructor requires application pointer

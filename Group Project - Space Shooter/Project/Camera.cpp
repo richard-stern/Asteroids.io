@@ -33,13 +33,5 @@ Vector2 Camera::GetPosition()
 	return v2Temp;
 }
 
-Vector2 Camera::GetWindowSize()
-{
-	Vector2 v2Temp;
-	v2Temp.x = m_nWindowWidth;
-	v2Temp.y = m_nWindowHeight;
-
-	return v2Temp; 
-}
 
 
