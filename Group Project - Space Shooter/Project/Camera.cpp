@@ -6,7 +6,7 @@ Camera * Camera::m_pInstance = nullptr;
 Camera::Camera(int nWindowWidth, int nWindowHeight)
 {
 	m_pRenderer = RenderManager::Instance();
-
+	
 	m_nWindowHeight = nWindowWidth;
 	m_nWindowWidth = nWindowHeight;
 }

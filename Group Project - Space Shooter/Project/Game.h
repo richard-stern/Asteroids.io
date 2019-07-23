@@ -1,7 +1,12 @@
 #pragma once
 
 #include "Application.h"
+
+
+
+
 class StateMachine;
+class TextureManager;
 
 class Game : public Application
 {
@@ -14,4 +19,5 @@ public:
 
 private:
 	StateMachine* m_pStateMachine;
+	
 };
