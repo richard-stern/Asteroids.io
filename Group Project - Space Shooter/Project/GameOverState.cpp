@@ -42,7 +42,7 @@ bool GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 	 else if (m_ExitButtuon->Update())
 	{
 		std::cout << "QUIT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
-		&Application::Quit; 
+	
 		return true;
 	}
 	 else
@@ -56,7 +56,7 @@ void GameOverState ::Draw (RenderManager* pRenderManager)
 	char endScoreText[32];
 	int totalscore = GUI::Instance()->GetScore();
 	sprintf_s(endScoreText,  "your score is %i", totalscore);
-	//pRenderManager->DrawText(m_font, 0, 400, 500);
+	pRenderManager->DrawText(m_font, endScoreText, 400, 500);
 
 	//play again button
 	//pRenderManager->DrawText(m_font, "play again?", 400, 500);
