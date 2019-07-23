@@ -33,6 +33,7 @@ public:
 	void SetLives(int lives);
 
 private:
+
 	static GUI *m_pInstance;
 
 	int m_nHealth;

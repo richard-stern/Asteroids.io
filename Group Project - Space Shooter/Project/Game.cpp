@@ -39,7 +39,7 @@ void Game::Draw()
 	m_pStateMachine->Draw(pRenderManager);
 
 	// Displays FPS
-	GUI::Instance()->DisplayFPS(pRenderManager);
+	//GUI::Instance()->DisplayFPS(pRenderManager);
 
 	//End the render pass.
 	pRenderManager->End();

@@ -4,13 +4,16 @@
 #include "RenderManager.h"
 #include "Camera.h"
 
+GUI * GUI::m_pInstance = nullptr;
+
+
 GUI::GUI() {
 	m_nHealth = 0;
 	m_nScore = 0;
 	m_nLives = 0;
 
-	GUI *m_pInstance = 0;
-	Font *m_fontGUI = new Font("./Fonts/hobo_32px.fnt");
+	//GUI *m_pInstance = 0;
+	m_fontGUI = new Font("./Fonts/hobo_32px.fnt");
 }
 
 GUI::~GUI() {
@@ -45,6 +48,7 @@ void GUI::Draw(RenderManager* renderer) {
 
 void GUI::DisplayFPS(RenderManager* renderer) 
 {
+	
 	sprintf_s(m_kFPS, 32, "FPS: %i", app->GetFPS());
 	renderer->SetRenderColor(255, 0, 0, 255);
 	renderer->DrawText(m_fontGUI, m_kFPS, 0, 720 - 32);
