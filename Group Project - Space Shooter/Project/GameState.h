@@ -17,6 +17,6 @@ public:
 	virtual void Draw(RenderManager *renderManager);
 
 private:
-	Level* level;
+	LEVEL* level;
 	GUI* gui;
 };

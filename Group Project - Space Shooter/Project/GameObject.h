@@ -6,15 +6,15 @@
 
 enum GameObjectType
 {
-	Generic,
-	Star,
-	Level,
-	Player,
-	Turret,
-	Bullet,
-	Enemy,
-	HealthPickup,
-	Rock
+	GENERIC,
+	STAR,
+	LEVEL,
+	PLAYER,
+	TURRET,
+	BULLET,
+	ENEMY,
+	HEALTH_PICKUP,
+	ROCK
 };
 
 class GameObject

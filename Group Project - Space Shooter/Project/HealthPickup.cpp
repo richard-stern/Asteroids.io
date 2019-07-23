@@ -25,25 +25,25 @@ HealthPickup::~HealthPickup()
 	m_bVisible = false;
 }
 
-void HealthPickup::OnCollision(Player* player)
+void HealthPickup::OnCollision(PLAYER* player)
 {
 	// Set visible to false.
 	m_bVisible = false;
 }
 
-void HealthPickup::OnCollision(Rock* rock)
+void HealthPickup::OnCollision(ROCK* rock)
 {
 	// Call the bounce function.
 	Bounce();
 }
 
-void HealthPickup::OnCollision(Enemy* enemy)
+void HealthPickup::OnCollision(ENEMY* enemy)
 {
 	// Call the bounce function.
 	Bounce();
 }
 
-void HealthPickup::OnCollision(Bullet* bullet)
+void HealthPickup::OnCollision(BULLET* bullet)
 {
 	// Set visible to false.
 	m_bVisible = false;

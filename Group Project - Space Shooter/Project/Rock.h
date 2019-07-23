@@ -39,25 +39,25 @@ public:
 	// On collision with the player.
 	// Params: the player.
 	//--------------------------------------------------------------------------------
-	void OnCollision(Player* player);
+	void OnCollision(PLAYER* player);
 
 	//--------------------------------------------------------------------------------
 	// On collision with a bullet.
 	// Params: the bullet.
 	//--------------------------------------------------------------------------------
-	void OnCollision(Bullet* bullet);
+	void OnCollision(BULLET* bullet);
 
 	//--------------------------------------------------------------------------------
 	// On collision with the health pickup.
 	// Params: the health pickup.
 	//--------------------------------------------------------------------------------
-	void OnCollision(HealthPickup* healthPickup);
+	void OnCollision(HEALTH_PICKUP* healthPickup);
 
 	//--------------------------------------------------------------------------------
 	// On collision with an enemy.
 	// Params: the enemy.
 	//--------------------------------------------------------------------------------
-	void OnCollision(Enemy* Enemy);
+	void OnCollision(ENEMY* Enemy);
 
 private:
 	//--------------------------------------------------------------------------------
