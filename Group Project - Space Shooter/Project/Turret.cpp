@@ -24,6 +24,7 @@ Turret::~Turret()
 
 void Turret::Update(float deltaTime)
 {
+	// Update the turret's global position.
 	UpdateGlobalTransform();
 
 	// Call the actor's default update function,
@@ -34,22 +35,25 @@ void Turret::Update(float deltaTime)
 	Input* input = input->Instance();
 
 	// The position of the mouse as a Vector3.
-	Vector3 mousePos;
+	Vector2 mousePos;
 	mousePos.x = (float)input->GetMouseX();
 	mousePos.y = (float)input->GetMouseY();
+	
+	Vector2 localPosition = m_m3GlobalTransform.getPosition();
 
 	// The position of the turret as a Vector3.
-	Vector3 v3Position;
-	v3Position = m_m3GlobalTransform.getPosition(); // Credit to Chris for helping me with this
+	Vector2 v2Direction;
+	v2Direction = (mousePos - localPosition).right(); // Credit to Chris for helping me with this
+	
+	float localRotation = atan2(v2Direction.y, v2Direction.x);
 
-	//Get directional vector between turret and mouse.
-	Vector3 v3Forward = mousePos - v3Position;
+	// Get the rotation of the parent.
+	float parentRotation = m_pParent->GetRotation();
+
+	float finalRotation = parentRotation - localRotation;
 
 	// The foward direction of the turret as a normalized Vector2.
-	Vector2 v2Forward;
-	v2Forward.x = v3Forward.x;
-	v2Forward.y = v3Forward.y;
-	v2Forward.normalise();
+	Vector2 v2Forward = Vector2(sin(finalRotation), cos(finalRotation));
 	
 	// Set the rotation of the turret's matrix.
 	m_m3LocalTransform.setRotateZ(v2Forward);
@@ -57,12 +61,7 @@ void Turret::Update(float deltaTime)
 	// If the left mouse button was pressed -> shoot a bullet.
 	if (input->WasMouseButtonPressed(INPUT_MOUSE_BUTTON_LEFT))
 	{	
-		// The position of the turret as a Vector2.
-		Vector2 v2Position;
-		v2Position.x = v3Position.x;
-		v2Position.y = v3Position.y;
-
 		// Call the shoot bullet function of the bullet manager.
-		m_pBulletManager->ShootBullet(v2Position, v2Forward);
+		m_pBulletManager->ShootBullet(localPosition, v2Forward);
 	}
 }
