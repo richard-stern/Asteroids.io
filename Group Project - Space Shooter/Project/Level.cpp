@@ -55,3 +55,8 @@ Player* Level::GetPlayer()
 {
 	return m_pPlayer;
 }
+
+Level* Level::GetLevel()
+{
+	return this;
+}

@@ -17,6 +17,8 @@ public:
 	~Level();
 
 	Player* GetPlayer();
+
+	Level* GetLevel();
 private:
 	Player* m_pPlayer;
 
