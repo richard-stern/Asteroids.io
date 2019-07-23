@@ -16,6 +16,7 @@ Player::Player(Vector2 v2Position) : Actor(v2Position)
 	m_eType = GameObjectType::PLAYER;
 	m_v2PreviousPosition = v2Position;
 	m_pTurret = new Turret(v2Position);
+	AddChild(m_pTurret);
 }
 
 
