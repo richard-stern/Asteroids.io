@@ -5,6 +5,7 @@
 #include "Matrix3.h"
 #include "TextureManager.h"
 #include "Camera.h"
+#include "BulletManager.h"
 
 Turret::Turret() : Actor(Vector2(0,0))
 {
@@ -13,7 +14,7 @@ Turret::Turret() : Actor(Vector2(0,0))
 	m_pTexture = textMan->LoadTexture("turret.png");
 
 	// Create the bullet manager.
-	m_pBulletManager = new BulletManager();
+	m_pBulletManager = new BulletManager(this);
 }
 
 Turret::~Turret()

@@ -12,8 +12,9 @@
 //			  Update(float deltaTime)		Update the turret.
 //--------------------------------------------------------------------------------
 
-#include "BulletManager.h"
 #include "Actor.h"
+
+class BulletManager;
 
 class Turret : public Actor
 {
