@@ -8,7 +8,7 @@ Level::Level(int nAsteroids, int nStars, int nEnemies, int nHealthPickups)
 	m_nAsteroids = nAsteroids;
 	m_nEnemies = nEnemies;
 	m_nHealthPickups = nHealthPickups;
-
+	m_eType = LEVEL;
 	//Adds player to child list
 	/*AddChild(m_pPlayer);*/
 
