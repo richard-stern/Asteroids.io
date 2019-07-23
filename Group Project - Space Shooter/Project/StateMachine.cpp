@@ -30,13 +30,13 @@ void StateMachine::Update(float deltatime)
 	switch (m_CurrentState)
 	{
 	case ESTATE_MENU:
-		m_pGameState->Update(deltatime, this);
+		m_pMenuState->Update(deltatime, this);
 		break;
 	case ESTATE_GAME:
-		m_pGameOverState->Update(deltatime, this);
+		m_pGameState->Update(deltatime, this);
 		break;
 	case ESTATE_GAMEOVER:
-		m_pMenuState->Update(deltatime, this);
+		m_pGameOverState->Update(deltatime, this);
 		break;
 	}
 }
@@ -47,13 +47,13 @@ void StateMachine::Draw(RenderManager* rendermanager)
 	switch (m_CurrentState)
 	{
 	case ESTATE_MENU:
-		m_pGameState->Draw(rendermanager);
+		m_pMenuState->Draw(rendermanager);
 		break;
 	case ESTATE_GAME:
-		m_pGameOverState->Draw(rendermanager);
+		m_pGameState->Draw(rendermanager);
 		break;
 	case ESTATE_GAMEOVER:
-		m_pMenuState->Draw(rendermanager);
+		m_pGameOverState->Draw(rendermanager);
 		break;
 	}
 }
