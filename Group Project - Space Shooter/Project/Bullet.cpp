@@ -1,21 +1,25 @@
 #include "Bullet.h"
+#include "TextureManager.h"
 
 
 
 Bullet::Bullet() : Actor(GetPosition())
 {
+	//Stops bullets from wrapping around the game window 
 	SetWrapAndRespawn(false);
 
+	//Making bullets invisible on creation 
 	SetVisible(false); 
 
-	m_pTexture = new Texture("Bullet.png"); 
+	//Fetching the bullet texture and assigning it 
+	//	to the member texture pointer 
+	TextureManager* pTextMan = pTextMan->Instance(); 
+	m_pTexture = pTextMan->LoadTexture("Bullet.png"); 
 
+	//Assigning member variables their values 
 	m_fLifeTime = 5.0f;
-
 	m_fTimer = 0.0f;
-
 	m_fSpeed = 100.0f;
-
 	m_nDamage = 50;
 }
 

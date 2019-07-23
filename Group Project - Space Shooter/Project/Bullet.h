@@ -35,15 +35,16 @@ public:
 	void OnCollision(Actor* pOtherObeject); 
 
 private:
-	//Texture of the bullet 
-	Texture* m_pTexture; 
-
+	//How long the bullet will be alive
+	//	if it doesn't collide with anything 
 	float	m_fLifeTime; 
 
 	float	m_fTimer; 
 	
+	//The speed bullets will travel 
 	float	m_fSpeed;
 
+	//The amount of damage bullets will deal 
 	int		m_nDamage; 
 };
 
