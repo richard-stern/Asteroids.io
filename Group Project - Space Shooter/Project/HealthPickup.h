@@ -38,25 +38,25 @@ public:
 	// On collision with the player.
 	// Params: the player.
 	//----------------------------------------------------------------------------
-	void OnCollision(PLAYER* player);
+	void OnCollision(Player* player);
 
 	//----------------------------------------------------------------------------
 	// On collision with a rock.
 	// Params: the rock.
 	//----------------------------------------------------------------------------
-	void OnCollision(ROCK* rock);
+	void OnCollision(Rock* rock);
 
 	//----------------------------------------------------------------------------
 	// On collision with an enemy.
 	// Params: the enemey.
 	//----------------------------------------------------------------------------
-	void OnCollision(ENEMY* enemy);
+	void OnCollision(Enemy* enemy);
 
 	//----------------------------------------------------------------------------
 	// On collision with a bullet.
 	// Params: the bullet.
 	//----------------------------------------------------------------------------
-	void OnCollision(BULLET* bullet);
+	void OnCollision(Bullet* bullet);
 
 private:
 	//----------------------------------------------------------------------------
