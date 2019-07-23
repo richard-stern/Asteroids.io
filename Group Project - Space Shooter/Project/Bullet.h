@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------
-Aurthur:		Connor Young
-Destription:	Bullet functionality 
+Author:			Connor Young
+Description:	Bullet functionality 
 
 Usage:			
 -------------------------------------------------------------------------------*/
