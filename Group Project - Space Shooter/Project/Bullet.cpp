@@ -30,15 +30,24 @@ void Bullet::Update(float fDeltaTime)
 
 	if (GetVisible())
 	{
-		Vector2 v2Temp;
-		v2Temp = GetPosition();
+		Vector2 v2TempPos;
+		v2TempPos = GetPosition();
+		
+		float fTempDir;
+		fTempDir = GetRotation(); 
 
-		v2Temp.x += m_fSpeed * fDeltaTime;
-		v2Temp.y += m_fSpeed * fDeltaTime;
+
+		v2TempPos.x += (m_fSpeed * fDeltaTime) * fTempDir;
+		v2TempPos.y += (m_fSpeed * fDeltaTime) * fTempDir;
+
+		SetPosition(v2TempPos); 
 	}
 	
 	if (m_fTimer >= m_fLifeTime)
+	{
 		SetVisible(false);
+		m_fTimer = 0; 
+	}
 }
 
 void Bullet::Shoot(Vector2 v2Pos, Vector2 v2Dir)
