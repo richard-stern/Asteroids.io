@@ -28,7 +28,7 @@ GUI *GUI::Instance() {
 }
 
 void GUI::Draw(RenderManager* renderer) {
-	renderer->SetRenderColor(255, 0, 0, 255);
+	renderer->SetRenderColor(HUD_COLOUR);
 	Vector2 cam = Camera::Instance()->GetPosition();
 
 
