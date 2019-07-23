@@ -19,7 +19,7 @@ public:
 	StateMachine();
 	~StateMachine();
 
-	void Update(float deltatime);
+	bool Update(float deltatime);
 	void Draw(RenderManager* renderer);
 
 	void ChangeState(EState currentstate);

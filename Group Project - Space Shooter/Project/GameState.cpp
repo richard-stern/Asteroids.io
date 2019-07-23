@@ -9,11 +9,17 @@ GameState::GameState()
 
 GameState::~GameState()
 {
+	if (level)
+	{
+
 	delete level;
 	level = nullptr;
-
-	delete gui;
-	gui = nullptr;
+	}
+	if (gui)
+	{
+		delete gui;
+		gui = nullptr;
+	}
 }
 
 void GameState::Enter()
@@ -30,7 +36,7 @@ void GameState::Exit()
 	gui = nullptr;
 }
 
-void GameState::Update(float deltaTime, StateMachine* stateMachine)
+bool GameState::Update(float deltaTime, StateMachine* stateMachine)
 {
 	level->Update(deltaTime);
 	level->UpdateGlobalTransform();
@@ -39,6 +45,7 @@ void GameState::Update(float deltaTime, StateMachine* stateMachine)
 	{
 		stateMachine->ChangeState(ESTATE_GAMEOVER);
 	}
+	return false;
 }
 void GameState::Draw(RenderManager* renderManager)
 {

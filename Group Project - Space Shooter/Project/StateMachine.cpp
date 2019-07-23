@@ -24,19 +24,19 @@ StateMachine::~StateMachine()
 	delete m_pGameOverState;
 }
 
-void StateMachine::Update(float deltatime)
+bool StateMachine::Update(float deltatime)
 {
 	//Updates the appropriate states
 	switch (m_CurrentState)
 	{
 	case ESTATE_MENU:
-		m_pMenuState->Update(deltatime, this);
+		return m_pMenuState->Update(deltatime, this);
 		break;
 	case ESTATE_GAME:
-		m_pGameState->Update(deltatime, this);
+		return m_pGameState->Update(deltatime, this);
 		break;
 	case ESTATE_GAMEOVER:
-		m_pGameOverState->Update(deltatime, this);
+		return m_pGameOverState->Update(deltatime, this);
 		break;
 	}
 }

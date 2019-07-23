@@ -12,7 +12,7 @@ public:
 	GameOverState();
 	~GameOverState();
 	void Enter();
-	void Update(float deltaTime, StateMachine* p_StateMachine);
+	bool Update(float deltaTime, StateMachine* p_StateMachine);
 	void Draw(RenderManager* pRenderManager);
 	void Exit();
 private:

@@ -13,7 +13,7 @@ public:
 	void Enter();
 	void Exit();
 
-	virtual void Update(float deltaTime, StateMachine* stateMachine);
+	virtual bool Update(float deltaTime, StateMachine* stateMachine);
 	virtual void Draw(RenderManager *renderManager);
 
 private:

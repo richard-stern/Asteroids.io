@@ -30,7 +30,7 @@ void GameOverState ::Enter()
 	m_ExitButtuon = new Button("Exit", windowWidth / 5.0f, windowHeight / 5.0f, 255, 85, 0, 255, 0, 255);
 
 }
-void GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
+bool GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 {
 	std::cout << "update game over state" << std::endl;
 	m_pStateMachine = p_StateMachine;
@@ -43,6 +43,7 @@ void GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 		std::cout << "QUIT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 		&Application::Quit; 
 	}
+	return false;
 }
 void GameOverState ::Draw (RenderManager* pRenderManager)
 {

@@ -14,7 +14,7 @@ public:
 	~MenuState();
 
 	void Enter();
-	void Update(float deltaTime, StateMachine* p_StateMachine);
+	bool Update(float deltaTime, StateMachine* p_StateMachine);
 	void Draw(RenderManager* pRenderManager);
 	void Exit();
 
@@ -23,7 +23,6 @@ private:
 	Button* m_PlayButton;
 	Button* m_QuitButton;
 	Font* m_Font;
-	Application* m_App;
 	Texture* m_PlyShip;
 	Texture* m_RockLarge;
 	Texture* m_RockMed;

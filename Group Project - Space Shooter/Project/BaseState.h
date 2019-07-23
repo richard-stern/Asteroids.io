@@ -11,9 +11,10 @@ public:
 	BaseState() {};
 	 virtual ~BaseState() {};
 	 virtual void Enter() {};
-	 virtual void Update(float deltaTime, StateMachine* p_StateMachine)
+	 virtual bool Update(float deltaTime, StateMachine* p_StateMachine)
 	 {
 		 m_pStateMachine = p_StateMachine;
+		 return false;
 	 };
 	 virtual void Draw(RenderManager* pRenderManager) {};
 	 virtual void Exit() {};
