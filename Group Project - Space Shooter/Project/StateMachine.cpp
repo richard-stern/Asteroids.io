@@ -60,23 +60,6 @@ void StateMachine::Draw(RenderManager* rendermanager)
 
 void StateMachine::ChangeState(EState currentstate)
 {
-	//chooses the appropriate state to enter
-	switch (m_CurrentState)
-	{
-	case ESTATE_MENU:
-		m_pMenuState->Enter();
-		break;
-	case ESTATE_GAME:
-		m_pGameState->Enter();
-		break;
-	case ESTATE_GAMEOVER:
-		m_pGameOverState->Enter();
-		break;
-	}
-
-	//assign the m_CurrentState to currrentstate
-	m_CurrentState = currentstate;
-
 	//chooses the appropriate state to exit
 	switch (m_CurrentState)
 	{
@@ -88,6 +71,24 @@ void StateMachine::ChangeState(EState currentstate)
 		break;
 	case ESTATE_GAMEOVER:
 		m_pGameOverState->Exit();
+		break;
+	}
+
+
+	//assign the m_CurrentState to currrentstate
+	m_CurrentState = currentstate;
+
+	//chooses the appropriate state to enter
+	switch (m_CurrentState)
+	{
+	case ESTATE_MENU:
+		m_pMenuState->Enter();
+		break;
+	case ESTATE_GAME:
+		m_pGameState->Enter();
+		break;
+	case ESTATE_GAMEOVER:
+		m_pGameOverState->Enter();
 		break;
 	}
 }
