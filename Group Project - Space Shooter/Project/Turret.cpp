@@ -5,9 +5,8 @@
 #include "Matrix3.h"
 #include "TextureManager.h"
 
-Turret::Turret(Vector2 pos) : Actor(pos)
+Turret::Turret() : Actor(Vector2(0,0))
 {
-	SetPosition(pos);
 	// Ask the texture manager to load the turret texture for the turret.
 	TextureManager* textMan = textMan->Instance();
 	m_pTexture = textMan->LoadTexture("turret.png");
@@ -25,6 +24,8 @@ Turret::~Turret()
 
 void Turret::Update(float deltaTime)
 {
+	UpdateGlobalTransform();
+
 	// Call the actor's default update function,
 	// for the internal matricies to be done.
 	Actor::Update(deltaTime);
@@ -46,12 +47,12 @@ void Turret::Update(float deltaTime)
 	v3Forward.normalise();
 
 	// The foward direction of the turret as a Vector2.
-	Vector2 v2Foward;
-	v2Foward.x = v3Forward.x;
-	v2Foward.y = v3Forward.y;
+	Vector2 v2Forward;
+	v2Forward.x = v3Forward.x;
+	v2Forward.y = v3Forward.y;
 	
 	// Set the rotation of the turret's matrix.
-	m_m3LocalTransform.setRotateZ(v2Foward);
+	m_m3LocalTransform.setRotateZ(v2Forward);
 
 	// If the left mouse button was pressed -> shoot a bullet.
 	if (input->WasMouseButtonPressed(INPUT_MOUSE_BUTTON_LEFT))
@@ -62,6 +63,6 @@ void Turret::Update(float deltaTime)
 		v2Position.y = v3Position.y;
 
 		// Call the shoot bullet function of the bullet manager.
-		m_pBulletManager->ShootBullet(v2Position, v2Foward);
+		m_pBulletManager->ShootBullet(v2Position, v2Forward);
 	}
 }
