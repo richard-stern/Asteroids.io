@@ -29,18 +29,23 @@ GUI *GUI::Instance() {
 
 void GUI::Draw(RenderManager* renderer) {
 	renderer->SetRenderColor(255, 0, 0, 255);
+	Vector2 cam = Camera::Instance()->GetPosition();
+
 
 	// Health
 	sprintf_s(m_kHealth, 32, "Health: %i", m_nHealth);
-	renderer->DrawText(m_fontGUI, m_kHealth, 0.0f, Camera::Instance()->GetWindowHeight() - HEALTH_OFFSET);
+	renderer->DrawText(m_fontGUI, m_kHealth, cam.x, cam.y + HEALTH_OFFSET);
+	//renderer->DrawText(m_fontGUI, m_kHealth, 0.0f, Camera::Instance()->GetWindowHeight() - HEALTH_OFFSET);
 	
 	// Score
 	sprintf_s(m_kScore, 32, "Score: %i", m_nScore);
-	renderer->DrawText(m_fontGUI, m_kScore, 0.0f, Camera::Instance()->GetWindowHeight() - SCORE_OFFSET);
-
+	renderer->DrawText(m_fontGUI, m_kScore, cam.x, cam.y + SCORE_OFFSET);
+	//renderer->DrawText(m_fontGUI, m_kScore, 0.0f, Camera::Instance()->GetWindowHeight() - SCORE_OFFSET);
 	// Lives
+
 	sprintf_s(m_kLives, 32, "Lives: %i", m_nLives);
-	renderer->DrawText(m_fontGUI, m_kLives, 0.0f, Camera::Instance()->GetWindowHeight() - LIVES_OFFSET);
+	renderer->DrawText(m_fontGUI, m_kLives, cam.x, cam.y + LIVES_OFFSET);
+	//renderer->DrawText(m_fontGUI, m_kLives, 0.0f, Camera::Instance()->GetWindowHeight() - LIVES_OFFSET);
 
 	// Resets Color
 	renderer->SetRenderColor(255, 255, 255, 255);
