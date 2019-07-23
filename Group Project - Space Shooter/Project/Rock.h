@@ -13,6 +13,7 @@
 //			  OnCollision(HealthPickup* healthPickup)...
 //											Rock collides with the health pickup.
 //			  OnCollision(Enemy* enemy)		Rock collides with an enemy.
+//			  OnCollision(Rock* rock)		Rock collides with another rock.
 //--------------------------------------------------------------------------------
 
 #include "Actor.h"
@@ -60,7 +61,7 @@ public:
 	void OnCollision(Enemy* enemy);
 
 	//--------------------------------------------------------------------------------
-	// On collision with a rock.
+	// On collision with another rock.
 	// Params: the rock.
 	//--------------------------------------------------------------------------------
 	void OnCollision(Rock* rock);
