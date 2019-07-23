@@ -1,11 +1,8 @@
 #pragma once
-#include "RenderManager.h"
 #include <vector>
 #include "GameObject.h"
 #include "Player.h"
 #include "HealthPickup.h"
-#include "CollisionManager.h"
-#include "TextureManager.h"
 #include "Rock.h"
 #include "Star.h"
 #include "Enemy.h"
