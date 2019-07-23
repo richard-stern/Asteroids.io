@@ -10,7 +10,8 @@ Enemy::Enemy(Player* pPlayer) : Actor(Vector2((float)(rand() % 1000), (float)(ra
 	SetVisible(false);
 
 	//Locating the texture file for the Enemy sprite. 
-	m_pTexture = TextureManager::Instance()->LoadTexture("Enemy.png");
+	TextureManager* pTxtMan = pTxtMan->Instance();
+	m_pTexture = pTxtMan->LoadTexture("Enemy.png");
 
 	//Sets the health of the enemy.
 	//Referencing "Bullet.h", BULLET_DAMAGE = 50, making each enemy takes two hits to kill.
