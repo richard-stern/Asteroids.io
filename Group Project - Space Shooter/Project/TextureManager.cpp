@@ -21,7 +21,8 @@ TextureManager::Pair::~Pair()
 
 Texture* TextureManager::LoadTexture(const char* szTextureName)
 {
-	const char* szPath = ("./textures/" + std::string(szTextureName)).c_str();
+	char szPath[64] = "./textures/";
+	strcat(szPath, szTextureName);
 	for (int i = 0; i < m_Textures.Count();i++)//For every texture in the list
 	{
 		if (szPath == m_Textures[i]->m_szPath)//If found the path
