@@ -1,8 +1,9 @@
-#pragma once
-#include "RenderManager.h"
-#include "MenuState.h"
-#include "GameState.h"
-#include "GameOverState.h"
+#pragma 
+
+class RenderManager;
+class MenuState;
+class GameState;
+class GameOverState;
 
 enum EState
 {

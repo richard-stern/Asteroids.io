@@ -1,5 +1,9 @@
 #include "StateMachine.h"
 #include "RenderManager.h"
+#include "MenuState.h"
+#include "GameState.h"
+#include "GameOverState.h"
+
 
 StateMachine::StateMachine()
 {
