@@ -5,7 +5,7 @@
 #include "GUI.h"
 #include "Camera.h"
 #include "StateMachine.h"
-
+#include "Application.h"
 GameOverState::GameOverState() : BaseState()
 {
 	m_font = new Font("./Fonts/hobo_32px.fnt");
@@ -26,8 +26,8 @@ void GameOverState ::Enter()
 	int windowWidth = Camera::Instance()->GetWindowWidth();
 	int windowHeight = Camera::Instance()->GetWindowHeight();
 
-	m_ExitButtuon = new Button("Exit", windowWidth / 3.0f, windowHeight / 3.0f, 255, 85, 0, 255, 0, 255);
 	m_PlayAgianButton = new Button("Play again?", windowWidth / 3.0f, windowHeight / 3.0f, 255, 85, 0, 255, 0, 255);
+	m_ExitButtuon = new Button("Exit", windowWidth / 5.0f, windowHeight / 5.0f, 255, 85, 0, 255, 0, 255);
 
 }
 void GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
@@ -38,7 +38,11 @@ void GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 	{
 		m_pStateMachine->ChangeState(ESTATE_GAME);
 	}
-	
+	 else if (m_ExitButtuon->Update())
+	{
+		std::cout << "QUIT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+		&Application::Quit; 
+	}
 }
 void GameOverState ::Draw (RenderManager* pRenderManager)
 {
@@ -48,13 +52,16 @@ void GameOverState ::Draw (RenderManager* pRenderManager)
 	char endScoreText[32];
 	int totalscore = GUI::Instance()->GetScore();
 	sprintf_s(endScoreText,  "your score is %i", totalscore);
-	pRenderManager->DrawText(m_font, 0, 400, 500);
+	//pRenderManager->DrawText(m_font, 0, 400, 500);
+
 	//play again button
 	//pRenderManager->DrawText(m_font, "play again?", 400, 500);
 	m_PlayAgianButton->Draw(pRenderManager);
+	
 	// quit button
 	//pRenderManager->DrawText(m_font, "Quit", 400, 600);
 	m_ExitButtuon->Draw(pRenderManager);
+
 }
 void GameOverState ::Exit ()
 {
