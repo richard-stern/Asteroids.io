@@ -12,6 +12,7 @@
 
 							Made by Thomas
 */
+class Application;
 
 class GUI {
 public:

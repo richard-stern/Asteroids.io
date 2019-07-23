@@ -29,21 +29,22 @@ void GUI::Draw(RenderManager* renderer) {
 
 	// Health
 	sprintf_s(m_kHealth, 32, "Health: %i", m_nHealth);
-	renderer->DrawText(m_fontGUI, m_kHealth, 0, Camera::Instance()->GetWindowHeight() - 40);
+	renderer->DrawText(m_fontGUI, m_kHealth, 0.0f, Camera::Instance()->GetWindowHeight() - 40.0f);
 	
 	// Score
 	sprintf_s(m_kScore, 32, "Score: %i", m_nScore);
-	renderer->DrawText(m_fontGUI, m_kScore, 0, Camera::Instance()->GetWindowHeight() - 50);
+	renderer->DrawText(m_fontGUI, m_kScore, 0.0f, Camera::Instance()->GetWindowHeight() - 50.0f);
 
 	// Lives
 	sprintf_s(m_kLives, 32, "Lives: %i", m_nLives);
-	renderer->DrawText(m_fontGUI, m_kLives, 0, Camera::Instance()->GetWindowHeight() - 60);
+	renderer->DrawText(m_fontGUI, m_kLives, 0.0f, Camera::Instance()->GetWindowHeight() - 60.0f);
 
 	// Resets Color
 	renderer->SetRenderColor(255, 255, 255, 255);
 }
 
-void GUI::DisplayFPS(RenderManager* renderer) {
+void GUI::DisplayFPS(RenderManager* renderer) 
+{
 	sprintf_s(m_kFPS, 32, "FPS: %i", app->GetFPS());
 	renderer->SetRenderColor(255, 0, 0, 255);
 	renderer->DrawText(m_fontGUI, m_kFPS, 0, 720 - 32);
@@ -52,11 +53,13 @@ void GUI::DisplayFPS(RenderManager* renderer) {
 	renderer->SetRenderColor(255, 255, 255, 255);
 }
 
-void GUI::SetHealth(int health) {
+void GUI::SetHealth(int health) 
+{
 	m_nHealth = health;
 }
 
-void GUI::AddScore(int score) {
+void GUI::AddScore(int score) 
+{
 	m_nScore += score;
 }
 
