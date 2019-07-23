@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------
-Aurthur:		Connor Young
-Destription:	Camera controls, sets and gets location
+Author:			Connor Young
+Description:	Camera controls, sets and gets location
 				of camera using multiple methods 
 				gets the size of the game window 
 				using multiple methods 
@@ -14,6 +14,7 @@ Usage:			Create and instance of the class
 #include "Application.h"
 #include "Vector2.h"
 
+#define CAMERA_OFFSET 150
 
 //Camera Singleton
 class Camera
@@ -24,7 +25,7 @@ public:
 	static Camera* m_pInstance; 
 
 	//Will only create one instance of the camera 
-	static void Create(int nWindowWidth, int nWidndowHeight) { m_pInstance = new Camera(nWindowWidth, nWidndowHeight); }
+	static void Create(int nWindowWidth, int nWindowHeight) { m_pInstance = new Camera(nWindowWidth, nWindowHeight); }
 
 	//Destroys camera instance 
 	static void Destroy() { delete m_pInstance; }
