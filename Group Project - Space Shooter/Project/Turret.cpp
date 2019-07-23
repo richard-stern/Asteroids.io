@@ -4,6 +4,7 @@
 #include "Vector2.h"
 #include "Matrix3.h"
 #include "TextureManager.h"
+#include "Camera.h"
 
 Turret::Turret() : Actor(Vector2(0,0))
 {
@@ -34,17 +35,18 @@ void Turret::Update(float deltaTime)
 	// Get the input.
 	Input* input = input->Instance();
 
-	// The position of the mouse as a Vector3.
-	Vector2 mousePos;
-	mousePos.x = (float)input->GetMouseX();
-	mousePos.y = (float)input->GetMouseY();
+	// The world position of the mouse as a Vector2.
+	Vector2 mousePos = Vector2((float)input->GetMouseX(), (float)input->GetMouseY());
+	Camera* pCamera = Camera::Instance();
+	mousePos += pCamera->GetPosition();
 	
 	Vector2 localPosition = m_m3GlobalTransform.getPosition();
 
-	// The position of the turret as a Vector3.
+	// The position of the turret as a Vector2.
 	Vector2 v2Direction;
 	v2Direction = (mousePos - localPosition).right(); // Credit to Chris for helping me with this
 	
+	// The local rotation of the turret.
 	float localRotation = atan2(v2Direction.y, v2Direction.x);
 
 	// Get the rotation of the parent.
