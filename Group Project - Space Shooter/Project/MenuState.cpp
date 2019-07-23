@@ -12,7 +12,7 @@ MenuState::MenuState()
 	m_PlyShip = nullptr;
 	m_RockLarge = nullptr;
 	m_RockMed = nullptr;
-	
+	m_Menu = nullptr;
 }
 
 
@@ -48,6 +48,11 @@ MenuState::~MenuState()
 		delete m_RockMed;
 		m_RockMed = nullptr;
 	}
+	if (m_Menu)
+	{
+		delete m_Menu;
+		m_Menu = nullptr;
+	}
 }
 
 void MenuState::Enter() 
@@ -61,6 +66,7 @@ void MenuState::Enter()
 	m_PlyShip = new Texture("./Images/player.png");
 	m_RockLarge = new Texture("./Images/rock_large.png");
 	m_RockMed = new Texture("./Images/rock_medium.png");
+	m_Menu = new Texture("./Images/Menu.png");
 }
 
 bool MenuState::Update(float deltaTime, StateMachine* p_StateMachine)
@@ -81,9 +87,8 @@ void MenuState::Draw(RenderManager* pRenderManager)
 {
 	// Background
 	pRenderManager->SetRenderColor(255, 255, 255, 200);
-	pRenderManager->DrawSprite(NULL, Camera::Instance()->GetWindowWidth() / 2.0f, Camera::Instance()->GetWindowHeight() / 2.0f, (float)Camera::Instance()->GetWindowWidth(), (float)Camera::Instance()->GetWindowHeight());
+	pRenderManager->DrawSprite(m_Menu, Camera::Instance()->GetWindowWidth() / 2.0f, Camera::Instance()->GetWindowHeight() / 2.0f, (float)Camera::Instance()->GetWindowWidth(), (float)Camera::Instance()->GetWindowHeight());
 	pRenderManager->SetRenderColor(230, 51, 51, 255);
-	pRenderManager->DrawText(m_Font, "Asteroids.io!", Camera::Instance()->GetWindowWidth() / 3.1f, Camera::Instance()->GetWindowHeight() / 1.2f);
 
 	// Button Background
 	pRenderManager->SetRenderColor(0, 0, 0, 255);
