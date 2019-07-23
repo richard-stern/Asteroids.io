@@ -3,7 +3,7 @@
 #include "Actor.h"
 #include "TextureManager.h"
 
-HealthPickup::HealthPickup() : Actor(Vector2((float)rand(), (float)rand()))
+HealthPickup::HealthPickup() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 {
 	// Initialise variables that are going to be needed.
 	m_bWrapAndRespawn = true;
