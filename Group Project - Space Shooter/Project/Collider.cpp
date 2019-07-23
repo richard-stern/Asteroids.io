@@ -1,6 +1,6 @@
 #include "Collider.h"
 
-Collider::Collider(ColliderType type, ELayer layer = ECOLLISIONLAYER_NONE)
+Collider::Collider(ColliderType type, ELayer layer)
 {
 	m_eType = type;
 	m_eLayer = layer;
