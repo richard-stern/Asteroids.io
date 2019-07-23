@@ -27,5 +27,7 @@ private:
 	Texture* m_RockLarge;
 	Texture* m_RockMed;
 	Texture* m_Menu;
+	float m_fWindowWidth;
+	float m_fWindowHeight;
 };
 
