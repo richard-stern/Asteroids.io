@@ -53,6 +53,7 @@ Level::~Level()
 {
 	//Deletes Player
 	delete m_pPlayer;
+	m_pPlayer = nullptr;
 	//Deletes the rocks in the rock array
 	for (int i = 0; i < m_nAsteroids; ++i)
 	{
