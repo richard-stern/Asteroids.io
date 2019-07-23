@@ -3,14 +3,6 @@
 
 Level::Level(int nAsteroids, int nStars, int nEnemies, int nHealthPickups)
 {
-	//Creates the collision manager
-	m_pCollisionManager->Create();
-	m_pCollisionManager = CollisionManager::GetInstance();
-
-	//Creates the texture manager
-	m_pTextureManager->Create();
-	m_pTextureManager = TextureManager::Instance();
-
 	//Sets the amount of asteroids in the game
 	m_nAsteroids = nAsteroids;
 	m_nStars = nStars;
@@ -89,10 +81,6 @@ Level::~Level()
 	//Deletes the HealthPickup array
 	delete[] m_apHPPickup;
 	m_apHPPickup = nullptr;
-	//Deletes the CollisionManager
-	m_pCollisionManager->Destroy();
-	//Deletes the TextureManager
-	m_pTextureManager->Destroy();
 }
 
 Player* Level::GetPlayer()

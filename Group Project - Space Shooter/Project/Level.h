@@ -31,10 +31,6 @@ private:
 
 	HealthPickup** m_apHPPickup;
 
-	CollisionManager* m_pCollisionManager;
-
-	TextureManager* m_pTextureManager;
-
 	int m_nAsteroids;
 	int m_nStars;
 	int m_nEnemies;
