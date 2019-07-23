@@ -26,3 +26,13 @@ void Actor::OnCollision(GameObject* pOther)
 {
 
 }
+
+void Actor::SetHealth(int nHealth)
+{
+	m_nHealth = nHealth;
+}
+
+int Actor::GetHealth()
+{
+	return m_nHealth;
+}

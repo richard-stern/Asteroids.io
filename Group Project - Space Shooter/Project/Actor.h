@@ -13,6 +13,8 @@ public:
 
 	 Collider* GetCollider() { return m_pCollider; }
 	 virtual void OnCollision(GameObject* pOther);
+	 void SetHealth(int nHealth);
+	 int GetHealth();
 
 protected:
 	

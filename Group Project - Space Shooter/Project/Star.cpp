@@ -7,7 +7,7 @@ Star::Star()
 	m_pTexture = m_pTextureManager->LoadTexture("star.png");
 
 
-	SetPosition(Vector2(rand() % 1000, rand() % 1000));
+	SetPosition(Vector2(float(rand() % 1000), float(rand() % 1000)));
 
 }
 
