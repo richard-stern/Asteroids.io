@@ -3,6 +3,9 @@
 #include "Input.h"
 #include "Camera.h"
 #include "GUI.h"
+#include "CollisionManager.h"
+#include "Collider.h"
+#include "BoxCollider.h"
 
 Player::Player(Vector2 v2Position) : Actor(v2Position)
 {
@@ -16,7 +19,14 @@ Player::Player(Vector2 v2Position) : Actor(v2Position)
 	m_eType = GameObjectType::PLAYER;
 	m_v2PreviousPosition = v2Position;
 	m_pTurret = new Turret(v2Position);
-	AddChild(m_pTurret);
+	m_pTurret->SetParent(this);
+
+	//Create a varible for the collider, by getting pointer the texture manager, and return the player texture, and ask for its width 
+	//and divide it by 2. Then set that as the extend in the Box Collider
+	Vector2 v2Extend = Vector2((pTextureManager->LoadTexture("player.png")->GetWidth()) / 2, (pTextureManager->LoadTexture("player.png")->GetHeight()) / 2);
+	m_pCollider = new BoxCollider(v2Extend);
+	CollisionManager* pCollisionManager;
+	pCollisionManager->GetInstance()->AddObject(this);
 }
 
 
