@@ -11,7 +11,7 @@ Player::Player(Vector2 v2Position) : Actor(v2Position)
 	m_pTexture = pTextureManager->LoadTexture("player.png");
 	m_bWrapAndRespawn = false;
 	m_fSpeed = 0;
-	m_fHealth = 100;
+	m_nHealth = 100;
 	m_nLives = 3;
 	m_eType = GameObjectType::PLAYER;
 	m_v2PreviousPosition = v2Position;
@@ -22,10 +22,6 @@ Player::~Player()
 {
 }
 
-float Player::GetHealth()
-{
-	return m_fHealth;
-}
 
 float Player::GetSpeed()
 {
@@ -35,11 +31,6 @@ float Player::GetSpeed()
 int Player::GetLives()
 {
 	return m_nLives;
-}
-
-void Player::SetHealth(float fHealth)
-{
-	m_fHealth = fHealth;
 }
 
 void Player::SetSpeed(float fSpeed)
@@ -97,7 +88,7 @@ void Player::Update(float fDeltaTime)
 
 	//Set the GUI
 	GUI* pGUI = GUI::Instance();
-	pGUI->SetHealth(m_fHealth);
+	pGUI->SetHealth(m_nHealth);
 	pGUI->SetLives(m_nLives);
 	
 
@@ -116,7 +107,7 @@ void Player::OnCollision(GameObject* pOtherObject)
 	if (pOtherObject->GetType() == GameObjectType::BULLET) //If colliding with a Bullet
 	{
 		//Decrease Health
-		m_fHealth -= 25.0f;
+		m_nHealth -= 25.0f;
 	}
 	if (pOtherObject->GetType() == GameObjectType::ENEMY) //If colliding with a Enemy
 	{
@@ -131,7 +122,7 @@ void Player::OnCollision(GameObject* pOtherObject)
 	if (pOtherObject->GetType() == GameObjectType::HEALTH_PICKUP) //If colliding with a HealthPickup
 	{
 		//Increase Health
-		m_fHealth += 25;
+		m_nHealth += 25;
 	}
 	if (pOtherObject->GetType() == GameObjectType::GENERIC) //If colliding with a Generic object
 	{
