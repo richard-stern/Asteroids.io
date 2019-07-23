@@ -35,6 +35,7 @@
     <ClInclude Include="Star.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Turret.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
@@ -61,6 +62,7 @@
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Turret.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataStructuresLib\DataStructuresLib.vcxproj">

@@ -23,6 +23,7 @@
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="Rock.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Turret.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
@@ -53,6 +54,7 @@
     </ClInclude>
     <ClInclude Include="Rock.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Turret.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
