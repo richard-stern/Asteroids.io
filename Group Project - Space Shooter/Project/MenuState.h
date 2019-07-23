@@ -27,5 +27,6 @@ private:
 	Texture* m_PlyShip;
 	Texture* m_RockLarge;
 	Texture* m_RockMed;
+	Texture* m_Menu;
 };
 

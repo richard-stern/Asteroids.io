@@ -35,9 +35,9 @@ Button::~Button()
 void Button::Draw(RenderManager* renderer)
 {
 	// grey interior
-	renderer->SetRenderColor(185, 185, 185, 255);
+	renderer->SetRenderColor(m_nColourRed, m_nColourGreen, m_nColourBlue, 255);
 	renderer->DrawSprite(NULL, m_fPosX, m_fPosY, m_fWidth, m_fHeight);
-	renderer->SetRenderColor(m_nColourRed, m_nColourGreen, m_nColourBlue, m_nAlpha);
+	renderer->SetRenderColor(0, 0, 0, 255);
 
 	// calculating centered text
 	//float textWidth = m_font->getStringWidth(m_buttonText);		// Leaving this error for now. No getStringWidth
@@ -68,8 +68,18 @@ bool Button::Update()
 	// checks if the mouse is inside of the box
 	if (mouseX > left && mouseX < right && mouseY > bottom && mouseY < top)
 	{
+		m_nColourRed = 85;
+		m_nColourGreen = 85;
+		m_nColourBlue = 85;
+
 		// return whether the mouse button is clicked while colliding
 		return input->WasMouseButtonPressed(INPUT_MOUSE_BUTTON_LEFT);
+	}
+	else
+	{
+		m_nColourRed = 185;
+		m_nColourGreen = 185;
+		m_nColourBlue = 185;
 	}
 
 	return false;

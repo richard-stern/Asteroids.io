@@ -60,14 +60,15 @@ void MenuState::Enter()
 	m_PlyShip = new Texture("./Images/player.png");
 	m_RockLarge = new Texture("./Images/rock_large.png");
 	m_RockMed = new Texture("./Images/rock_medium.png");
+	m_Menu = new Texture("./Images/Menu.png");
 }
 
 void MenuState::Update(float deltaTime, StateMachine* p_StateMachine) 
 {
 	m_pStateMachine = p_StateMachine;
 
-	//if (m_QuitButton->Update())
-	//	m_App->Quit();
+	if (m_QuitButton->Update())
+		m_pStateMachine->ChangeState(ESTATE_GAMEOVER);
 
 	if (m_PlayButton->Update())
 		m_pStateMachine->ChangeState(ESTATE_GAME);
@@ -76,8 +77,8 @@ void MenuState::Update(float deltaTime, StateMachine* p_StateMachine)
 void MenuState::Draw(RenderManager* pRenderManager)
 {
 	// Background
-	pRenderManager->SetRenderColor(255, 255, 255, 200);
-	pRenderManager->DrawSprite(NULL, Camera::Instance()->GetWindowWidth() / 2.0f, Camera::Instance()->GetWindowHeight() / 2.0f, (float)Camera::Instance()->GetWindowWidth(), (float)Camera::Instance()->GetWindowHeight());
+	pRenderManager->SetRenderColor(155, 155, 155, 200);
+	pRenderManager->DrawSprite(m_Menu, Camera::Instance()->GetWindowWidth() / 2.0f, Camera::Instance()->GetWindowHeight() / 2.0f, (float)Camera::Instance()->GetWindowWidth(), (float)Camera::Instance()->GetWindowHeight());
 	pRenderManager->SetRenderColor(230, 51, 51, 255);
 	pRenderManager->DrawText(m_Font, "Asteroids.io!", Camera::Instance()->GetWindowWidth() / 3.1f, Camera::Instance()->GetWindowHeight() / 1.2f);
 
@@ -88,9 +89,7 @@ void MenuState::Draw(RenderManager* pRenderManager)
 
 	// Images
 	pRenderManager->SetRenderColor(255, 255, 255, 255);
-	pRenderManager->DrawSprite(m_PlyShip, Camera::Instance()->GetWindowWidth() / 2.0f, Camera::Instance()->GetWindowHeight() / 5.0f, 100, 100);
-	pRenderManager->DrawSprite(m_RockLarge, Camera::Instance()->GetWindowWidth() / 3.0f, Camera::Instance()->GetWindowHeight() / 1.0f, 250, 250);
-	pRenderManager->DrawSprite(m_RockMed, Camera::Instance()->GetWindowWidth() / 4.0f, Camera::Instance()->GetWindowHeight() / 6.0f, 150, 150);
+	pRenderManager->DrawSprite(m_PlyShip, Camera::Instance()->GetWindowWidth() / 2.0f, Camera::Instance()->GetWindowHeight() / 2.0f, 100, 100);
 	m_PlayButton->Draw(pRenderManager);
 	m_QuitButton->Draw(pRenderManager);
 }
