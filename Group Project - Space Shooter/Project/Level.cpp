@@ -12,12 +12,6 @@ Level::Level(int nAsteroids, int nStars, int nEnemies, int nHealthPickups)
 	//Adds player to child list
 	/*AddChild(m_pPlayer);*/
 
-	//Creates the Rocks and adds them to child list
-	for (int i = 0; i < m_nAsteroids; ++i)
-	{
-		Rock* m_pRock = new Rock();
-		AddChild(m_pRock);
-	}
 	//Creates the Stars and adds them to child list
 	for (int i = 0; i < m_nStars; ++i)
 	{
@@ -35,6 +29,13 @@ Level::Level(int nAsteroids, int nStars, int nEnemies, int nHealthPickups)
 	{
 		HealthPickup* m_pHPPickup = new HealthPickup();
 		AddChild(m_pHPPickup);
+	}
+
+	//Creates the Rocks and adds them to child list
+	for (int i = 0; i < m_nAsteroids; ++i)
+	{
+		Rock* m_pRock = new Rock();
+		AddChild(m_pRock);
 	}
 
 	//Creates the Enemies and adds them to child list
