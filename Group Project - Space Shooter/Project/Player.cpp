@@ -22,7 +22,37 @@ Player::~Player()
 {
 }
 
-void Player::Update(float fDeltaTime) 
+float Player::GetHealth()
+{
+	return m_fHealth;
+}
+
+float Player::GetSpeed()
+{
+	return m_fSpeed;
+}
+
+int Player::GetLives()
+{
+	return m_nLives;
+}
+
+void Player::SetHealth(float fHealth)
+{
+	m_fHealth = fHealth;
+}
+
+void Player::SetSpeed(float fSpeed)
+{
+	m_fSpeed = fSpeed;
+}
+
+void Player::SetLives(int nLives)
+{
+	m_nLives = nLives;
+}
+
+void Player::Update(float fDeltaTime)
 {
 	Actor::Update(fDeltaTime);//Call Actor Update Function
 	Input* pInput = Input::Instance(); //Get instance of input class

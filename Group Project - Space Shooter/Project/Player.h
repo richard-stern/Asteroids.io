@@ -8,6 +8,14 @@ class Player : public Actor
 public:
 	Player(Vector2 v2Position);
 	~Player();
+
+	float GetHealth();
+	float GetSpeed();
+	int GetLives();
+
+	void SetHealth(float fHealth);
+	void SetSpeed(float fSpeed);
+	void SetLives(int nLives);
 private:
 	void Update(float fDeltaTime);
 	void OnCollision(GameObject* pOtherObject);
