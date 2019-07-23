@@ -37,14 +37,20 @@ void Turret::Update(float deltaTime)
 
 	// The world position of the mouse as a Vector2.
 	Vector2 mousePos = Vector2((float)input->GetMouseX(), (float)input->GetMouseY());
+	
+	// Credit to Chris for helping me with this stuff.
+
+	// Get the camera position.
+	// As we need the position of the camera.
 	Camera* pCamera = Camera::Instance();
 	mousePos += pCamera->GetPosition();
 	
+	// Get the local position as the turrets global position.
 	Vector2 localPosition = m_m3GlobalTransform.getPosition();
 
 	// The position of the turret as a Vector2.
 	Vector2 v2Direction;
-	v2Direction = (mousePos - localPosition).right(); // Credit to Chris for helping me with this
+	v2Direction = (mousePos - localPosition).right(); 
 	
 	// The local rotation of the turret.
 	float localRotation = atan2(v2Direction.y, v2Direction.x);
@@ -52,6 +58,7 @@ void Turret::Update(float deltaTime)
 	// Get the rotation of the parent.
 	float parentRotation = m_pParent->GetRotation();
 
+	// Calculate the final rotation.
 	float finalRotation = parentRotation - localRotation;
 
 	// The foward direction of the turret as a normalized Vector2.
