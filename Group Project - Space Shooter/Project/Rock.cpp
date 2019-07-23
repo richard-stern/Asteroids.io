@@ -3,6 +3,7 @@
 #include <random>
 #include "Actor.h"
 #include "Player.h"
+#include "GUI.h"
 
 Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 {
@@ -60,6 +61,7 @@ void Rock::OnCollision(Player* player)
 	// Set the current position to the previous position,
 	// so the rock doesn't get stuck in the player.
 	SetPosition(m_v2PreviousPosition);
+
 	// Bounce the rock.
 	Bounce();
 }
@@ -69,10 +71,17 @@ void Rock::OnCollision(Bullet* bullet)
 	// Decrease the health of the rock by 50 (the damage of the bullet).
 	m_nHealth -= 50;
 
-	// If the rock's health is = or < 0 -> set visible to false.
+	// If the rock's health is = or < 0 -> set visible to false and add score to scoreboard.
 	// So the rock can be destroyed.
 	if (m_nHealth <= 0)
+	{
+		// Make the rock inactive.
 		m_bVisible = false;
+		
+		// Adds score to the scoreboard.
+		GUI* gui = gui->Instance();
+		gui->AddScore(m_nMaxHealth);
+	}
 
 	// Set the current position to the previous position,
 	// so the rock doesn't get stuck in the bullet.
@@ -87,6 +96,7 @@ void Rock::OnCollision(HealthPickup* healthPickup)
 	// Set the current position to the previous position,
 	// so the rock doesn't get stuck in the health pickup.
 	SetPosition(m_v2PreviousPosition);
+
 	// Bounce the rock.
 	Bounce();
 }
@@ -96,6 +106,7 @@ void Rock::OnCollision(Enemy* Enemy)
 	// Set the current position to the previous position,
 	// so the rock doesn't get stuck in the enemy.
 	SetPosition(m_v2PreviousPosition);
+
 	// Bounce the rock.
 	Bounce();
 }
@@ -103,8 +114,9 @@ void Rock::OnCollision(Enemy* Enemy)
 void Rock::OnCollision(Rock* rock)
 {
 	// Set the current position to the previous position,
-	// so the rock doesn't get stuck in the rock.
+	// so this rock doesn't get stuck in the other rock.
 	SetPosition(m_v2PreviousPosition);
+
 	// Bounce the rock.
 	Bounce();
 }
