@@ -4,6 +4,7 @@
 #include "Actor.h"
 #include "Player.h"
 #include "GUI.h"
+#include "BoxCollider.h"
 
 Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 {
@@ -51,12 +52,18 @@ Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 		break;
 	}
 
-	m_v2Forward.x = rand() % 100;
-	m_v2Forward.y = rand() % 100;
+	// Set the forward direction to between 1 and 1000.
+	m_v2Forward.x = (float)(rand() % 1000 + 1);
+	m_v2Forward.y = (float)(rand() % 1000 + 1);
 	m_v2Forward.normalise();
 
-	m_v2Velocity.x = rand() % 3;
-	m_v2Velocity.y = rand() % 3;
+	// Set the velocity to between -3 and 3.
+	m_v2Velocity.x = (float)(rand() % (5 + 1) - 3);
+	m_v2Velocity.y = (float)(rand() % (5 + 1) - 3);
+
+	// Collider.
+	//Vector2 v2Extend = Vector2(m_pTexture->GetWidth() / 2, m_pTexture->GetHeight() / 2);
+	//m_pCollider = new BoxCollider(v2Extend);
 }
 
 Rock::~Rock()
@@ -65,16 +72,21 @@ Rock::~Rock()
 
 void Rock::Update(float deltaTime)
 {
+	// Call the base class update.
 	Actor::Update(deltaTime);
 
+	// Get the position as a Vector3.
 	Vector3 v3Pos = GetPosition();
 
+	// Convert the position to a Vector2.
 	Vector2 v2Pos;
 	v2Pos.x = v3Pos.x;
 	v2Pos.y = v3Pos.y;
 
+	// Change the position by the velocity.
 	v2Pos += m_v2Velocity;
 
+	// Set position to the new position.
 	SetPosition(v2Pos);
 }
 
