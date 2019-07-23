@@ -2,7 +2,7 @@
 
 //Enemy constructor, takes a texture from the texture manager.
 //Inherits from Actor class and calls it's GetPosition() function.
-Enemy::Enemy(TextureManager* pEnemyTexture, Player* pPlayer) : Actor(Vector2(rand() % 1000, rand() % 1000))
+Enemy::Enemy(Player* pPlayer) : Actor(Vector2(rand() % 1000, rand() % 1000))
 {
 	//Allow the enemy to respawn after death and to wrap around the window when going offscreen.
 	SetWrapAndRespawn(true);
@@ -10,7 +10,7 @@ Enemy::Enemy(TextureManager* pEnemyTexture, Player* pPlayer) : Actor(Vector2(ran
 	SetVisible(false);
 
 	//Locating the texture file for the Enemy sprite. 
-	m_pTexture = new Texture("Enemy.png");
+	m_pTexture = TextureManager::Instance()->LoadTexture("Enemy.png");
 
 	//Sets the health of the enemy.
 	//Referencing "Bullet.h", BULLET_DAMAGE = 50, making each enemy takes two hits to kill.
@@ -52,9 +52,9 @@ void Enemy::OnCollision(Bullet* pBullet)
 	}
 }
 
-void Update(float deltaTime)
+void Update(float deltaTime);
 {
-	//if (pPlayer)
+	if ()
 }
 //check if within radius: (player's pos - your pos).length()
 //if so, seek the player
