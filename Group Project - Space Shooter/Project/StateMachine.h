@@ -1,5 +1,4 @@
-#pragma 
-
+#pragma once
 class RenderManager;
 class MenuState;
 class GameState;
@@ -11,6 +10,7 @@ enum EState
 	ESTATE_GAME,
 	ESTATE_GAMEOVER
 };
+
 
 class StateMachine
 {
