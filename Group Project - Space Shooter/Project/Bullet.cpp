@@ -65,7 +65,7 @@ void Bullet::OnCollision(Actor* pOtherObeject)
 		SetVisible(false); 
 		int nTempHealth; 
 		nTempHealth = GetHealth();
-		nTempHealth - m_nDamage; 
+		nTempHealth -= m_nDamage; 
 		SetHealth(nTempHealth); 
 	}
 }
