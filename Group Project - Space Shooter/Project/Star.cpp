@@ -15,7 +15,7 @@ Star::Star()
 	m_pStarSide = m_pTextureManager->LoadTexture("StarSide.png");
 
 	m_pTexture = m_pStarSide;
-
+	m_eType = GameObjectType::STAR;
 
 	SetPosition(Vector2(float(rand() % Camera::Instance()->GetWindowWidth()), float(rand() % Camera::Instance()->GetWindowHeight())));
 	SetScale(Vector2(2.0f,2.0f));
