@@ -18,7 +18,8 @@ Rock::Rock() : Actor(Vector2((float)rand(), (float)rand()))
 	int randRock = rand() % 3;
 
 	// Switch for which rock the asteroid will spawn as.
-	// The bullets do 50 damage, so the health of the asteroids is set to
+	// The bullets do 50 damage, 
+	// so the health of the asteroids is set to account for this.
 	switch (randRock)
 	{
 		// Small rock.
