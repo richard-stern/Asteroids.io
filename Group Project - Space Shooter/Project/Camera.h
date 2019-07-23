@@ -14,6 +14,7 @@ Usage:			Create and instance of the class
 #include "Application.h"
 #include "Vector2.h"
 
+
 //Camera Singleton
 class Camera
 {

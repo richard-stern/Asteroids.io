@@ -1,5 +1,8 @@
 #include "Bullet.h"
 #include "TextureManager.h"
+#include "CircleCollider.h"
+#include "CollisionManager.h"
+#include <iostream>
 
 
 
@@ -21,6 +24,10 @@ Bullet::Bullet() : Actor(GetPosition())
 	m_fTimer = 0.0f;
 	m_fSpeed = 100.0f;
 	m_nDamage = 50;
+	
+	//Collider mumbojumbo 
+	m_pCollider = new CircleCollider(8.0f);
+	CollisionManager::GetInstance()->AddObject(this); 	
 }
 
 
@@ -71,5 +78,7 @@ void Bullet::OnCollision(Actor* pOtherObeject)
 		nTempHealth = GetHealth();
 		nTempHealth -= m_nDamage; 
 		SetHealth(nTempHealth); 
+
+		std::cout << "Bullet Fired/n"; 
 	}
 }
