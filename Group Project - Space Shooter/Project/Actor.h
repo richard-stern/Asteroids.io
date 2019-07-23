@@ -20,10 +20,7 @@ protected:
 	
 	int m_nHealth;
 	int m_nMaxHealth;
-
-private:
-
-	 Collider* m_pCollider;
+	Collider* m_pCollider;
 
 };
 
