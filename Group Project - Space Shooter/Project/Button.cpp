@@ -5,13 +5,13 @@
 
 Button::Button(const char* buttonText, float x, float y, float width, float height, int r, int g, int b, int a)
 {
-	// stores copy of the text
+	//stores copy of the text
 	strcpy_s(m_buttonText, BUFFER_SIZE, buttonText);
 
-	// loads the font
+	//loads the font
 	m_font = new Font("./Fonts/hobo_32px.fnt");
 
-	// stores position, width, height and colour
+	//stores position, width, height and colour
 	m_fPosX = x;
 	m_fPosY = y;
 	m_fWidth = width;
@@ -24,7 +24,11 @@ Button::Button(const char* buttonText, float x, float y, float width, float heig
 
 Button::~Button()
 {
-	delete m_font;
+	if (m_font)
+	{
+		delete m_font;
+		m_font = nullptr;
+	}
 }
 
 //void Button::Draw(RenderManager* renderer, float width, float height)

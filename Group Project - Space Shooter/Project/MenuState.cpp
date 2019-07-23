@@ -17,12 +17,36 @@ MenuState::MenuState()
 
 MenuState::~MenuState()
 {
-	delete m_PlayButton;
-	delete m_QuitButton;
-	delete m_Font;
-	delete m_PlyShip;
-	delete m_RockLarge;
-	delete m_RockMed;
+	if (m_PlayButton)
+	{
+		m_PlayButton;
+		m_PlayButton = nullptr;
+	}
+	if (m_QuitButton)
+	{
+		delete m_QuitButton;
+		m_QuitButton = nullptr;
+	}
+	if (m_Font)
+	{
+		delete m_Font;
+		m_Font = nullptr;
+	}
+	if (m_PlyShip)
+	{
+		delete m_PlyShip;
+		m_PlyShip = nullptr;
+	}
+	if (m_RockLarge)
+	{
+		delete m_RockLarge;
+		m_RockLarge = nullptr;
+	}
+	if (m_RockMed)
+	{
+		delete m_RockMed;
+		m_RockMed = nullptr;
+	}
 }
 
 void MenuState::Enter() 
@@ -57,26 +81,50 @@ void MenuState::Draw(RenderManager* pRenderManager)
 	pRenderManager->SetRenderColor(230, 51, 51, 255);
 	pRenderManager->DrawText(m_Font, "Asteroids.io!", Camera::Instance()->GetWindowWidth() / 3.1f, Camera::Instance()->GetWindowHeight() / 1.2f);
 
-	//// Button Background
-	//pRenderManager->SetRenderColor(0, 0, 0, 255);
-	//pRenderManager->DrawSprite(NULL, Camera::Instance()->GetWindowWidth() / 3.0f, Camera::Instance()->GetWindowHeight() / 3.0f, 350, 100);
-	//pRenderManager->DrawSprite(NULL, Camera::Instance()->GetWindowWidth() / 1.5f, Camera::Instance()->GetWindowHeight() / 3.0f, 350, 100);
+	// Button Background
+	pRenderManager->SetRenderColor(0, 0, 0, 255);
+	pRenderManager->DrawSprite(NULL, Camera::Instance()->GetWindowWidth() / 3.0f, Camera::Instance()->GetWindowHeight() / 3.0f, 350, 100);
+	pRenderManager->DrawSprite(NULL, Camera::Instance()->GetWindowWidth() / 1.5f, Camera::Instance()->GetWindowHeight() / 3.0f, 350, 100);
 
-	//// Images
-	//pRenderManager->SetRenderColor(255, 255, 255, 255);
-	//pRenderManager->DrawSprite(m_PlyShip, Camera::Instance()->GetWindowWidth() / 2.0f, Camera::Instance()->GetWindowHeight() / 5.0f, 100, 100);
-	//pRenderManager->DrawSprite(m_RockLarge, Camera::Instance()->GetWindowWidth() / 3.0f, Camera::Instance()->GetWindowHeight() / 1.0f, 250, 250);
-	//pRenderManager->DrawSprite(m_RockMed, Camera::Instance()->GetWindowWidth() / 4.0f, Camera::Instance()->GetWindowHeight() / 6.0f, 150, 150);
+	// Images
+	pRenderManager->SetRenderColor(255, 255, 255, 255);
+	pRenderManager->DrawSprite(m_PlyShip, Camera::Instance()->GetWindowWidth() / 2.0f, Camera::Instance()->GetWindowHeight() / 5.0f, 100, 100);
+	pRenderManager->DrawSprite(m_RockLarge, Camera::Instance()->GetWindowWidth() / 3.0f, Camera::Instance()->GetWindowHeight() / 1.0f, 250, 250);
+	pRenderManager->DrawSprite(m_RockMed, Camera::Instance()->GetWindowWidth() / 4.0f, Camera::Instance()->GetWindowHeight() / 6.0f, 150, 150);
 	m_PlayButton->Draw(pRenderManager);
 	m_QuitButton->Draw(pRenderManager);
 }
 
-void MenuState::Exit() 
+void MenuState::Exit()
 {
-	delete m_PlayButton;
-	delete m_QuitButton;
-	delete m_Font;
-	delete m_PlyShip;
-	delete m_RockLarge;
-	delete m_RockMed;
+	if (m_PlayButton)
+	{
+		m_PlayButton;
+		m_PlayButton = nullptr;
+	}
+	if (m_QuitButton)
+	{
+		delete m_QuitButton;
+		m_QuitButton = nullptr;
+	}
+	if (m_Font)
+	{
+		delete m_Font;
+		m_Font = nullptr;
+	}
+	if (m_PlyShip)
+	{
+		delete m_PlyShip;
+		m_PlyShip = nullptr;
+	}
+	if (m_RockLarge)
+	{
+		delete m_RockLarge;
+		m_RockLarge = nullptr;
+	}
+	if (m_RockMed)
+	{
+		delete m_RockMed;
+		m_RockMed = nullptr;
+	}
 }

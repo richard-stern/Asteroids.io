@@ -9,7 +9,7 @@
 */
 
 #define TEXT_WIDTH 10
-#define TEXT_HEIGHT 10
+#define TEXT_HEIGHT 20
 #define BUFFER_SIZE 64
 
 
