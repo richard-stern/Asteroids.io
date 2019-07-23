@@ -5,8 +5,9 @@
 #include "Matrix3.h"
 #include "TextureManager.h"
 
-Turret::Turret() : Actor(m_pParent->GetPosition())
+Turret::Turret(Vector2 pos) : Actor(pos)
 {
+	SetPosition(pos);
 	// Ask the texture manager to load the turret texture for the turret.
 	TextureManager* textMan = textMan->Instance();
 	m_pTexture = textMan->LoadTexture("turret.png");
