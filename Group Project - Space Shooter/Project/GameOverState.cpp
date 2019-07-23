@@ -42,7 +42,9 @@ bool GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 	{
 		std::cout << "QUIT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 		&Application::Quit; 
+		return true;
 	}
+	 else
 	return false;
 }
 void GameOverState ::Draw (RenderManager* pRenderManager)
