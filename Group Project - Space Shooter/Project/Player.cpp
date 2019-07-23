@@ -3,6 +3,9 @@
 #include "Input.h"
 #include "Camera.h"
 #include "GUI.h"
+#include "CollisionManager.h"
+#include "Collider.h"
+#include "BoxCollider.h"
 
 Player::Player(Vector2 v2Position) : Actor(v2Position)
 {
@@ -15,8 +18,15 @@ Player::Player(Vector2 v2Position) : Actor(v2Position)
 	m_nLives = 3;
 	m_eType = GameObjectType::PLAYER;
 	m_v2PreviousPosition = v2Position;
-	m_pTurret = new Turret(v2Position);
-	AddChild(m_pTurret);
+	m_pTurret = new Turret();
+	m_pTurret->SetParent(this);
+
+	//Create a varible for the collider, by getting pointer the texture manager, and return the player texture, and ask for its width 
+	//and divide it by 2. Then set that as the extend in the Box Collider
+	Vector2 v2Extend = Vector2((float)((m_pTexture->GetWidth()) / 2), (float)((m_pTexture->GetHeight()) / 2));
+	m_pCollider = new BoxCollider(v2Extend);
+	CollisionManager* pCollisionManager;
+	pCollisionManager->GetInstance()->AddObject(this);
 }
 
 
@@ -98,7 +108,7 @@ void Player::Update(float fDeltaTime)
 void Player::OnCollision(GameObject* pOtherObject)
 {
 	
-	if (pOtherObject->GetType() == GameObjectType::ROCK) //If colliding with a Rock
+ 	if (pOtherObject->GetType() == GameObjectType::ROCK) //If colliding with a Rock
 	{
 		//Seperate from object
 		SetPosition(m_v2PreviousPosition);

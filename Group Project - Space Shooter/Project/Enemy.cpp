@@ -1,4 +1,6 @@
 #include "Enemy.h"
+#include "CollisionManager.h"
+#include "BoxCollider.h"
 
 //Enemy constructor, takes a texture from the texture manager.
 //Inherits from Actor class and calls it's GetPosition() function.
@@ -19,6 +21,10 @@ Enemy::Enemy(Player* pPlayer) : Actor(Vector2((float)(rand() % 1000), (float)(ra
 
 	//store pointers
 	m_pPlayer = pPlayer;
+
+	Vector2 v2Extend = Vector2((float)(m_pTexture->GetWidth() / 2), (float)(m_pTexture->GetHeight() / 2));
+	m_pCollider = new BoxCollider(v2Extend);
+	CollisionManager::GetInstance()->AddObject(this);
 }
 
 //Destructor.
@@ -27,31 +33,27 @@ Enemy::~Enemy()
 }
 
 //Enemy's collision detection
-void Enemy::OnCollision(Player* pPlayer)
+void Enemy::OnCollision(GameObject* pOtherObject)
 {
-	//Sets the health of the enemy to 0.
-	GUI::Instance()->SetHealth(0);
-
-	//Make it invisible.
-	SetVisible(false);
-}
-
-//Enemy's collision with the bullet
-void Enemy::OnCollision(Bullet* pBullet)
-{
-	//Take 50 HP off the enemy.
-	GUI::Instance()->SetHealth(m_nHealth - 50);
-
-	//Checks if the enemy has no health remaining.
-	if (m_nHealth <= 0)
+	if (pOtherObject->GetType() == GameObjectType::PLAYER)
 	{
-		//Make the enemy invisible.
-		SetVisible(false);
+		//Sets the health of the enemy to 0.
+		GUI::Instance()->SetHealth(0);
 
-		//Add 10 points. to the player's score
-		GUI::Instance()->AddScore(10);
+		//Make it invisible.
+		SetVisible(false);
+	}
+	else if (pOtherObject->GetType() == GameObjectType::BULLET)
+	{
+		GUI::Instance()->SetHealth(m_nHealth - 50);
+
+		if (m_nHealth <= 0)
+		{
+			SetVisible(false);
+		}
 	}
 }
+
 
 //Update function is used for steering behaviours.
 void Enemy::Update(float deltaTime)

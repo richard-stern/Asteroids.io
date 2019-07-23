@@ -18,7 +18,7 @@ GameState::~GameState()
 
 void GameState::Enter()
 {
-	level = new Level(30, 100, 2, 2);
+	level = new Level(5, 100, 2, 2);
 	gui = GUI::Instance();
 }
 void GameState::Exit()

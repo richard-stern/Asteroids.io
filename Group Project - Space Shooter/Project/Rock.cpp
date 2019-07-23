@@ -51,12 +51,12 @@ Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 		break;
 	}
 
-	m_v2Forward.x = rand() % 1000;
-	m_v2Forward.y = rand() % 1000;
+	m_v2Forward.x = rand() % 100;
+	m_v2Forward.y = rand() % 100;
 	m_v2Forward.normalise();
 
-	m_v2Velocity.x = rand() % 10;
-	m_v2Velocity.y = rand() % 10;
+	m_v2Velocity.x = rand() % 3;
+	m_v2Velocity.y = rand() % 3;
 }
 
 Rock::~Rock()

@@ -74,7 +74,6 @@ void StateMachine::ChangeState(EState currentstate)
 		break;
 	}
 
-
 	//assign the m_CurrentState to currrentstate
 	m_CurrentState = currentstate;
 

@@ -25,8 +25,7 @@ public:
 	~Enemy();
 
 	//Collision Detection Functions.
-	void OnCollision(Player* pPlayer);
-	void OnCollision(Bullet* pBullet);
+	void OnCollision(GameObject* pOtherObject);
 
 	//Update Function
 	virtual void Update(float deltaTime);

@@ -92,7 +92,7 @@ Level::~Level()
 	delete[] m_apEnemy;
 	m_apEnemy = nullptr;
 	//Deletes the HealthPickups in the array
-	for (int i = 0; i < 3; ++i)
+	for (int i = 0; i < m_nHealthPickups; ++i)
 	{
 		delete m_apHPPickup[i];
 		m_apHPPickup[i] = nullptr;

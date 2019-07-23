@@ -5,6 +5,7 @@
 #include "StateMachine.h"
 #include "BaseState.h"
 #include "Font.h"
+class StateMachine;
 class GameOverState : public BaseState
 {
 public:
@@ -15,7 +16,10 @@ public:
 	void Draw(RenderManager* pRenderManager);
 	void Exit();
 private:
+	StateMachine* m_pStateMachine;
 	Font* m_font;
+	Button* m_ExitButtuon;
+	Button* m_PlayAgianButton;
 };
 
 

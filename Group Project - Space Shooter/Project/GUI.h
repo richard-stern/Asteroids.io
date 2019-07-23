@@ -13,9 +13,11 @@
 							Made by Thomas
 */
 
-#define HEALTH_OFFSET 40.0f
-#define SCORE_OFFSET 50.0f
-#define LIVES_OFFSET 60.0f
+#define HEALTH_OFFSET 0.0f
+#define SCORE_OFFSET 48.0f
+#define LIVES_OFFSET 24.0f 
+#define HUD_COLOUR 255, 0, 0, 255
+
 
 class Application;
 
