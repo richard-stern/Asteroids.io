@@ -28,7 +28,7 @@ void GameOverState ::Draw (RenderManager* pRenderManager)
 	// score
 	char endScoreText[32];
 	int totalscore = GUI::Instance()->GetScore();
-	sprintf(endScoreText,   "your score is %i", totalscore);
+	sprintf_s(endScoreText,  "your score is %i", totalscore);
 	pRenderManager->DrawText(m_font, 0, 400, 500);
 	//play again button
 	pRenderManager->DrawText(m_font, "play again?", 400, 500);
