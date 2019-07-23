@@ -3,6 +3,7 @@
 #include "RenderManager.h"
 #include "Texture.h"
 #include "Matrix3.h"
+#include "Camera.h"
 
 enum GameObjectType
 {
@@ -81,5 +82,10 @@ protected:
 	bool m_bWrapAndRespawn;
 	Vector2 m_v2Velocity;
 	float m_fDrag;
+
+private:
+	void screenWrap();
+	Camera* m_pCamera;
+	Vector2 m_v2ScreenSize;
 };
 

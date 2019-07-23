@@ -3,6 +3,8 @@
 
 GameObject::GameObject()
 {
+	m_pCamera = Camera::Instance();
+	m_v2ScreenSize = m_pCamera->GetWindowSize();
 	m_pTexture = nullptr;
 	m_pParent = nullptr;
 }
@@ -22,6 +24,8 @@ void GameObject::Update(float deltaTime)
 
 void GameObject::Draw(RenderManager* renderer)
 {
+	screenWrap();
+
 	if (m_pTexture)
 		renderer->DrawSpriteTransformed3x3(m_pTexture, m_m3GlobalTransform);
 
@@ -125,4 +129,22 @@ Vector2 GameObject::GetScale()
 GameObject * GameObject::GetParent()
 {
 	return m_pParent;
+}
+
+void GameObject::screenWrap()
+{
+	Vector2 myPosition = GetPosition();
+	Vector2 cameraPosition = m_pCamera->GetPosition();
+
+	if (myPosition.x < cameraPosition.x)
+		SetPosition(Vector2(cameraPosition.x + m_v2ScreenSize.x, myPosition.y));
+
+	if(myPosition.x > (cameraPosition.x + m_v2ScreenSize.x))
+		SetPosition(Vector2(cameraPosition.x, myPosition.y));
+
+	if (myPosition.y < cameraPosition.y)
+		SetPosition(Vector2(myPosition.x, cameraPosition.y + m_v2ScreenSize.y));
+
+	if (myPosition.y > (cameraPosition.y + m_v2ScreenSize.y))
+		SetPosition(Vector2(myPosition.x, cameraPosition.y));
 }
