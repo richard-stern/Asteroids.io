@@ -12,6 +12,11 @@
 
 							Made by Thomas
 */
+
+#define HEALTH_OFFSET 40.0f
+#define SCORE_OFFSET 50.0f
+#define LIVES_OFFSET 60.0f
+
 class Application;
 
 class GUI {

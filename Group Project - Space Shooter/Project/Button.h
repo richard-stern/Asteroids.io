@@ -10,6 +10,8 @@
 
 #define TEXT_WIDTH 10
 #define TEXT_HEIGHT 10
+#define BUFFER_SIZE 64
+
 
 class Button
 {
@@ -23,7 +25,7 @@ public:
 private:
 	// font and text
 	Font* m_font;
-	char m_buttonText[64];
+	char m_buttonText[BUFFER_SIZE];
 
 	// position, width and height
 	float m_fPosX;

@@ -4,7 +4,8 @@
 #include "Texture.h"
 #include "StateMachine.h"
 
-MenuState::MenuState() {
+MenuState::MenuState() 
+{
 	m_PlayButton = nullptr;
 	m_QuitButton = nullptr;
 	m_Font = nullptr;
@@ -14,7 +15,8 @@ MenuState::MenuState() {
 }
 
 
-MenuState::~MenuState() {
+MenuState::~MenuState()
+{
 	delete m_PlayButton;
 	delete m_QuitButton;
 	delete m_Font;
@@ -48,7 +50,7 @@ void MenuState::Draw(RenderManager* pRenderManager)
 {
 	// Background
 	pRenderManager->SetRenderColor(255, 255, 255, 255);
-	pRenderManager->DrawSprite(NULL, Camera::Instance()->GetWindowWidth() / 2.0f, Camera::Instance()->GetWindowHeight() / 2.0f, Camera::Instance()->GetWindowWidth(), Camera::Instance()->GetWindowHeight());
+	pRenderManager->DrawSprite(NULL, Camera::Instance()->GetWindowWidth() / 2.0f, Camera::Instance()->GetWindowHeight() / 2.0f, (float)Camera::Instance()->GetWindowWidth(), (float)Camera::Instance()->GetWindowHeight());
 	pRenderManager->SetRenderColor(230, 51, 51, 255);
 	pRenderManager->DrawText(m_Font, "Asteroids.io!", Camera::Instance()->GetWindowWidth() / 3.1f, Camera::Instance()->GetWindowHeight() / 1.2f);
 

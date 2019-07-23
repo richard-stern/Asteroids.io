@@ -3,7 +3,7 @@
 Button::Button(const char* buttonText, float x, float y, float width, float height, int r, int g, int b, int a)
 {
 	// stores copy of the text
-	strcpy_s(m_buttonText, 64, buttonText);
+	strcpy_s(m_buttonText, BUFFER_SIZE, buttonText);
 
 	// loads the font
 	m_font = new Font("./Fonts/hobo_32px.fnt");
