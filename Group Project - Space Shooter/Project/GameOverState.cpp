@@ -37,6 +37,7 @@ bool GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 	if (m_PlayAgianButton->Update())
 	{
 		m_pStateMachine->ChangeState(ESTATE_GAME);
+		return false;
 	}
 	 else if (m_ExitButtuon->Update())
 	{

@@ -16,18 +16,29 @@ GUI::GUI() {
 	m_fontGUI = new Font("./Fonts/hobo_32px.fnt");
 }
 
-GUI::~GUI() {
-	delete m_fontGUI;
-	delete m_pInstance;
+GUI::~GUI()
+{
+	if (m_fontGUI)
+	{
+		delete m_fontGUI;
+		m_fontGUI = nullptr;
+	}
+	if (m_pInstance)
+	{
+		delete m_pInstance;
+		m_pInstance = nullptr;
+	}
 }
 
-GUI *GUI::Instance() {
+GUI *GUI::Instance()
+{
 	if (!m_pInstance)
 		m_pInstance = new GUI;
 	return m_pInstance;
 }
 
-void GUI::Draw(RenderManager* renderer) {
+void GUI::Draw(RenderManager* renderer) 
+{
 	renderer->SetRenderColor(HUD_COLOUR);
 	Vector2 cam = Camera::Instance()->GetPosition();
 

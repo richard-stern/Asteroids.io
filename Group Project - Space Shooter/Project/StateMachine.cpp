@@ -39,6 +39,7 @@ bool StateMachine::Update(float deltatime)
 		return m_pGameOverState->Update(deltatime, this);
 		break;
 	}
+	return false;
 }
 
 void StateMachine::Draw(RenderManager* rendermanager)
