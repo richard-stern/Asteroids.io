@@ -20,14 +20,6 @@ public:
 private:
 	Player* m_pPlayer;
 
-	Rock** m_apRock;
-
-	Star** m_apStar;
-
-	Enemy** m_apEnemy;
-
-	HealthPickup** m_apHPPickup;
-
 	int m_nAsteroids;
 	int m_nStars;
 	int m_nEnemies;
