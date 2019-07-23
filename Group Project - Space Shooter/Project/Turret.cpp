@@ -40,16 +40,17 @@ void Turret::Update(float deltaTime)
 
 	// The position of the turret as a Vector3.
 	Vector3 v3Position;
-	v3Position = m_m3LocalTransform[6];
+	v3Position = m_m3GlobalTransform.getPosition(); // Credit to Chris for helping me with this
 
-	// The direction of where the mouse is.
+	//Get Directional Vector between Turret and Mouse
 	Vector3 v3Forward = mousePos - v3Position;
-	v3Forward.normalise();
 
-	// The foward direction of the turret as a Vector2.
+	// The foward direction of the turret as a Normalized Vector2.
 	Vector2 v2Forward;
 	v2Forward.x = v3Forward.x;
 	v2Forward.y = v3Forward.y;
+	v2Forward.normalise();
+
 	
 	// Set the rotation of the turret's matrix.
 	m_m3LocalTransform.setRotateZ(v2Forward);
