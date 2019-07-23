@@ -76,19 +76,19 @@ void Player::Update(float fDeltaTime)
 void Player::OnCollision(GameObject* pOtherObject)
 {
 	
-	if (pOtherObject->GetType() == GameObjectType::Rock) //If colliding with a Rock
+	if (pOtherObject->GetType() == GameObjectType::ROCK) //If colliding with a Rock
 	{
 		//Seperate from object
 		SetPosition(m_v2PreviousPosition);
 		//Reverse the velocity
 		m_v2Velocity = Vector2(-m_v2Velocity.x, -m_v2Velocity.y);
 	}
-	if (pOtherObject->GetType() == GameObjectType::Bullet) //If colliding with a Bullet
+	if (pOtherObject->GetType() == GameObjectType::BULLET) //If colliding with a Bullet
 	{
 		//Decrease Health
 		m_fHealth -= 25.0f;
 	}
-	if (pOtherObject->GetType() == GameObjectType::Enemy) //If colliding with a Enemy
+	if (pOtherObject->GetType() == GameObjectType::ENEMY) //If colliding with a Enemy
 	{
 		//Seperate from object
 		SetPosition(m_v2PreviousPosition);
@@ -98,12 +98,12 @@ void Player::OnCollision(GameObject* pOtherObject)
 
 
 	}
-	if (pOtherObject->GetType() == GameObjectType::HealthPickup) //If colliding with a HealthPickup
+	if (pOtherObject->GetType() == GameObjectType::HEALTH_PICKUP) //If colliding with a HealthPickup
 	{
 		//Increase Health
 		m_fHealth += 25;
 	}
-	if (pOtherObject->GetType() == GameObjectType::Generic) //If colliding with a Generic object
+	if (pOtherObject->GetType() == GameObjectType::GENERIC) //If colliding with a Generic object
 	{
 		SetPosition(m_v2PreviousPosition);
 		//Reverse the velocity

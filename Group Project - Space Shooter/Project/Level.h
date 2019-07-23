@@ -9,6 +9,7 @@
 #include "Rock.h"
 #include "Star.h"
 #include "Enemy.h"
+#include "Vector2.h"
 
 class Level : public GameObject
 {
@@ -18,6 +19,7 @@ public:
 	//Delete all game objects
 	~Level();
 
+	Player* GetPlayer();
 private:
 	Player* m_pPlayer;
 
