@@ -8,7 +8,7 @@ Bullet::Bullet() : Actor(GetPosition())
 
 	SetVisible(false); 
 
-	m_pTexture = new Texture("BulletTexture.png"); 
+	m_pTexture = new Texture("Bullet.png"); 
 
 	m_fLifeTime = 5.0f;
 
@@ -56,4 +56,16 @@ void Bullet::Shoot(Vector2 v2Pos, Vector2 v2Dir)
 	SetRotation(v2Dir); 
 
 	SetVisible(true); 
+}
+
+void Bullet::OnCollision(Actor* pOtherObeject)
+{
+	if (pOtherObeject->GetType() == ENEMY || pOtherObeject->GetType() == ROCK)
+	{
+		SetVisible(false); 
+		int nTempHealth; 
+		nTempHealth = GetHealth();
+		nTempHealth - m_nDamage; 
+		SetHealth(nTempHealth); 
+	}
 }
