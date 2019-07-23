@@ -32,6 +32,7 @@ Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 		// Takes one hit to destroy.
 		m_nMaxHealth = 50;
 		m_nHealth = 50;
+		break;
 
 		// Medium rock.
 	case 1:
@@ -39,6 +40,7 @@ Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 		// Takes two hits to destroy.
 		m_nMaxHealth = 100;
 		m_nHealth = 100;
+		break;
 
 		// Large rock.
 	case 2:
@@ -46,14 +48,34 @@ Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 		// Takes three hits to destroy.
 		m_nMaxHealth = 150;
 		m_nHealth = 150;
+		break;
 	}
 
-	// The velocity of the rock is set to a random number between 1 and 180.
-	SetVelocity(Vector2((float)(rand() % 180 + 1), (float)(rand() % 180 + 1)));
+	m_v2Forward.x = rand() % 1000;
+	m_v2Forward.y = rand() % 1000;
+	m_v2Forward.normalise();
+
+	m_v2Velocity.x = rand() % 10;
+	m_v2Velocity.y = rand() % 10;
 }
 
 Rock::~Rock()
 {
+}
+
+void Rock::Update(float deltaTime)
+{
+	Actor::Update(deltaTime);
+
+	Vector3 v3Pos = GetPosition();
+
+	Vector2 v2Pos;
+	v2Pos.x = v3Pos.x;
+	v2Pos.y = v3Pos.y;
+
+	v2Pos += m_v2Velocity;
+
+	SetPosition(v2Pos);
 }
 
 void Rock::OnCollision(Player* player)

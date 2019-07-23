@@ -36,6 +36,9 @@ public:
 	//--------------------------------------------------------------------------------
 	~Rock();
 
+	// Update the rocks.
+	void Update(float deltaTime);
+
 	//--------------------------------------------------------------------------------
 	// On collision with the player.
 	// Params: the player.
@@ -76,4 +79,7 @@ private:
 	// The previous position of the rock.
 	//--------------------------------------------------------------------------------
 	Vector2 m_v2PreviousPosition;
+
+	// Vector in the direction of foward.
+	Vector2 m_v2Forward;
 };
