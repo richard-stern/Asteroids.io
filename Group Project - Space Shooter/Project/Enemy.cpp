@@ -2,7 +2,7 @@
 
 //Enemy constructor, takes a texture from the texture manager.
 //Inherits from Actor class and calls it's GetPosition() function.
-Enemy::Enemy(Player* pPlayer) : Actor(Vector2(rand() % 1000, rand() % 1000))
+Enemy::Enemy(Player* pPlayer, Enemy* pEnemy) : Actor(Vector2(rand() % 1000, rand() % 1000))
 {
 	//Allow the enemy to respawn after death and to wrap around the window when going offscreen.
 	SetWrapAndRespawn(true);
@@ -16,8 +16,9 @@ Enemy::Enemy(Player* pPlayer) : Actor(Vector2(rand() % 1000, rand() % 1000))
 	//Referencing "Bullet.h", BULLET_DAMAGE = 50, making each enemy takes two hits to kill.
 	GUI::Instance()->SetHealth(100);
 
-	//store player pointer
+	//store pointers
 	m_pPlayer = pPlayer;
+	m_pEnemy = pEnemy;
 }
 
 //Destructor.
@@ -52,9 +53,13 @@ void Enemy::OnCollision(Bullet* pBullet)
 	}
 }
 
-void Update(float deltaTime);
+//Update function is used for steering behaviours.
+void Enemy::Update(float deltaTime)
 {
-	if ()
+	if (m_pPlayer->GetPosition().magnitude() - m_pEnemy->GetPosition().magnitude())
+	{
+
+	}
 }
 //check if within radius: (player's pos - your pos).length()
 //if so, seek the player

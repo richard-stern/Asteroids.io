@@ -21,7 +21,7 @@ class Enemy : public Actor
 public:
 
 	//Constructor and Destructor functions.
-	Enemy(Player* pPlayer);
+	Enemy(Player* pPlayer, Enemy* pEnemy);
 	~Enemy();
 
 	//Collision Detection Functions.
@@ -32,6 +32,10 @@ public:
 	virtual void Update(float deltaTime);
 
 private:
+
 	//pointer to a player
 	Player* m_pPlayer;
+
+	//pointer to an enemy
+	Enemy* m_pEnemy;
 };
