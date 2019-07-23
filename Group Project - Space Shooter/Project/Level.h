@@ -19,15 +19,15 @@ public:
 	~Level();
 
 private:
-	PLAYER* m_pPlayer;
+	Player* m_pPlayer;
 
-	ROCK** m_apRock;
+	Rock** m_apRock;
 
-	STAR** m_apStar;
+	Star** m_apStar;
 
-	ENEMY** m_apEnemy;
+	Enemy** m_apEnemy;
 
-	HEALTH_PICKUP** m_apHPPickup;
+	HealthPickup** m_apHPPickup;
 
 	CollisionManager* m_pCollisionManager;
 
