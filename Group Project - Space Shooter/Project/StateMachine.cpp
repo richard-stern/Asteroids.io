@@ -23,13 +23,13 @@ void StateMachine::Update(float deltatime)
 	switch (m_CurrentState)
 	{
 	case ESTATE_MENU:
-		m_pGameState->Update(deltatime);
+		m_pGameState->Update(deltatime, this);
 		break;
 	case ESTATE_GAME:
-		m_pGameOverState->Update(deltatime);
+		m_pGameOverState->Update(deltatime, this);
 		break;
 	case ESTATE_GAMEOVER:
-		m_pMenuState->Update(deltatime);
+		m_pMenuState->Update(deltatime, this);
 		break;
 	}
 }
