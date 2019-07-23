@@ -55,11 +55,13 @@ void Enemy::OnCollision(Bullet* pBullet)
 //Update function is used for steering behaviours.
 void Enemy::Update(float deltaTime)
 {
+	//Vectors used to track the positions of the enemy and player.
+	Vector2 v2PlayerPos = m_pPlayer->GetPosition();
+	Vector2 v2EnemyPos = this->GetPosition();
 
-	if (m_pPlayer->GetPosition() - this->GetPosition())//.magnitude())
+	//Seeking function.
+	if ((v2PlayerPos - v2EnemyPos).magnitude() < 1000)
 	{
 		
 	}
 }
-//check if within radius: (player's pos - your pos).mag()
-//if so, seek the player
