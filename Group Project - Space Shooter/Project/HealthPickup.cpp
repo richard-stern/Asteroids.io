@@ -33,18 +33,30 @@ void HealthPickup::OnCollision(Player* player)
 
 void HealthPickup::OnCollision(Rock* rock)
 {
+	// Set the current position to the previous position,
+	// so the health pickup doesn't get stuck in the rock.
+	SetPosition(m_v2PreviousPosition);
+
 	// Call the bounce function.
 	Bounce();
 }
 
 void HealthPickup::OnCollision(Enemy* enemy)
 {
+	// Set the current position to the previous position,
+	// so the health pickup doesn't get stuck in the enemy.
+	SetPosition(m_v2PreviousPosition);
+
 	// Call the bounce function.
 	Bounce();
 }
 
 void HealthPickup::OnCollision(Bullet* bullet)
 {
+	// Set the current position to the previous position,
+	// so the health pickup doesn't get stuck in the bullet.
+	SetPosition(m_v2PreviousPosition);
+
 	// Set visible to false.
 	m_bVisible = false;
 }
