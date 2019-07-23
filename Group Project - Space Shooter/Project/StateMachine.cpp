@@ -13,7 +13,7 @@ StateMachine::StateMachine()
 	m_pGameOverState = new GameOverState();
 
 	//Changes the current state to menu estate
-	m_CurrentState = ESTATE_MENU;
+	ChangeState(ESTATE_MENU);
 }
 
 StateMachine::~StateMachine()
