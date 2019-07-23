@@ -7,7 +7,8 @@
 	Made by Thomas
 */
 
-class MenuState : public BaseState {
+class MenuState : public BaseState 
+{
 public:
 	MenuState();
 	~MenuState();

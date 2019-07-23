@@ -23,7 +23,8 @@ MenuState::~MenuState() {
 	delete m_RockMed;
 }
 
-void MenuState::Enter() {
+void MenuState::Enter() 
+{
 	m_PlayButton = new Button("Play", Camera::Instance()->GetWindowWidth() / 3.0f, Camera::Instance()->GetWindowHeight() / 3.0f, 335, 85, 0, 255, 0, 255);
 	m_QuitButton = new Button("Quit", Camera::Instance()->GetWindowWidth() / 1.5f, Camera::Instance()->GetWindowHeight() / 3.0f, 335, 85, 255, 0, 0, 255);
 	m_Font = new Font("./Fonts/hobo_32px.fnt");
@@ -32,7 +33,8 @@ void MenuState::Enter() {
 	m_RockMed = new Texture("./Images/rock_medium.png");
 }
 
-void MenuState::Update(float deltaTime, StateMachine* p_StateMachine) {
+void MenuState::Update(float deltaTime, StateMachine* p_StateMachine) 
+{
 	m_pStateMachine = p_StateMachine;
 
 	if (m_QuitButton->Update())
@@ -42,7 +44,8 @@ void MenuState::Update(float deltaTime, StateMachine* p_StateMachine) {
 		m_pStateMachine->ChangeState(ESTATE_GAME);
 }
 
-void MenuState::Draw(RenderManager* pRenderManager) {
+void MenuState::Draw(RenderManager* pRenderManager)
+{
 	// Background
 	pRenderManager->SetRenderColor(255, 255, 255, 255);
 	pRenderManager->DrawSprite(NULL, Camera::Instance()->GetWindowWidth() / 2.0f, Camera::Instance()->GetWindowHeight() / 2.0f, Camera::Instance()->GetWindowWidth(), Camera::Instance()->GetWindowHeight());
@@ -61,7 +64,8 @@ void MenuState::Draw(RenderManager* pRenderManager) {
 	pRenderManager->DrawSprite(m_RockMed, Camera::Instance()->GetWindowWidth() / 4.0f, Camera::Instance()->GetWindowHeight() / 6.0f, 150, 150);
 }
 
-void MenuState::Exit() {
+void MenuState::Exit() 
+{
 	delete m_PlayButton;
 	delete m_QuitButton;
 	delete m_Font;
