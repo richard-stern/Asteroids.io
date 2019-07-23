@@ -4,7 +4,7 @@
 #include "Actor.h"
 #include "Player.h"
 
-Rock::Rock() : Actor(Vector2((float)rand(), (float)rand()))
+Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 {
 	// The rock will wrap and respawn in the level.
 	// So when it goes outside the level,
