@@ -71,6 +71,7 @@ void Enemy::Update(float deltaTime)
 	//Seeking function.
 	if (fDistance < 1000)
 	{
+		SetVisible(true);
 		this->SetPosition(v2EnemyPos + v2Direction * 75 * deltaTime);
 	}
 }
