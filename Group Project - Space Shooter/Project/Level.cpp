@@ -95,3 +95,7 @@ Level::~Level()
 	m_pTextureManager->Destroy();
 }
 
+Player* Level::GetPlayer()
+{
+	return m_pPlayer;
+}

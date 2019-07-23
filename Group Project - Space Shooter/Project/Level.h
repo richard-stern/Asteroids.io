@@ -19,6 +19,7 @@ public:
 	//Delete all game objects
 	~Level();
 
+	Player* GetPlayer();
 private:
 	Player* m_pPlayer;
 
