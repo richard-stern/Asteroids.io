@@ -21,7 +21,7 @@ class Enemy : public Actor
 public:
 
 	//Constructor and Destructor functions.
-	Enemy(TextureManager* pEnemyTexture, Player* pPlayer);
+	Enemy(Player* pPlayer);
 	~Enemy();
 
 	//Collision Detection Functions.
@@ -32,9 +32,6 @@ public:
 	virtual void Update(float deltaTime);
 
 private:
-	//Texture variable.
-	Texture* m_pTexture;
-
 	//pointer to a player
 	Player* m_pPlayer;
 };
