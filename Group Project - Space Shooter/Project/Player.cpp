@@ -10,7 +10,7 @@ Player::Player(Vector2 v2Position) : Actor(v2Position)
 	TextureManager* pTextureManager = TextureManager::Instance();
 	m_pTexture = pTextureManager->LoadTexture("player.png");
 	m_bWrapAndRespawn = false;
-	m_fSpeed = 0;
+	m_fSpeed = 100;
 	m_nHealth = 100;
 	m_nLives = 3;
 	m_eType = GameObjectType::PLAYER;
