@@ -36,11 +36,7 @@ void Game::Draw()
 	pRenderManager->Begin();
 
 	//Render everything.
-	m_pStateMachine->Draw();
-
-
-
-
+	m_pStateMachine->Draw(pRenderManager);
 
 	// Displays FPS
 	GUI::Instance()->DisplayFPS(pRenderManager);
