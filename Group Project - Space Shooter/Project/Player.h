@@ -14,4 +14,5 @@ private:
 	float m_fSpeed;
 	float m_fHealth;
 	int m_nLives;
+	Vector2 m_v2PreviousPosition;
 };
