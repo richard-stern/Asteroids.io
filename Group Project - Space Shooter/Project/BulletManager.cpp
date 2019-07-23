@@ -23,7 +23,7 @@ void BulletManager::ShootBullet(Vector2 v2StartPos, Vector2 v2StartDir)
 {
 	for (int i = 0; i < BULLET_POOL_SIZE; ++i)	//For all bullets in the pool,
 	{
-		BULLET* pBullet = m_aBulletPool[i];		//Make a pointer to the current bullet, to avoid repeated index calls
+		Bullet* pBullet = m_aBulletPool[i];		//Make a pointer to the current bullet, to avoid repeated index calls
 
 		if (pBullet->GetVisible() == false)				//If the bullet is inactive,
 		{
