@@ -22,6 +22,7 @@
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="Rock.cpp" />
+    <ClCompile Include="Enemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
@@ -51,6 +52,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rock.h" />
+    <ClInclude Include="Enemy.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
