@@ -27,6 +27,7 @@ Game::~Game()
 void Game::Update(float deltaTime)
 {
 	m_pStateMachine->Update(deltaTime);
+
 }
 
 void Game::Draw()

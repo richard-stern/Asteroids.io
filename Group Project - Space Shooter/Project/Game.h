@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Application.h"
-
+#include "Camera.h"
 
 
 
@@ -19,4 +19,5 @@ public:
 
 private:
 	StateMachine* m_pStateMachine;
+	Camera* m_pCamera;
 };
