@@ -6,6 +6,9 @@
 
 Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 {
+	// Initialise the previous position of the rock, for collision.
+	m_v2PreviousPosition = GetPosition();
+
 	// The rock will wrap and respawn in the level.
 	// So when it goes outside the level,
 	// it will be respawn and wrap around the level.
@@ -54,6 +57,9 @@ Rock::~Rock()
 
 void Rock::OnCollision(Player* player)
 {
+	// Set the current position to the previous position,
+	// so the rock doesn't get stuck in the player.
+	SetPosition(m_v2PreviousPosition);
 	// Bounce the rock.
 	Bounce();
 }
@@ -68,18 +74,28 @@ void Rock::OnCollision(Bullet* bullet)
 	if (m_nHealth <= 0)
 		m_bVisible = false;
 
+	// Set the current position to the previous position,
+	// so the rock doesn't get stuck in the bullet.
+	SetPosition(m_v2PreviousPosition);
+
 	// Bounce the rock.
 	Bounce();
 }
 
 void Rock::OnCollision(HealthPickup* healthPickup)
 {
+	// Set the current position to the previous position,
+	// so the rock doesn't get stuck in the health pickup.
+	SetPosition(m_v2PreviousPosition);
 	// Bounce the rock.
 	Bounce();
 }
 
 void Rock::OnCollision(Enemy* Enemy)
 {
+	// Set the current position to the previous position,
+	// so the rock doesn't get stuck in the enemy.
+	SetPosition(m_v2PreviousPosition);
 	// Bounce the rock.
 	Bounce();
 }
