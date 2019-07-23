@@ -100,6 +100,15 @@ void Rock::OnCollision(Enemy* Enemy)
 	Bounce();
 }
 
+void Rock::OnCollision(Rock* rock)
+{
+	// Set the current position to the previous position,
+	// so the rock doesn't get stuck in the rock.
+	SetPosition(m_v2PreviousPosition);
+	// Bounce the rock.
+	Bounce();
+}
+
 void Rock::Bounce()
 {
 	// Bounce the rock.
