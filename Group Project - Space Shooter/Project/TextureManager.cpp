@@ -21,7 +21,7 @@ TextureManager::Pair::~Pair()
 
 Texture* TextureManager::LoadTexture(const char* szTextureName)
 {
-	char szPath[64] = "./textures/";
+	char szPath[64] = "./Images/";
 	strcat(szPath, szTextureName);
 	for (int i = 0; i < m_Textures.Count();i++)//For every texture in the list
 	{
