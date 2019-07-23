@@ -2,7 +2,7 @@
 
 //Enemy constructor, takes a texture from the texture manager.
 //Inherits from Actor class and calls it's GetPosition() function.
-Enemy::Enemy(Player* pPlayer) : Actor(Vector2(rand() % 1000, rand() % 1000))
+Enemy::Enemy(Player* pPlayer) : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 {
 	//Allow the enemy to respawn after death and to wrap around the window when going offscreen.
 	SetWrapAndRespawn(true);
