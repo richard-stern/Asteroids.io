@@ -8,6 +8,9 @@
 		Made by Thomas
 */
 
+#define TEXT_WIDTH 10
+#define TEXT_HEIGHT 10
+
 class Button
 {
 public:

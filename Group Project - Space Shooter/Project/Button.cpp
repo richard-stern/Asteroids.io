@@ -34,8 +34,8 @@ void Button::Draw(RenderManager* renderer, float width, float height)
 	// calculating centered text
 	//float textWidth = m_font->getStringWidth(m_buttonText);		// Leaving this error for now. No getStringWidth
 	//float textHeight = m_font->getStringHeight(m_buttonText);		// Leaving this error for now.
-	float textWidth = 10;		
-	float textHeight = 10;
+	float textWidth = TEXT_WIDTH;
+	float textHeight = TEXT_HEIGHT;
 	float centredPosX = m_fPosX - (textWidth * 0.5f) + 2;
 	float centredPosY = m_fPosY - (textHeight * 0.5f) + 5;
 
