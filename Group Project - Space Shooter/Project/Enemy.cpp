@@ -58,10 +58,19 @@ void Enemy::Update(float deltaTime)
 	//Vectors used to track the positions of the enemy and player.
 	Vector2 v2PlayerPos = m_pPlayer->GetPosition();
 	Vector2 v2EnemyPos = this->GetPosition();
+	
+	//Vector that tracks the direction of the enemy.
+	Vector2 v2Direction = v2PlayerPos - v2EnemyPos;
+
+	//Distance between the player and the enemy.
+	float fDistance = (v2PlayerPos - v2EnemyPos).magnitude();
+
+	//Normalisation of the direction.
+	v2Direction.normalise();
 
 	//Seeking function.
-	if ((v2PlayerPos - v2EnemyPos).magnitude() < 1000)
+	if (fDistance < 1000)
 	{
-		
+		this->SetPosition(v2EnemyPos + v2Direction * 75);
 	}
 }
