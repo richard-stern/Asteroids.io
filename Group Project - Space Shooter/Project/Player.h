@@ -1,7 +1,7 @@
 #pragma once
 #include "Actor.h"
 #include "RenderManager.h"
-
+#include "Turret.h"
 
 class Player : public Actor
 {
@@ -18,6 +18,7 @@ public:
 	void Update(float fDeltaTime);
 
 private:
+	Turret* m_pTurret;
 	void OnCollision(GameObject* pOtherObject);
 	float m_fSpeed;
 	int m_nLives;

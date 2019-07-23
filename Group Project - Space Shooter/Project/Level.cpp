@@ -4,11 +4,21 @@
 Level::Level(int nAsteroids, int nStars, int nEnemies, int nHealthPickups)
 {
 	//Sets the amount of asteroids in the game
-	m_nAsteroids = nAsteroids;
 	m_nStars = nStars;
+	m_nAsteroids = nAsteroids;
 	m_nEnemies = nEnemies;
 	m_nHealthPickups = nHealthPickups;
 
+	//Adds player to child list
+	/*AddChild(m_pPlayer);*/
+
+	//Creates the Rocks and adds them to child list
+	m_apRock = new Rock*[m_nAsteroids];
+	for (int i = 0; i < m_nAsteroids; ++i)
+	{
+		m_apRock[i] = new Rock();
+		AddChild(m_apRock[i]);
+	}
 	//Creates the Stars and adds them to child list
 	m_apStar = new Star*[m_nStars];
 	for (int i = 0; i < m_nStars; ++i)

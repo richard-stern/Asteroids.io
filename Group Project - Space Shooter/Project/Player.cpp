@@ -15,6 +15,7 @@ Player::Player(Vector2 v2Position) : Actor(v2Position)
 	m_nLives = 3;
 	m_eType = GameObjectType::PLAYER;
 	m_v2PreviousPosition = v2Position;
+	m_pTurret = new Turret(v2Position);
 }
 
 
@@ -56,10 +57,9 @@ void Player::Update(float fDeltaTime)
 		Vector2 v2Direction = m_m3LocalTransform.forward();
 
 		// A = v / t    Apply acceleration
+		
 		m_v2Velocity += v2Direction * m_fSpeed * fDeltaTime;
 
-		// v = d / t    Apply Velocity
-		SetPosition((GetPosition() + m_v2Velocity) * fDeltaTime);
 	}
 	if (pInput->IsKeyDown(INPUT_KEY_S))
 	{
@@ -68,22 +68,22 @@ void Player::Update(float fDeltaTime)
 		// A = v / t    Apply acceleration
 		m_v2Velocity -= v2Direction * m_fSpeed * fDeltaTime;
 
-		// v = d / t    Apply Velocity
-		SetPosition((GetPosition() + m_v2Velocity) * fDeltaTime);
 	}
 	if (pInput->IsKeyDown(INPUT_KEY_A))
 	{
 		//Add Rotation
-		SetRotation(GetRotation() + 1);
+		SetRotation(GetRotation() - 5 * fDeltaTime);
 	}
 	if (pInput->IsKeyDown(INPUT_KEY_D))
 	{
 		//Rotation
-		SetRotation(GetRotation() - 1);
+		SetRotation(GetRotation() + 5 * fDeltaTime);
 	}
+	// v = d / t    Apply Velocity
+	SetPosition(GetPosition() + (m_v2Velocity * fDeltaTime));
 	//Set the camera to the player's position
 	Camera* pCamera = Camera::Instance();
-	pCamera->SetPosition( Vector2((GetPosition().x + pCamera->GetWindowWidth() / 2), GetPosition().y + (pCamera->GetWindowHeight() / 2)) );
+	pCamera->SetPosition( Vector2((GetPosition().x - pCamera->GetWindowWidth() / 2), GetPosition().y - (pCamera->GetWindowHeight() / 2)) );
 
 
 	//Set the GUI
