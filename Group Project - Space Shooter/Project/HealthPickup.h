@@ -34,6 +34,9 @@ public:
 	//----------------------------------------------------------------------------
 	~HealthPickup();
 
+	// Update the health pickup.
+	void HealthPickup::Update(float deltaTime);
+
 	//----------------------------------------------------------------------------
 	// On collision with the player.
 	// Params: the player.
@@ -68,4 +71,7 @@ private:
 	// The previous position of the health pickup.
 	//--------------------------------------------------------------------------------
 	Vector2 m_v2PreviousPosition;
+
+	// The foward direction of the health pickup.
+	Vector2 m_v2Forward;
 };

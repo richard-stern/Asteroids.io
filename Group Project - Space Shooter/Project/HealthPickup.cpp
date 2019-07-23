@@ -3,7 +3,7 @@
 #include "Actor.h"
 #include "TextureManager.h"
 
-HealthPickup::HealthPickup() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
+HealthPickup::HealthPickup() : Actor(Vector2(100, 100))
 {
 	// Initialise variables that are going to be needed.
 	m_bWrapAndRespawn = true;
@@ -16,6 +16,10 @@ HealthPickup::HealthPickup() : Actor(Vector2((float)(rand() % 1000), (float)(ran
 	// Ask the texture manager to load the health pickup texture for the turret.
 	TextureManager* textMan = textMan->Instance();
 	m_pTexture = textMan->LoadTexture("Powerup.png");
+
+	m_v2Forward.x = rand() % 180;
+	m_v2Forward.y = rand() % 180;
+	m_v2Forward.normalise();
 }
 
 HealthPickup::~HealthPickup()
@@ -23,6 +27,21 @@ HealthPickup::~HealthPickup()
 	// Clean up.
 	m_bWrapAndRespawn = false;
 	m_bVisible = false;
+}
+
+void HealthPickup::Update(float deltaTime)
+{
+	Actor::Update(deltaTime);
+
+	Vector3 v3Pos = GetPosition();	
+
+	Vector2 v2Pos;
+	v2Pos.x = v3Pos.x;
+	v2Pos.y = v3Pos.y;
+
+	v2Pos += m_v2Velocity;
+
+	SetPosition(v2Pos);
 }
 
 void HealthPickup::OnCollision(Player* player)
