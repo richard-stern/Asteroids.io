@@ -1,6 +1,6 @@
 #include "GameObject.h"
 #include <string>
-#include "Camera.h"
+
 GameObject::GameObject()
 {
 	m_pCamera = Camera::Instance();
@@ -20,23 +20,6 @@ void GameObject::Update(float deltaTime)
 {
 	for (int i = 0; i < m_apChildList.Count(); i++)
 		m_apChildList[i]->Update(deltaTime);
-
-	if (m_m3LocalTransform.getPosition().x > Camera::Instance()->GetWindowWidth())
-	{
-		m_m3LocalTransform.setPosition(Vector2(0, m_m3LocalTransform.getPosition().y));
-	}
-	else if (m_m3LocalTransform.getPosition().y > Camera::Instance()->GetWindowHeight())
-	{
-		m_m3LocalTransform.setPosition(Vector2(m_m3LocalTransform.getPosition().x, 0));
-	}
-	else if (m_m3LocalTransform.getPosition().x < 0)
-	{
-		m_m3LocalTransform.setPosition(Vector2(Camera::Instance()->GetWindowWidth(), m_m3LocalTransform.getPosition().y));
-	}
-	else if (m_m3LocalTransform.getPosition().y < 0)
-	{
-		m_m3LocalTransform.setPosition(Vector2(m_m3LocalTransform.getPosition().x, Camera::Instance()->GetWindowHeight()));
-	}
 }
 
 void GameObject::Draw(RenderManager* renderer)
