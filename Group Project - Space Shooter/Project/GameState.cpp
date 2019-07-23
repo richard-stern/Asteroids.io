@@ -43,7 +43,7 @@ bool GameState::Update(float deltaTime, StateMachine* stateMachine)
 	Player* player = level->GetPlayer();
 	if (player->GetHealth() <= 0)
 	{
-		stateMachine->ChangeState(ESTATE_GAMEOVER);
+		stateMachine->ChangeState(ESTATE_MENU);
 	}
 	return false;
 }
