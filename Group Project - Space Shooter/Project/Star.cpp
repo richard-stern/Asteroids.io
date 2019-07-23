@@ -2,7 +2,7 @@
 
 Star::Star()
 {
-	m_pTextureManager = TextureManager::Instance();
+	m_pTextureManager = m_pTextureManager->Instance();
 	m_bWrapAndRespawn = true;
 	m_pTexture = m_pTextureManager->LoadTexture("star.png");
 
