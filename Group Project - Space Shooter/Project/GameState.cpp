@@ -33,6 +33,7 @@ void GameState::Exit()
 void GameState::Update(float deltaTime, StateMachine* stateMachine)
 {
 	level->Update(deltaTime);
+	level->UpdateGlobalTransform();
 	Player* player = level->GetPlayer();
 	if (player->GetHealth() <= 0)
 	{

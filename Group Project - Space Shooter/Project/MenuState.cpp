@@ -39,8 +39,8 @@ void MenuState::Update(float deltaTime, StateMachine* p_StateMachine)
 {
 	m_pStateMachine = p_StateMachine;
 
-	if (m_QuitButton->Update())
-		m_App->Quit();
+	//if (m_QuitButton->Update())
+	//	m_App->Quit();
 
 	if (m_PlayButton->Update())
 		m_pStateMachine->ChangeState(ESTATE_GAME);
