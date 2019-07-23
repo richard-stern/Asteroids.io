@@ -9,7 +9,7 @@ public:
 	Player(Vector2 v2Position);
 	~Player();
 
-	float GetHealth();
+
 	float GetSpeed();
 	int GetLives();
 
