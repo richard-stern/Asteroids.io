@@ -17,7 +17,7 @@ Level::Level(int nAsteroids, int nStars, int nEnemies, int nHealthPickups)
 	m_nEnemies = nEnemies;
 	m_nHealthPickups = nHealthPickups;
 	//Creates the player
-	m_pPlayer = new Player(Vector2(rand() % 1000, rand() % 500));
+	m_pPlayer = new Player(Vector2((float)(rand() % 1000), (float)(rand() % 500)));
 
 	//Adds player to child list
 	AddChild(m_pPlayer);
