@@ -4,6 +4,7 @@ class MenuState;
 class GameState;
 class GameOverState;
 
+
 enum EState
 {
 	ESTATE_MENU,

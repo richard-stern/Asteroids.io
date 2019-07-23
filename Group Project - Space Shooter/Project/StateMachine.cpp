@@ -7,15 +7,18 @@
 
 StateMachine::StateMachine()
 {
+	//Creates the three states
 	m_pMenuState = new MenuState();
 	m_pGameState = new GameState();
 	m_pGameOverState = new GameOverState();
-	//This changed the current state to menu estate
+
+	//Changes the current state to menu estate
 	m_CurrentState = ESTATE_MENU;
 }
 
 StateMachine::~StateMachine()
 {
+	//Deletes the 3 states
 	delete m_pMenuState;
 	delete m_pGameState;
 	delete m_pGameOverState;
@@ -23,7 +26,7 @@ StateMachine::~StateMachine()
 
 void StateMachine::Update(float deltatime)
 {
-	//This changes between the 3 states
+	//Updates the appropriate states
 	switch (m_CurrentState)
 	{
 	case ESTATE_MENU:
@@ -40,6 +43,7 @@ void StateMachine::Update(float deltatime)
 
 void StateMachine::Draw(RenderManager* rendermanager)
 {
+	//draws the appropriate states
 	switch (m_CurrentState)
 	{
 	case ESTATE_MENU:
@@ -56,6 +60,7 @@ void StateMachine::Draw(RenderManager* rendermanager)
 
 void StateMachine::ChangeState(EState currentstate)
 {
+	//chooses the appropriate state to enter
 	switch (m_CurrentState)
 	{
 	case ESTATE_MENU:
@@ -69,8 +74,10 @@ void StateMachine::ChangeState(EState currentstate)
 		break;
 	}
 
+	//assign the m_CurrentState to currrentstate
 	m_CurrentState = currentstate;
 
+	//chooses the appropriate state to exit
 	switch (m_CurrentState)
 	{
 	case ESTATE_MENU:
