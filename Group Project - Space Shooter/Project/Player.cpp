@@ -13,7 +13,7 @@ Player::Player(Vector2 v2Position) : Actor(v2Position)
 	m_fSpeed = 0;
 	m_fHealth = 100;
 	m_nLives = 3;
-	m_eType = GameObjectType::Player;
+	m_eType = GameObjectType::PLAYER;
 	m_v2PreviousPosition = v2Position;
 }
 
