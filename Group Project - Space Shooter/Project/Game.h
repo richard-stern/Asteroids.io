@@ -19,5 +19,4 @@ public:
 
 private:
 	StateMachine* m_pStateMachine;
-	
 };

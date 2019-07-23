@@ -1,5 +1,8 @@
 #include "Button.h"
 #include <string.h>
+
+
+
 Button::Button(const char* buttonText, float x, float y, float width, float height, int r, int g, int b, int a)
 {
 	// stores copy of the text
@@ -24,7 +27,8 @@ Button::~Button()
 	delete m_font;
 }
 
-void Button::Draw(RenderManager* renderer, float width, float height)
+//void Button::Draw(RenderManager* renderer, float width, float height)
+void Button::Draw(RenderManager* renderer)
 {
 	// grey interior
 	renderer->SetRenderColor(185, 185, 185, 255);

@@ -19,7 +19,8 @@ public:
 	Button(const char* buttonText, float x, float y, float width, float height, int r, int g, int b, int a);
 	~Button();
 
-	void Draw(RenderManager* renderer, float width, float height);
+	//void Draw(RenderManager* renderer, float width, float height);
+	void Draw(RenderManager* renderer);
 	bool Update();
 
 private:
