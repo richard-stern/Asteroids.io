@@ -25,7 +25,7 @@ Texture* TextureManager::LoadTexture(const char* szTextureName)
 	strcat(szPath, szTextureName);
 	for (int i = 0; i < m_Textures.Count();i++)//For every texture in the list
 	{
-		if (szPath == m_Textures[i]->m_szPath)//If found the path
+		if (strcmp(szPath, m_Textures[i]->m_szPath) == 0)//If found the path
 		{
 			return m_Textures[i]->m_pTexture;//Then return the texture its paired with
 		}

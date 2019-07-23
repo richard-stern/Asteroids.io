@@ -107,7 +107,7 @@ void Player::OnCollision(GameObject* pOtherObject)
 	if (pOtherObject->GetType() == GameObjectType::BULLET) //If colliding with a Bullet
 	{
 		//Decrease Health
-		m_nHealth -= 25.0f;
+		m_nHealth -= 25;
 	}
 	if (pOtherObject->GetType() == GameObjectType::ENEMY) //If colliding with a Enemy
 	{
