@@ -1,7 +1,7 @@
 #include "BulletManager.h"
 #include "Bullet.h"
 
-BulletManager::BulletManager()
+BulletManager::BulletManager(Turret* pTurret)
 {
 	for (int i = 0; i < BULLET_POOL_SIZE; ++i)	//Loop and create however many bullets
 	{
