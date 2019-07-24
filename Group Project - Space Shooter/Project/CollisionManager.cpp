@@ -56,6 +56,33 @@ void CollisionManager::Update(float fDeltaTime)
 					pOtherCollider->m_eLayer == ECOLLISIONLAYER_ENEMY && pCollider->m_eLayer == ECOLLISIONLAYER_ROCK)
 					continue;
 
+				//Objects can't collider with each other
+				if ((pCollider->m_eLayer  == pOtherCollider->m_eLayer) && pCollider->m_eLayer != ECOLLISIONLAYER_ROCK)
+					continue;
+				
+
+
+				//Check Collision
+
+
+
+				////Box - Box collision 
+				//if (pCollider->GetType() == pOtherCollider->GetType())
+				//{
+				//	pCollider->
+				//}
+				//else //Bullet - Box Collision
+				//{
+
+				//}
+
+
+
+
+
+
+
+
 				// If both objects are visible and intersect, then call both the object's OnCollision function,
 				// passing each other in as the parameter.
 				if (m_prgColliders[i]->GetVisible() && m_prgColliders[j]->GetVisible() && pCollider->IsCollidingWith(pOtherCollider))
