@@ -8,10 +8,8 @@
 // Functions:
 //			  Contstructor()				Creates the object.
 //			  Destructor()					Cleans up the object during deletion.
-//			  OnCollision(Player* player)	Pickup collides with the player.
-//			  OnCollision(Rock* rock)		Pickup collides with a rock.
-//			  OnCollision(Enemy* enemy)		Pickup collides with an enemy.
-//			  OnCollision(Bullet* bullet)	Pickup collides with a bullet.
+//			  OnCollision(GameObject* gameObject)...
+//			  								Collided with another game object.
 //--------------------------------------------------------------------------------
 
 #include "Actor.h"

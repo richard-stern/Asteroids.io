@@ -8,12 +8,8 @@
 // Functions:
 //			  Constructor()					Create the rock.
 //			  Destructor()					Clean up the rock (does nothing).
-//			  OnCollision(Player* player)	Rock collides with the player
-//			  OnCollision(Bullet* bullet)	Rock collides with a bullet.
-//			  OnCollision(HealthPickup* healthPickup)...
-//											Rock collides with the health pickup.
-//			  OnCollision(Enemy* enemy)		Rock collides with an enemy.
-//			  OnCollision(Rock* rock)		Rock collides with another rock.
+//			  OnCollision(GameObject* gameObject)...
+//											Collided with another game object.
 //--------------------------------------------------------------------------------
 
 #include "Actor.h"
