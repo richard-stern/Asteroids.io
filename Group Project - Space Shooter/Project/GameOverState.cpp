@@ -12,7 +12,10 @@ GameOverState::GameOverState() : BaseState()
 	m_font = new Font("./Fonts/hobo_32px.fnt");
 	m_ExitButtuon = nullptr;
 	m_PlayAgianButton = nullptr;
-//	m_Richard = nullptr;
+	m_Richard = nullptr;
+	m_fWindowWidth = Camera::Instance()->GetWindowWidth();
+	m_fWindowHeight = Camera::Instance()->GetWindowHeight();
+		
 }
 GameOverState::~GameOverState()
 {
@@ -20,7 +23,7 @@ GameOverState::~GameOverState()
 	delete m_font;
 	delete m_PlayAgianButton;
 	delete m_ExitButtuon;
-	//delete m_Richard;
+	delete m_Richard;
 
 }
 void GameOverState ::Enter()
@@ -31,7 +34,7 @@ void GameOverState ::Enter()
 
 	m_PlayAgianButton = new Button("Play again?", windowWidth / 3.0f, windowHeight / 3.0f, 255, 85, 0, 255, 0, 255);
 	m_ExitButtuon = new Button("Exit", windowWidth / 1.5f, windowHeight / 3.0f, 255, 85, 0, 255, 0, 255);
-	//m_Richard = new Texture("./Images/Richard.png");
+	m_Richard = new Texture("./Images/Richard.png");
 }
 bool GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 {
@@ -71,8 +74,8 @@ void GameOverState ::Draw (RenderManager* pRenderManager)
 	//pRenderManager->DrawText(m_font, "Quit", 400, 600);
 	m_ExitButtuon->Draw(pRenderManager);
 	////richard
-	//pRenderManager->SetRenderColor(255, 255, 255, 255);
-	//pRenderManager->DrawSprite(m_Richard, m_fWindowWidth / 2.0f, m_fWindowHeight / 2.0f, 500, 500, 0.75f);
+	pRenderManager->SetRenderColor(255, 255, 255, 255);
+	pRenderManager->DrawSprite(m_Richard, m_fWindowWidth / 2.0f, m_fWindowHeight / 2.0f, 100, 100, 0.0f);
 }
 void GameOverState ::Exit ()
 {
@@ -86,6 +89,6 @@ void GameOverState ::Exit ()
 	delete m_ExitButtuon;
 	m_ExitButtuon = nullptr;
 
-	//delete m_Richard;
-//	m_Richard = nullptr;
+	delete m_Richard;
+	m_Richard = nullptr;
 }

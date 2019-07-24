@@ -21,8 +21,8 @@ private:
 	Button* m_ExitButtuon;
 	Button* m_PlayAgianButton;
 	Texture* m_Richard;
-//	float m_fWindowWidth;
-//	float m_fWindowHeight;
+	float m_fWindowWidth;
+	float m_fWindowHeight;
 };
 
 
