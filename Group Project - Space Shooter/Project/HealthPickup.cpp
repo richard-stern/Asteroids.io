@@ -29,7 +29,7 @@ HealthPickup::HealthPickup() : Actor(Vector2(100, 100))
 	m_v2Velocity.y = (float)(rand() % (5 + 1) - 3);
 
 	//Collider
-	Vector2 v2Extend = Vector2(m_pTexture->GetWidth() / 2, m_pTexture->GetHeight() / 2);
+	Vector2 v2Extend = Vector2((float)m_pTexture->GetWidth() / 2, (float)m_pTexture->GetHeight() / 2);
 	m_pCollider = new BoxCollider(v2Extend, ELayer::ECOLLISIONLAYER_HEALTH);
 	m_eType = GameObjectType::HEALTH_PICKUP;
 
