@@ -23,6 +23,7 @@ GUI::~GUI()
 		delete m_fontGUI;
 		m_fontGUI = nullptr;
 	}
+
 	if (m_pInstance)
 	{
 		delete m_pInstance;

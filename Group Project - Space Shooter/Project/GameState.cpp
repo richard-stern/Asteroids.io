@@ -4,7 +4,8 @@ class GameState;
 
 GameState::GameState()
 {
-
+	level = nullptr;
+	gui = nullptr;
 }
 
 GameState::~GameState()
@@ -38,12 +39,13 @@ void GameState::Exit()
 
 bool GameState::Update(float deltaTime, StateMachine* stateMachine)
 {
+	Input* pInput = Input::Instance();
 	level->Update(deltaTime);
 	level->UpdateGlobalTransform();
 	Player* player = level->GetPlayer();
-	if (player->GetHealth() <= 0)
+	if (player->GetHealth() <= 0 || pInput->IsKeyDown(INPUT_KEY_ESCAPE))
 	{
-		stateMachine->ChangeState(ESTATE_MENU);
+		stateMachine->ChangeState(ESTATE_GAMEOVER);
 	}
 	return false;
 }
