@@ -22,7 +22,7 @@ Bullet::Bullet() : Actor(GetPosition())
 	//Assigning member variables their values 
 	m_fLifeTime = 5.0f;
 	m_fTimer = 0.0f;
-	m_fSpeed = 100.0f;
+	m_fSpeed = 500.0f;
 	m_nDamage = 50;
 	
 	//Collider mumbojumbo 
@@ -39,19 +39,16 @@ void Bullet::Update(float fDeltaTime)
 {
 	m_fTimer += fDeltaTime; 
 
-	if (GetVisible())
+	if (m_bVisible)
 	{
-		Vector2 v2TempPos;
-		v2TempPos = GetPosition();
+		Vector2 v2NewPosition = GetPosition();
 		
-		float fTempDir;
-		fTempDir = GetRotation(); 
+		Vector2 v2Direction = m_m3LocalTransform.forward();
+		v2Direction.normalise();
 
+		v2NewPosition += m_fSpeed * v2Direction * fDeltaTime;
 
-		v2TempPos.x += (m_fSpeed * fDeltaTime) * fTempDir;
-		v2TempPos.y += (m_fSpeed * fDeltaTime) * fTempDir;
-
-		SetPosition(v2TempPos); 
+		SetPosition(v2NewPosition);
 	}
 	
 	if (m_fTimer >= m_fLifeTime)
@@ -64,7 +61,7 @@ void Bullet::Update(float fDeltaTime)
 void Bullet::Shoot(Vector2 v2Pos, Vector2 v2Dir)
 {
 	SetPosition(v2Pos);
-	SetRotation(v2Dir); 
+	SetRotation(v2Dir);
 
 	SetVisible(true); 
 }

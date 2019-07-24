@@ -4,7 +4,7 @@
 #include "Turret.h"
 
 //How many bullets should be in the bullet pool
-#define BULLET_POOL_SIZE 50 
+#define BULLET_POOL_SIZE 50
 
 class Bullet;	//Bullet class forward declare
 

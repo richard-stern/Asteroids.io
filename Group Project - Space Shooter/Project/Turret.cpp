@@ -75,6 +75,6 @@ void Turret::Update(float deltaTime)
 	if (input->WasMouseButtonPressed(INPUT_MOUSE_BUTTON_LEFT))
 	{	
 		// Call the shoot bullet function of the bullet manager.
-		m_pBulletManager->ShootBullet(localPosition, v2Forward);
+		m_pBulletManager->ShootBullet(localPosition, m_m3GlobalTransform.forward());
 	}
 }
