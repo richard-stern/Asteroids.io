@@ -1,16 +1,18 @@
 #include "Level.h"
+#include "Blackboard.h"
 
 
 Level::Level(int nAsteroids, int nStars, int nEnemies, int nHealthPickups)
 {
+	//Set level in blackboard
+	Blackboard::Instance()->SetLevel(this);
+
 	//Sets the amount of asteroids in the game
 	m_nStars = nStars;
 	m_nAsteroids = nAsteroids;
 	m_nEnemies = nEnemies;
 	m_nHealthPickups = nHealthPickups;
 	m_eType = LEVEL;
-	//Adds player to child list
-	/*AddChild(m_pPlayer);*/
 
 	//Creates the Stars and adds them to child list
 	for (int i = 0; i < m_nStars; ++i)

@@ -27,7 +27,6 @@ GameState::~GameState()
 void GameState::Enter()
 {
 	level = new Level(5, 100, 2, 2);
-	Blackboard::Instance()->SetLevel(level);
 	gui = GUI::Instance();
 }
 void GameState::Exit()
