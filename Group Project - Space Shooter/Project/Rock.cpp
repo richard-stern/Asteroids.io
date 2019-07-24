@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "GUI.h"
 #include "BoxCollider.h"
+#include "CollisionManager.h"
 
 Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 {
@@ -66,6 +67,8 @@ Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 	Vector2 v2Extend = Vector2(m_pTexture->GetWidth() / 2, m_pTexture->GetHeight() / 2);
 	m_pCollider = new BoxCollider(v2Extend, ELayer::ECOLLISIONLAYER_ROCK);
 	m_eType = GameObjectType::ROCK;
+
+	CollisionManager::GetInstance()->AddObject(this);
 }
 
 Rock::~Rock()
