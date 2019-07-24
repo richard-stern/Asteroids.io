@@ -1,5 +1,6 @@
 #include "GameState.h"
 #include "StateMachine.h"
+#include "Blackboard.h"
 class GameState;
 
 GameState::GameState()
@@ -26,6 +27,7 @@ GameState::~GameState()
 void GameState::Enter()
 {
 	level = new Level(5, 100, 2, 2);
+	Blackboard::Instance()->SetLevel(level);
 	gui = GUI::Instance();
 }
 void GameState::Exit()

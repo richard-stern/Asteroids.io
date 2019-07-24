@@ -5,14 +5,18 @@
 #include "GUI.h"
 #include "Camera.h"
 #include "TextureManager.h"
-
+#include "Blackboard.h"
 Game::Game(unsigned int windowWidth, unsigned int windowHeight, bool fullscreen, const char *title) : Application(windowWidth, windowHeight, fullscreen, title)
 {
+	// Create the collision manager.
 	CollisionManager::Create();
 	Camera::Create(windowWidth, windowHeight);
 	TextureManager::Create();
 	m_pStateMachine = new StateMachine();
-	// Create the collision manager.
+
+	//Create the Blackboard for game use
+	Blackboard::Create();
+
 }
 
 Game::~Game()
@@ -22,6 +26,9 @@ Game::~Game()
 	Camera::Destroy();
 	// Delete the collision manager.
 	CollisionManager::Destroy();
+
+	//Delete the Blackboard
+	Blackboard::Destroy();
 }
 
 void Game::Update(float deltaTime)
