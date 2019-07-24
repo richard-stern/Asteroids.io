@@ -14,7 +14,7 @@ void BoxCollider::Draw()
 	Vector2 min = GetMin();
 	Vector2 max = GetMax();
 
-	renderer->SetRenderColor(1.0f, 0.0f, 0.0f, 0.1f);
+	renderer->SetRenderColor(1, 0, 0, 0);
 	//renderer.->DrawBox(min.x + _extend.x, min.y + _extend.y, max.x - min.x, max.y - min.y);
 }
 

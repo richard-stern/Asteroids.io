@@ -16,8 +16,8 @@ MenuState::MenuState()
 	m_Enemy = nullptr;
 	m_Bullet = nullptr;
 	m_Menu = nullptr;
-	m_fWindowWidth = Camera::Instance()->GetWindowWidth();
-	m_fWindowHeight = Camera::Instance()->GetWindowHeight();
+	m_fWindowWidth = (float)Camera::Instance()->GetWindowWidth();
+	m_fWindowHeight = (float)Camera::Instance()->GetWindowHeight();
 }
 
 

@@ -37,8 +37,8 @@ Vector2 Camera::GetWindowSize()
 {
 	Vector2 v2Temp;
 
-	v2Temp.x = GetWindowWidth();
-	v2Temp.y = GetWindowHeight();
+	v2Temp.x = (float)GetWindowWidth();
+	v2Temp.y = (float)GetWindowHeight();
 
 	return v2Temp; 
 }

@@ -8,7 +8,7 @@ CircleCollider::CircleCollider(float radius, ELayer eLayer) : Collider(CircleCol
 void CircleCollider::Draw()
 {
 	RenderManager* renderer = RenderManager::Instance();
-	renderer->SetRenderColor(0.0f, 0.0f, 1.0f, 0.1f);
+	renderer->SetRenderColor(0, 0, 1, 0);
 	//renderer->DrawCircle(_position.x, _position.y, _radius);
 }
 
