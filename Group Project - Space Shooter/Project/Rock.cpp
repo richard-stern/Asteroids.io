@@ -69,6 +69,8 @@ Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 	m_eType = GameObjectType::ROCK;
 
 	CollisionManager::GetInstance()->AddObject(this);
+
+	UpdateGlobalTransform();
 }
 
 Rock::~Rock()

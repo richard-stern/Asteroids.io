@@ -33,7 +33,11 @@ HealthPickup::HealthPickup() : Actor(Vector2(100, 100))
 	m_pCollider = new BoxCollider(v2Extend, ELayer::ECOLLISIONLAYER_HEALTH);
 	m_eType = GameObjectType::HEALTH_PICKUP;
 
+	// Add the rock to the collision manager.
 	CollisionManager::GetInstance()->AddObject(this);
+
+	// Update the global transform with the rock.
+	UpdateGlobalTransform();
 }
 
 HealthPickup::~HealthPickup()
