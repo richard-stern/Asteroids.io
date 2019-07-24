@@ -49,6 +49,7 @@ bool GameState::Update(float deltaTime, StateMachine* stateMachine)
 	if (player->GetLives() <= 0 || pInput->IsKeyDown(INPUT_KEY_ESCAPE))
 	{
 		stateMachine->ChangeState(ESTATE_GAMEOVER);
+
 	}
 	return false;
 }

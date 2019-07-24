@@ -4,7 +4,7 @@
 #include "Texture.h"
 #include "Matrix3.h"
 #include "Camera.h"
-
+#include "Collider.h"
 enum GameObjectType
 {
 	GENERIC,
@@ -27,7 +27,7 @@ public:
 	virtual void Update(float deltaTime);
 	virtual void Draw(RenderManager* renderer);
 
-	void UpdateGlobalTransform();
+	virtual void UpdateGlobalTransform();
 
 	void SetPosition(Vector2 pos);
 	void SetPosition(float x, float y);
@@ -83,6 +83,7 @@ protected:
 	Vector2 m_v2Velocity;
 	float m_fDrag;
 
+	Collider* m_pCollider;
 private:
 	void screenWrap();
 	Camera* m_pCamera;

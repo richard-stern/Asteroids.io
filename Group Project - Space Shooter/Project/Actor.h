@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObject.h"
-#include "Collider.h"
+//#include "Collider.h"
 
 class Actor : public GameObject
 {
@@ -20,7 +20,7 @@ protected:
 	
 	int m_nHealth;
 	int m_nMaxHealth;
-	Collider* m_pCollider;
+	//Collider* m_pCollider;
 
 };
 

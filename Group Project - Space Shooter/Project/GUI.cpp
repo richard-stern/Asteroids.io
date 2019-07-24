@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "RenderManager.h"
 #include "Camera.h"
+#include <iostream>
 
 GUI * GUI::m_pInstance = nullptr;
 
@@ -61,6 +62,7 @@ void GUI::Draw(RenderManager* renderer)
 
 	// Resets Color
 	renderer->SetRenderColor(255, 255, 255, 255);
+	std::cout << m_kScore << std::endl;
 }
 
 void GUI::DisplayFPS(RenderManager* renderer) 

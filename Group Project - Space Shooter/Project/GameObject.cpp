@@ -7,6 +7,7 @@ GameObject::GameObject()
 	m_v2ScreenSize = m_pCamera->GetWindowSize();
 	m_pTexture = nullptr;
 	m_pParent = nullptr;
+	m_pCollider = nullptr;
 }
 
 GameObject::~GameObject()
@@ -37,16 +38,7 @@ void GameObject::Draw(RenderManager* renderer)
 		m_apChildList[i]->Draw(renderer);
 }
 
-void GameObject::UpdateGlobalTransform()
-{
-	if (m_pParent)
-		m_m3GlobalTransform = m_pParent->m_m3GlobalTransform * m_m3LocalTransform;
-	else
-		m_m3GlobalTransform = m_m3LocalTransform;
 
-	for (int i = 0; i < m_apChildList.Count(); i++)
-		m_apChildList[i]->UpdateGlobalTransform();
-}
 
 void GameObject::SetPosition(Vector2 pos)
 {
@@ -153,4 +145,25 @@ void GameObject::screenWrap()
 
 	if (myPosition.y > (cameraPosition.y + m_v2ScreenSize.y + offScreenMargin))
 		SetPosition(Vector2(myPosition.x, (cameraPosition.y + offsetPosition.y - offScreenMargin)));
+}
+
+
+void GameObject::UpdateGlobalTransform()
+{
+	if (m_pParent)
+		m_m3GlobalTransform = m_pParent->m_m3GlobalTransform * m_m3LocalTransform;
+	else
+		m_m3GlobalTransform = m_m3LocalTransform;
+
+	
+
+	if (m_pCollider)
+	{
+		//GetPosition = SetPosition;
+		Vector2 v2Pos = GetPosition();
+		m_pCollider->SetPosition(v2Pos);
+	}
+
+	for (int i = 0; i < m_apChildList.Count(); i++)
+		m_apChildList[i]->UpdateGlobalTransform();
 }
