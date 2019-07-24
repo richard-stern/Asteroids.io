@@ -24,9 +24,9 @@ Player::Player(Vector2 v2Position) : Actor(v2Position)
 	//Create a varible for the collider, by getting pointer the texture manager, and return the player texture, and ask for its width 
 	//and divide it by 2. Then set that as the extend in the Box Collider
 	Vector2 v2Extend = Vector2((float)((m_pTexture->GetWidth()) / 2), (float)((m_pTexture->GetHeight()) / 2));
-	m_pCollider = new BoxCollider(v2Extend);
-	CollisionManager* pCollisionManager;
-	pCollisionManager->GetInstance()->AddObject(this);
+	m_pCollider = new BoxCollider(v2Extend, ELayer::ECOLLISIONLAYER_PLAYER);
+
+	CollisionManager::GetInstance()->AddObject(this);
 }
 
 

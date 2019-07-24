@@ -5,7 +5,7 @@
 class BoxCollider : public Collider
 {
 public:
-	BoxCollider(Vector2 extend);
+	BoxCollider(Vector2 v2Extend, ELayer eLayer);
 
 	void Draw();
 
@@ -13,11 +13,11 @@ public:
 	Vector2 GetMax();
 	Vector2 GetExtend() { return m_v2Extend; }
 
-	bool IsCollidingWith(Collider* other);
+	bool IsCollidingWith(Collider* pOther);
 
 private:
 	Vector2 m_v2Extend;
-	bool IsColldingWithBox(BoxCollider* other);
-	bool IsCollidingWithCircle(CircleCollider* other);
+	bool IsColldingWithBox(BoxCollider* pOther);
+	bool IsCollidingWithCircle(CircleCollider* pOther);
 };
 

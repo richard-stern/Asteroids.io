@@ -26,7 +26,7 @@ Bullet::Bullet() : Actor(GetPosition())
 	m_nDamage = 50;
 	
 	//Collider mumbojumbo 
-	m_pCollider = new CircleCollider(8.0f);
+	m_pCollider = new CircleCollider(8.0f, ELayer::ECOLLISIONLAYER_BULLET);
 	CollisionManager::GetInstance()->AddObject(this); 	
 }
 

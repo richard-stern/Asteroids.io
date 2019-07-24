@@ -5,17 +5,17 @@
 class CircleCollider : public Collider
 {
 public:
-	CircleCollider(float radius);
+	CircleCollider(float fRadius, ELayer eLayer);
 
 	void Draw();
 
 	float GetRadius() { return m_fRadius; }
 
-	bool IsCollidingWith(Collider* other);
+	bool IsCollidingWith(Collider* pOther);
 
 private:
 	float m_fRadius;
-	bool IsColldingWithBox(BoxCollider* other);
-	bool IsCollidingWithCircle(CircleCollider* other);
+	bool IsColldingWithBox(BoxCollider* pOther);
+	bool IsCollidingWithCircle(CircleCollider* pOther);
 };
 

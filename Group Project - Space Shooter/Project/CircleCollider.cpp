@@ -1,6 +1,6 @@
 #include "CircleCollider.h"
 
-CircleCollider::CircleCollider(float radius) : Collider(CircleColliderType)
+CircleCollider::CircleCollider(float radius, ELayer eLayer) : Collider(CircleColliderType,eLayer)
 {
 	m_fRadius = radius;
 }

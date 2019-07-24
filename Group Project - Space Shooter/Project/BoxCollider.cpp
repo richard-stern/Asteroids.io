@@ -1,10 +1,11 @@
 #include "BoxCollider.h"
 #include <iostream>
 
-BoxCollider::BoxCollider(Vector2 extend)
-	: Collider(BoxColliderType)
+
+BoxCollider::BoxCollider(Vector2 v2Extend, ELayer eLayer) : Collider(BoxColliderType, eLayer)
 {
-	m_v2Extend = extend;
+	m_v2Extend = v2Extend;
+
 }
 
 void BoxCollider::Draw()

@@ -27,9 +27,9 @@ HealthPickup::HealthPickup() : Actor(Vector2(100, 100))
 	m_v2Velocity.x = (float)(rand() % (5 + 1) - 3);
 	m_v2Velocity.y = (float)(rand() % (5 + 1) - 3);
 
-	// Collider
-	//Vector2 v2Extend = Vector2(m_pTexture->GetWidth() / 2, m_pTexture->GetHeight() / 2);
-	//m_pCollider = new BoxCollider(v2Extend);
+	//Collider
+	Vector2 v2Extend = Vector2(m_pTexture->GetWidth() / 2, m_pTexture->GetHeight() / 2);
+	m_pCollider = new BoxCollider(v2Extend, ELayer::ECOLLISIONLAYER_HEALTH);
 }
 
 HealthPickup::~HealthPickup()

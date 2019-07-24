@@ -62,8 +62,9 @@ Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 	m_v2Velocity.y = (float)(rand() % (5 + 1) - 3);
 
 	// Collider.
-	//Vector2 v2Extend = Vector2(m_pTexture->GetWidth() / 2, m_pTexture->GetHeight() / 2);
-	//m_pCollider = new BoxCollider(v2Extend);
+	Vector2 v2Extend = Vector2(m_pTexture->GetWidth() / 2, m_pTexture->GetHeight() / 2);
+	m_pCollider = new BoxCollider(v2Extend, ELayer::ECOLLISIONLAYER_ROCK);
+
 }
 
 Rock::~Rock()
