@@ -38,7 +38,7 @@ Enemy::~Enemy()
 {
 }
 
-//Enemy's collision detection
+//Enemy's collision detections
 void Enemy::OnCollision(GameObject* pOtherObject)
 {
 	if (pOtherObject->GetType() == GameObjectType::PLAYER)
@@ -60,18 +60,19 @@ void Enemy::OnCollision(GameObject* pOtherObject)
 	}
 }
 
-
 //Update function is used for steering behaviours.
 void Enemy::Update(float deltaTime)
 {
+	Actor::Update(deltaTime);
+
 	//Vectors used to track the positions of the enemy and player.
 	Vector2 v2PlayerPos = m_pPlayer->GetPosition();
 	Vector2 v2EnemyPos = this->GetPosition();
-	
-	//Vector that tracks the direction of the enemy.
-	Vector2 v2Direction = v2PlayerPos - v2EnemyPos;
 
+	Vector2 v2PlayerVelocity = m_pPlayer->GetVelocity();
 	
+	//Vector that tracks the direction of the player.
+	Vector2 v2Direction = v2PlayerPos - v2EnemyPos;
 
 	//Distance between the player and the enemy.
 	float fDistance = (v2PlayerPos - v2EnemyPos).magnitude();
@@ -79,11 +80,16 @@ void Enemy::Update(float deltaTime)
 	//Normalisation of the direction.
 	v2Direction.normalise();
 
+	//Rotation float, instead of using the Matrix rotate, atan2 is used on an already normalised vector.
 	float fRotation = atan2f(v2Direction.y, v2Direction.x) - 1.5780f;
+
 	//Seeking function.
-	if (fDistance < 1000)
+	if (fDistance < 1100)
 	{
+		//Visibility is set to true when in range.
 		SetVisible(true);
+
+		//Rotation and Position are adjusted here.
 		this->SetPosition(v2EnemyPos + v2Direction * 75 * deltaTime);
 		this->SetRotation(fRotation);
 	}
