@@ -17,7 +17,7 @@ Turret::Turret() : Actor(Vector2(0, 0))
 	m_pTexture = textMan->LoadTexture("turret.png");
 
 	// Create the bullet manager.
-	m_pBulletManager = new BulletManager(this);
+	m_pBulletManager = new BulletManager();
 }
 
 Turret::~Turret()
