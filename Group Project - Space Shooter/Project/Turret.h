@@ -14,6 +14,7 @@
 
 #include "Actor.h"
 
+class Player;
 class BulletManager;
 
 class Turret : public Actor

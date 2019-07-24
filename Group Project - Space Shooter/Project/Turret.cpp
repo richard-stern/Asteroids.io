@@ -7,8 +7,11 @@
 #include "Camera.h"
 #include "BulletManager.h"
 
-Turret::Turret() : Actor(Vector2(0,0))
+Turret::Turret() : Actor(Vector2(0, 0))
 {
+	// Don't wrap around and respawn, breaks the turret.
+	m_bWrapAndRespawn = false;
+
 	// Ask the texture manager to load the turret texture for the turret.
 	TextureManager* textMan = textMan->Instance();
 	m_pTexture = textMan->LoadTexture("turret.png");
@@ -45,7 +48,7 @@ void Turret::Update(float deltaTime)
 	// As we need the position of the camera.
 	Camera* pCamera = Camera::Instance();
 	mousePos += pCamera->GetPosition();
-	
+
 	// Get the local position as the turrets global position.
 	Vector2 localPosition = m_m3GlobalTransform.getPosition();
 
