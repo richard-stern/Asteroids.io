@@ -14,7 +14,7 @@ Usage:			Create and instance of the class
 #include "Application.h"
 #include "Vector2.h"
 
-#define CAMERA_OFFSET 150
+#define CAMERA_OFFSET 100
 
 //Camera Singleton
 class Camera

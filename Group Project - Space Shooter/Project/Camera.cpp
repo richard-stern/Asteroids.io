@@ -17,12 +17,12 @@ Camera::~Camera()
 
 void Camera::SetPosition(Vector2 v2Pos)
 {
-	m_pRenderer->SetCameraPos(v2Pos.x - CAMERA_OFFSET, v2Pos.y + CAMERA_OFFSET);
+	m_pRenderer->SetCameraPos(v2Pos.x, v2Pos.y);
 }
 
 void Camera::SetPosition(float fX, float fY)
 {
-	m_pRenderer->SetCameraPos(fX - CAMERA_OFFSET, fY + CAMERA_OFFSET);
+	m_pRenderer->SetCameraPos(fX, fY);
 }
 
 Vector2 Camera::GetPosition()
