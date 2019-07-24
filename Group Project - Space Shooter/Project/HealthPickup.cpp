@@ -42,9 +42,8 @@ HealthPickup::HealthPickup() : Actor(Vector2(100, 100))
 
 HealthPickup::~HealthPickup()
 {
-	// Clean up.
-	m_bWrapAndRespawn = false;
-	m_bVisible = false;
+	delete m_pCollider;
+	m_pCollider = nullptr;
 }
 
 void HealthPickup::Update(float deltaTime)

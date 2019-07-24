@@ -7,7 +7,7 @@
 //
 // Functions:
 //			  Contstructor()				Creates the object.
-//			  Destructor()					Cleans up the object during deletion.
+//			  Destructor()					Cleans up during deletion.
 //			  OnCollision(GameObject* gameObject)...
 //			  								Collided with another game object.
 //--------------------------------------------------------------------------------

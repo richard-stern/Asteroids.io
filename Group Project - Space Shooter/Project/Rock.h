@@ -7,7 +7,7 @@
 //
 // Functions:
 //			  Constructor()					Create the rock.
-//			  Destructor()					Clean up the rock (does nothing).
+//			  Destructor()					Clean up during deletion.
 //			  OnCollision(GameObject* gameObject)...
 //											Collided with another game object.
 //--------------------------------------------------------------------------------
