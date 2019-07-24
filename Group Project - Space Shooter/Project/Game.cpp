@@ -6,6 +6,7 @@
 #include "Camera.h"
 #include "TextureManager.h"
 #include "Blackboard.h"
+ 
 Game::Game(unsigned int windowWidth, unsigned int windowHeight, bool fullscreen, const char *title) : Application(windowWidth, windowHeight, fullscreen, title)
 {
 	// Create the collision manager.

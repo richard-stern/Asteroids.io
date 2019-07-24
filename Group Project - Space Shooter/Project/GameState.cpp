@@ -46,7 +46,7 @@ bool GameState::Update(float deltaTime, StateMachine* stateMachine)
 	level->Update(deltaTime);
 	level->UpdateGlobalTransform();
 	Player* player = level->GetPlayer();
-	if (player->GetHealth() <= 0 || pInput->IsKeyDown(INPUT_KEY_ESCAPE))
+	if (player->GetLives() <= 0 || pInput->IsKeyDown(INPUT_KEY_ESCAPE))
 	{
 		stateMachine->ChangeState(ESTATE_GAMEOVER);
 	}
