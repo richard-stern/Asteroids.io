@@ -18,36 +18,38 @@ Level::Level(int nAsteroids, int nStars, int nEnemies, int nHealthPickups)
 	for (int i = 0; i < m_nStars; ++i)
 	{
 		Star* m_pStar = new Star();
-		AddChild(m_pStar);
+		m_pStar->SetParent(this);
 	}
 
 	//Creates the player
 	m_pPlayer = new Player(Vector2((float)(Camera::Instance()->GetWindowWidth()/2), (float)(Camera::Instance()->GetWindowHeight()/2)));
 	//Adds player to child list
-	AddChild(m_pPlayer);
+	m_pPlayer->SetParent(this);
 
 	//Creates the Health pickups and adds them to child list
 	for (int i = 0; i < m_nHealthPickups; ++i)
 	{
 		HealthPickup* m_pHPPickup = new HealthPickup();
-		AddChild(m_pHPPickup);
+		m_pHPPickup->SetParent(this);
 	}
 
 	//Creates the Rocks and adds them to child list
 	for (int i = 0; i < m_nAsteroids; ++i)
 	{
 		Rock* m_pRock = new Rock();
-		AddChild(m_pRock);
+		m_pRock->SetParent(this);
 	}
 
 	//Creates the Enemies and adds them to child list
 	for (int i = 0; i < m_nEnemies; ++i)
 	{
 		Enemy* m_pEnemy = new Enemy(m_pPlayer);
-		AddChild(m_pEnemy);
+		m_pEnemy->SetParent(this);
 	}
 
 	m_bWrapAndRespawn = false;
+
+	UpdateGlobalTransform();
 }
 
 Level::~Level()
