@@ -19,15 +19,15 @@ GameObject::~GameObject()
 
 void GameObject::Update(float deltaTime)
 {
+	if (m_bWrapAndRespawn)
+		screenWrap();
+
 	for (int i = 0; i < m_apChildList.Count(); i++)
 		m_apChildList[i]->Update(deltaTime);
 }
 
 void GameObject::Draw(RenderManager* renderer)
 {
-	if(m_bWrapAndRespawn)
-		screenWrap();
-
 	if (!m_bVisible)
 		return;
 
@@ -135,16 +135,28 @@ void GameObject::screenWrap()
 	float offScreenMargin = 100.0f;
 
 	if (myPosition.x < (cameraPosition.x - offScreenMargin))
+	{
 		SetPosition(Vector2((cameraPosition.x + m_v2ScreenSize.x + offScreenMargin) - offsetPosition.x, myPosition.y));
+		m_bVisible = true;
+	}
 
 	if(myPosition.x > (cameraPosition.x + m_v2ScreenSize.x + offScreenMargin))
+	{
 		SetPosition(Vector2((cameraPosition.x + offsetPosition.x - offScreenMargin), myPosition.y));
+		m_bVisible = true;
+	}
 
 	if (myPosition.y < (cameraPosition.y - offScreenMargin))
+	{
 		SetPosition(Vector2(myPosition.x, (cameraPosition.y + m_v2ScreenSize.y + offScreenMargin) - offsetPosition.y));
+		m_bVisible = true;
+	}
 
 	if (myPosition.y > (cameraPosition.y + m_v2ScreenSize.y + offScreenMargin))
+	{
 		SetPosition(Vector2(myPosition.x, (cameraPosition.y + offsetPosition.y - offScreenMargin)));
+		m_bVisible = true;
+	}
 }
 
 
