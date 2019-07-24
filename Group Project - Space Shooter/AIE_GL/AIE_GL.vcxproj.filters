@@ -35,9 +35,6 @@
     <ClInclude Include="include\Audio.h">
       <Filter>Header Files\Sound</Filter>
     </ClInclude>
-    <ClInclude Include="include\SoundManager.h">
-      <Filter>Header Files\Sound</Filter>
-    </ClInclude>
     <ClInclude Include="include\RenderManager.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
@@ -53,6 +50,9 @@
     <ClInclude Include="include\lodepng.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="include\AudioManager.h">
+      <Filter>Header Files\Sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp">
@@ -62,9 +62,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="source\Audio.cpp">
-      <Filter>Source\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="source\SoundManager.cpp">
       <Filter>Source\Sound</Filter>
     </ClCompile>
     <ClCompile Include="source\Font.cpp">
@@ -81,6 +78,9 @@
     </ClCompile>
     <ClCompile Include="source\lodepng.cpp">
       <Filter>Source\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AudioManager.cpp">
+      <Filter>Source\Sound</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

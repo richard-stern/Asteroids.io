@@ -4,8 +4,8 @@
 // Built on top of libsndfile (v1.0.26) for file I/O and OpenAL to play the sounds.
 //----------------------------------------------------------------------------------------
 // Usage:
-// Create a new sound instance using SoundManager:
-//		Audio* myAudio = SoundManager::Instance()->CreateSound("SoundFileName.wav");
+// Create a new sound instance using AudioManager:
+//		Audio* myAudio = AudioManager::Instance()->CreateSound("SoundFileName.wav");
 //
 // Play sound using pointer to Audio class:
 //		myAudio->Play();
@@ -15,7 +15,7 @@
 //		myAudio->Pause();
 //
 // Destroy sounds via the SsundManager when no longer needed to avoid memory leaks.
-//		SoundManager::Instance()->DestroySound(myAudio);
+//		AudioManager::Instance()->DestroySound(myAudio);
 //----------------------------------------------------------------------------------------
 // Supported sound file formats: .wav, .ogg, .aif, .au, .flac, .gsm
 //----------------------------------------------------------------------------------------
@@ -23,7 +23,7 @@
 
 #include "al.h"
 
-class SoundManager;
+class AudioManager;
 
 //----------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------
@@ -47,9 +47,9 @@ public:
 	void SetGain(float fGain);
 
 protected:
-	//Only available to the SoundManager.
-	friend class SoundManager;
-	Audio(SoundManager* pSoundManager, ALuint nBufferID);
+	//Only available to the AudioManager.
+	friend class AudioManager;
+	Audio(AudioManager* pSoundManager, ALuint nBufferID);
 	~Audio();
 	
 	ALuint m_nBufferID;
@@ -60,5 +60,5 @@ protected:
 	Audio* m_pNext;
 
 private:
-	SoundManager* m_pSoundManager;
+	AudioManager* m_pSoundManager;
 };

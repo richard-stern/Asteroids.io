@@ -1,10 +1,10 @@
 #include "Audio.h"
-#include "SoundManager.h"
+#include "AudioManager.h"
 #include <memory>
 
 //----------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------
-Audio::Audio(SoundManager* pSoundManager, ALuint nBufferID)
+Audio::Audio(AudioManager* pSoundManager, ALuint nBufferID)
 {
 	m_pSoundManager = pSoundManager;
 	m_nBufferID = nBufferID;
