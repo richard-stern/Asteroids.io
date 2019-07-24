@@ -1,7 +1,9 @@
 #pragma once
 
-class Level;
 
+//Forward declarations to prevent circular inclusion
+class Level;
+class Player;
 
 class Blackboard
 {
@@ -13,8 +15,14 @@ public:
 
 	//Stored Variables
 
+
+	//Level
 	Level* GetLevel();
 	void SetLevel(Level* pLevel);
+
+	//Player
+	Player* GetPlayer();
+	void SetPlayer(Player* pPlayer);
 
 private:
 	//Private Constructor and Destructor for Singleton
@@ -24,6 +32,6 @@ private:
 	//Singleton created
 	static Blackboard* m_pBlackboard;
 	Level* m_pLevel;
-	
+	Player* m_pPlayer;
 };
 

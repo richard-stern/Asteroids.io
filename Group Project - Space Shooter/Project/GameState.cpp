@@ -1,6 +1,7 @@
 #include "GameState.h"
 #include "StateMachine.h"
 #include "Blackboard.h"
+#include "CollisionManager.h"
 class GameState;
 
 GameState::GameState()
@@ -41,6 +42,7 @@ void GameState::Exit()
 bool GameState::Update(float deltaTime, StateMachine* stateMachine)
 {
 	Input* pInput = Input::Instance();
+	CollisionManager::GetInstance()->Update(deltaTime);
 	level->Update(deltaTime);
 	level->UpdateGlobalTransform();
 	Player* player = level->GetPlayer();

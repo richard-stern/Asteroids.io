@@ -27,6 +27,9 @@ void GameObject::Draw(RenderManager* renderer)
 	if(m_bWrapAndRespawn)
 		screenWrap();
 
+	if (!m_bVisible)
+		return;
+
 	if (m_pTexture)
 		renderer->DrawSpriteTransformed3x3(m_pTexture, m_m3GlobalTransform);
 
@@ -137,16 +140,17 @@ void GameObject::screenWrap()
 	Vector2 myPosition = GetPosition();
 	Vector2 cameraPosition = m_pCamera->GetPosition();
 	Vector2 offsetPosition = cameraPosition - myPosition;
+	float offScreenMargin = 100.0f;
 
-	if (myPosition.x < cameraPosition.x)
+	if (myPosition.x < (cameraPosition.x - offScreenMargin))
 		SetPosition(Vector2((cameraPosition.x + m_v2ScreenSize.x) - offsetPosition.x, myPosition.y));
 
-	if(myPosition.x > (cameraPosition.x + m_v2ScreenSize.x))
+	if(myPosition.x > (cameraPosition.x + m_v2ScreenSize.x + offScreenMargin))
 		SetPosition(Vector2(cameraPosition.x + offsetPosition.x, myPosition.y));
 
-	if (myPosition.y < cameraPosition.y)
+	if (myPosition.y < (cameraPosition.y - offScreenMargin))
 		SetPosition(Vector2(myPosition.x, (cameraPosition.y + m_v2ScreenSize.y) - offsetPosition.y));
 
-	if (myPosition.y > (cameraPosition.y + m_v2ScreenSize.y))
+	if (myPosition.y > (cameraPosition.y + m_v2ScreenSize.y + offScreenMargin))
 		SetPosition(Vector2(myPosition.x, cameraPosition.y + offsetPosition.y));
 }

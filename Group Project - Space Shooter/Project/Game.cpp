@@ -33,10 +33,11 @@ Game::~Game()
 
 void Game::Update(float deltaTime)
 {
+	//Moved to gameState
+	//CollisionManager::GetInstance()->Update(deltaTime);
 	if (m_pStateMachine->Update(deltaTime))
 		Quit();
 	//Update the Collision Manager
-	CollisionManager::GetInstance()->Update(deltaTime);
 }
 
 void Game::Draw()
