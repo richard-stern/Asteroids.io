@@ -27,6 +27,7 @@ GameState::~GameState()
 
 void GameState::Enter()
 {
+	CollisionManager::Create();
 	level = new Level(5, 100, 2, 2);
 	gui = GUI::Instance();
 }
@@ -37,6 +38,8 @@ void GameState::Exit()
 
 	delete gui;
 	gui = nullptr;
+
+	CollisionManager::Destroy();
 }
 
 bool GameState::Update(float deltaTime, StateMachine* stateMachine)
