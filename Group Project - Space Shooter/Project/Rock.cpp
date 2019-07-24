@@ -103,8 +103,8 @@ void Rock::OnCollision(Player* player)
 	// so the rock doesn't get stuck in the player.
 	SetPosition(m_v2PreviousPosition);
 
-	// Bounce the rock.
-	Bounce();
+	// Deactivate the rock after colliding with the player.
+	m_bVisible = false;
 }
 
 void Rock::OnCollision(Bullet* bullet)
