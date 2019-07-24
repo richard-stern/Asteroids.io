@@ -43,6 +43,16 @@ void Blackboard::SetPlayer(Player* pPlayer)
 	m_pPlayer = pPlayer;
 }
 
+int Blackboard::GetScore()
+{
+	return m_nScore;
+}
+
+void Blackboard::SetScore(int nScore)
+{
+	m_nScore = nScore;
+}
+
 Blackboard::Blackboard()
 {
 }

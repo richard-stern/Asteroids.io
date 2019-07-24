@@ -24,6 +24,10 @@ public:
 	Player* GetPlayer();
 	void SetPlayer(Player* pPlayer);
 
+	//Score
+	int GetScore();
+	void SetScore(int nScore);
+
 private:
 	//Private Constructor and Destructor for Singleton
 	Blackboard();
@@ -33,5 +37,6 @@ private:
 	static Blackboard* m_pBlackboard;
 	Level* m_pLevel;
 	Player* m_pPlayer;
+	int m_nScore;
 };
 
