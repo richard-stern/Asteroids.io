@@ -23,4 +23,5 @@ private:
 	float m_fSpeed;
 	int m_nLives;
 	Vector2 m_v2PreviousPosition;
+	float m_fMaxSpeed;
 };
