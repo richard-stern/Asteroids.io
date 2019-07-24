@@ -12,6 +12,9 @@ MenuState::MenuState()
 	m_PlyShip = nullptr;
 	m_RockLarge = nullptr;
 	m_RockMed = nullptr;
+	m_RockSmall = nullptr;
+	m_Enemy = nullptr;
+	m_Bullet = nullptr;
 	m_Menu = nullptr;
 	m_fWindowWidth = Camera::Instance()->GetWindowWidth();
 	m_fWindowHeight = Camera::Instance()->GetWindowHeight();
@@ -50,6 +53,21 @@ MenuState::~MenuState()
 		delete m_RockMed;
 		m_RockMed = nullptr;
 	}
+	if (m_RockSmall)
+	{
+		delete m_RockSmall;
+		m_RockSmall = nullptr;
+	}
+	if (m_Enemy)
+	{
+		delete m_Enemy;
+		m_Enemy = nullptr;
+	}
+	if (m_Bullet)
+	{
+		delete m_Bullet;
+		m_Bullet = nullptr;
+	}
 	if (m_Menu)
 	{
 		delete m_Menu;
@@ -59,12 +77,15 @@ MenuState::~MenuState()
 
 void MenuState::Enter() 
 {
-	m_PlayButton = new Button("Play", m_fWindowWidth / 3.0f, m_fWindowHeight / 3.0f, 255, 85, 0, 255, 0, 255);
-	m_QuitButton = new Button("Quit", m_fWindowWidth / 1.5f, m_fWindowHeight / 3.0f, 255, 85, 100, 255, 0, 255);
+	m_PlayButton = new Button("Play", m_fWindowWidth / 3.0f, m_fWindowHeight / 2.0f, 255, 85, 0, 255, 0, 255);
+	m_QuitButton = new Button("Quit", m_fWindowWidth / 1.5f, m_fWindowHeight / 2.0f, 255, 85, 100, 255, 0, 255);
 	m_Font = new Font("./Fonts/hobo_32px.fnt");
 	m_PlyShip = new Texture("./Images/player.png");
 	m_RockLarge = new Texture("./Images/rock_large.png");
 	m_RockMed = new Texture("./Images/rock_medium.png");
+	m_RockSmall = new Texture("./Images/rock_small.png");
+	m_Enemy = new Texture("./Images/Enemy.png");
+	m_Bullet = new Texture("./Images/Bullet.png");
 	m_Menu = new Texture("./Images/Menu.png");
 }
 
@@ -93,15 +114,19 @@ void MenuState::Draw(RenderManager* pRenderManager)
 	pRenderManager->SetRenderColor(230, 51, 51, 255);
 
 	// Button Background
-	pRenderManager->SetRenderColor(0, 0, 0, 255);
-	pRenderManager->DrawSprite(NULL, m_fWindowWidth / 3.0f, m_fWindowHeight / 3.0f, 350, 100);
-	pRenderManager->DrawSprite(NULL, m_fWindowWidth / 1.5f, m_fWindowHeight / 3.0f, 350, 100);
+	//pRenderManager->SetRenderColor(0, 0, 0, 255);
+	//pRenderManager->DrawSprite(NULL, m_fWindowWidth / 3.0f, m_fWindowHeight / 3.0f, 350, 100);
+	//pRenderManager->DrawSprite(NULL, m_fWindowWidth / 1.5f, m_fWindowHeight / 3.0f, 350, 100);
 
 	// Images
 	pRenderManager->SetRenderColor(255, 255, 255, 255);
-	pRenderManager->DrawSprite(m_PlyShip, m_fWindowWidth / 2.0f, m_fWindowHeight / 5.0f, 100, 100);
-	pRenderManager->DrawSprite(m_RockLarge, m_fWindowWidth / 3.0f, m_fWindowHeight / 1.0f, 250, 250);
-	pRenderManager->DrawSprite(m_RockMed, m_fWindowWidth / 4.0f, m_fWindowHeight / 6.0f, 150, 150);
+	pRenderManager->DrawSprite(m_PlyShip, m_fWindowWidth / 2.0f, m_fWindowHeight / 3.0f, 100, 100, 0.75f);
+	pRenderManager->DrawSprite(m_Bullet, m_fWindowWidth / 2.4f, m_fWindowHeight / 2.6f, 40, 40, 0.75f);
+	pRenderManager->DrawSprite(m_RockLarge, m_fWindowWidth / 3.0f, m_fWindowHeight / 1.6f, 200, 200);
+	pRenderManager->DrawSprite(m_RockMed, m_fWindowWidth / 4.0f, m_fWindowHeight / 4.0f, 150, 150);
+	pRenderManager->DrawSprite(m_RockSmall, m_fWindowWidth / 1.3f, m_fWindowHeight / 5.2f, 100, 100);
+	pRenderManager->DrawSprite(m_Enemy, m_fWindowWidth / 1.4f, m_fWindowHeight / 1.5f, 100, 100, -0.5f);
+
 	m_PlayButton->Draw(pRenderManager);
 	m_QuitButton->Draw(pRenderManager);
 }
@@ -137,5 +162,25 @@ void MenuState::Exit()
 	{
 		delete m_RockMed;
 		m_RockMed = nullptr;
+	}
+	if (m_RockSmall)
+	{
+		delete m_RockSmall;
+		m_RockSmall = nullptr;
+	}
+	if (m_Enemy)
+	{
+		delete m_Enemy;
+		m_Enemy = nullptr;
+	}
+	if (m_Bullet)
+	{
+		delete m_Bullet;
+		m_Bullet = nullptr;
+	}
+	if (m_Menu)
+	{
+		delete m_Menu;
+		m_Menu = nullptr;
 	}
 }

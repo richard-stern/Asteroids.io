@@ -26,6 +26,9 @@ private:
 	Texture* m_PlyShip;
 	Texture* m_RockLarge;
 	Texture* m_RockMed;
+	Texture* m_RockSmall;
+	Texture* m_Enemy;
+	Texture* m_Bullet;
 	Texture* m_Menu;
 	float m_fWindowWidth;
 	float m_fWindowHeight;
