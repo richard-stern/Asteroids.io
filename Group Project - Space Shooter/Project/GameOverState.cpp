@@ -6,11 +6,13 @@
 #include "Camera.h"
 #include "StateMachine.h"
 #include "Application.h"
+#include "Texture.h"
 GameOverState::GameOverState() : BaseState()
 {
 	m_font = new Font("./Fonts/hobo_32px.fnt");
 	m_ExitButtuon = nullptr;
 	m_PlayAgianButton = nullptr;
+//	m_Richard = nullptr;
 }
 GameOverState::~GameOverState()
 {
@@ -18,6 +20,7 @@ GameOverState::~GameOverState()
 	delete m_font;
 	delete m_PlayAgianButton;
 	delete m_ExitButtuon;
+	//delete m_Richard;
 
 }
 void GameOverState ::Enter()
@@ -27,8 +30,8 @@ void GameOverState ::Enter()
 	int windowHeight = Camera::Instance()->GetWindowHeight();
 
 	m_PlayAgianButton = new Button("Play again?", windowWidth / 3.0f, windowHeight / 3.0f, 255, 85, 0, 255, 0, 255);
-	m_ExitButtuon = new Button("Exit", windowWidth / 5.0f, windowHeight / 5.0f, 255, 85, 0, 255, 0, 255);
-
+	m_ExitButtuon = new Button("Exit", windowWidth / 1.5f, windowHeight / 3.0f, 255, 85, 0, 255, 0, 255);
+	//m_Richard = new Texture("./Images/Richard.png");
 }
 bool GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 {
@@ -47,6 +50,7 @@ bool GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 	}
 	 else
 	return false;
+
 }
 void GameOverState ::Draw (RenderManager* pRenderManager)
 {
@@ -58,6 +62,7 @@ void GameOverState ::Draw (RenderManager* pRenderManager)
 	sprintf_s(endScoreText,  "your score is %i", totalscore);
 	pRenderManager->DrawText(m_font, endScoreText, 400, 500);
 
+
 	//play again button
 	//pRenderManager->DrawText(m_font, "play again?", 400, 500);
 	m_PlayAgianButton->Draw(pRenderManager);
@@ -65,7 +70,9 @@ void GameOverState ::Draw (RenderManager* pRenderManager)
 	// quit button
 	//pRenderManager->DrawText(m_font, "Quit", 400, 600);
 	m_ExitButtuon->Draw(pRenderManager);
-
+	////richard
+	//pRenderManager->SetRenderColor(255, 255, 255, 255);
+	//pRenderManager->DrawSprite(m_Richard, m_fWindowWidth / 2.0f, m_fWindowHeight / 2.0f, 500, 500, 0.75f);
 }
 void GameOverState ::Exit ()
 {
@@ -78,4 +85,7 @@ void GameOverState ::Exit ()
 
 	delete m_ExitButtuon;
 	m_ExitButtuon = nullptr;
+
+	//delete m_Richard;
+//	m_Richard = nullptr;
 }
