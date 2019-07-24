@@ -144,7 +144,7 @@ public:
 	}
 
 
-	T operator[] (int index)
+	T& operator[] (int index)
 	{
 		if (index < 0 || index >= _count)
 			throw std::out_of_range("index out of range");
