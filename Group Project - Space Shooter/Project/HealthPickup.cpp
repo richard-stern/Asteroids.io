@@ -3,6 +3,7 @@
 #include "Actor.h"
 #include "TextureManager.h"
 #include "BoxCollider.h"
+#include "CollisionManager.h"
 
 HealthPickup::HealthPickup() : Actor(Vector2(100, 100))
 {
@@ -31,6 +32,8 @@ HealthPickup::HealthPickup() : Actor(Vector2(100, 100))
 	Vector2 v2Extend = Vector2(m_pTexture->GetWidth() / 2, m_pTexture->GetHeight() / 2);
 	m_pCollider = new BoxCollider(v2Extend, ELayer::ECOLLISIONLAYER_HEALTH);
 	m_eType = GameObjectType::HEALTH_PICKUP;
+
+	CollisionManager::GetInstance()->AddObject(this);
 }
 
 HealthPickup::~HealthPickup()
