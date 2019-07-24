@@ -156,6 +156,13 @@ void Rock::OnCollision(Rock* rock)
 	// so this rock doesn't get stuck in the other rock.
 	SetPosition(m_v2PreviousPosition);
 
+	// Rocks deal damage to eachother based on their health.
+	m_nHealth -= rock->GetHealth();
+
+	// If the rock's health reaches 0 or below -> disable the rock.
+	if (m_nHealth <= 0)
+		m_bVisible = false;
+
 	// Bounce the rock.
 	Bounce();
 }
@@ -163,6 +170,5 @@ void Rock::OnCollision(Rock* rock)
 void Rock::Bounce()
 {
 	// Bounce the rock.
-	//m_v2Velocity = Vector2(m_v2Velocity.y, -m_v2Velocity.x);
 	m_v2Velocity * -1;
 }
