@@ -28,9 +28,9 @@ void CollisionManager::RemoveObject(Actor* pActor)
 // Iterates over the collider array and checks for intersection between them.
 void CollisionManager::Update(float fDeltaTime)
 {
-	for (int i = 0; i < (int) m_prgColliders.size() - 1; ++i)
+	for (int i = 0; i < (int) m_prgColliders.size(); ++i)
 	{
-		for (int j = 1; j < (int) m_prgColliders.size() - 1; ++j)
+		for (int j = 0; j < (int) m_prgColliders.size(); ++j)
 		{
 			if (i != j)
 			{
@@ -41,6 +41,9 @@ void CollisionManager::Update(float fDeltaTime)
 				// Colliders of the game object's we're checking.
 				Collider* pCollider = m_prgColliders[i]->GetCollider();
 				Collider* pOtherCollider = m_prgColliders[j]->GetCollider();
+
+				if (!pGameObject->GetVisible() || !pOtherGameObject->GetVisible())
+					continue;
 
 				// Objects on the LAYER_NONE will never collide.
 				if (pCollider->m_eLayer == ECOLLISIONLAYER_NONE || pOtherCollider->m_eLayer == ECOLLISIONLAYER_NONE)
