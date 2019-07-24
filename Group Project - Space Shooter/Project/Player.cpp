@@ -6,9 +6,13 @@
 #include "CollisionManager.h"
 #include "Collider.h"
 #include "BoxCollider.h"
+#include "Blackboard.h"
+
+
 
 Player::Player(Vector2 v2Position) : Actor(v2Position)
 {
+	Blackboard::Instance()->SetPlayer(this);
 	SetPosition(v2Position);
 	TextureManager* pTextureManager = TextureManager::Instance();
 	m_pTexture = pTextureManager->LoadTexture("player.png");
