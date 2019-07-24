@@ -97,76 +97,71 @@ void Rock::Update(float deltaTime)
 	SetPosition(v2Pos);
 }
 
-void Rock::OnCollision(Player* player)
+void Rock::OnCollision(GameObject* gameObject)
 {
-	// Set the current position to the previous position,
-	// so the rock doesn't get stuck in the player.
-	SetPosition(m_v2PreviousPosition);
-
-	// Deactivate the rock after colliding with the player.
-	m_bVisible = false;
-}
-
-void Rock::OnCollision(Bullet* bullet)
-{
-	// Decrease the health of the rock by 50 (the damage of the bullet).
-	m_nHealth -= 50;
-
-	// If the rock's health is = or < 0 -> set visible to false and add score to scoreboard.
-	// So the rock can be destroyed.
-	if (m_nHealth <= 0)
+	// If the rock collided with the player.
+	if (gameObject->GetType() == GameObjectType::PLAYER)
 	{
-		// Make the rock inactive.
-		m_bVisible = false;
-		
-		// Adds score to the scoreboard.
-		GUI* gui = gui->Instance();
-		gui->AddScore(m_nMaxHealth);
+		// Set the position of the rock to the previous position.
+		SetPosition(m_v2PreviousPosition);
+
+		// Bounce the rock.
+		Bounce();
 	}
 
-	// Set the current position to the previous position,
-	// so the rock doesn't get stuck in the bullet.
-	SetPosition(m_v2PreviousPosition);
+	// If the rock collided with a bullet.
+	else if (gameObject->GetType() == GameObjectType::BULLET)
+	{
+		// Decrease the health of the rock.
+		m_nHealth -= 50;
 
-	// Bounce the rock.
-	Bounce();
-}
+		// If the rock has no health -> deactivate the rock.
+		if (m_nHealth <= 0)
+			m_bVisible = false;
 
-void Rock::OnCollision(HealthPickup* healthPickup)
-{
-	// Set the current position to the previous position,
-	// so the rock doesn't get stuck in the health pickup.
-	SetPosition(m_v2PreviousPosition);
+		// Set the rock's position to it's preivous position.
+		SetPosition(m_v2PreviousPosition);
 
-	// Bounce the rock.
-	Bounce();
-}
+		// Bounce the rock.
+		Bounce();
+	}
 
-void Rock::OnCollision(Enemy* Enemy)
-{
-	// Set the current position to the previous position,
-	// so the rock doesn't get stuck in the enemy.
-	SetPosition(m_v2PreviousPosition);
+	// If the rock collided with another rock.
+	else if (gameObject->GetType() == GameObjectType::ROCK)
+	{
+		// Get the health of the rock.
+		int rockHealth = ((Actor*)gameObject)->GetHealth();
 
-	// Bounce the rock.
-	Bounce();
-}
+		// Set the health of the other rock to it's health - my max health.
+		((Actor*)gameObject)->SetHealth(rockHealth -= m_nMaxHealth);
 
-void Rock::OnCollision(Rock* rock)
-{
-	// Set the current position to the previous position,
-	// so this rock doesn't get stuck in the other rock.
-	SetPosition(m_v2PreviousPosition);
+		// If the rock has no health -> deactivate the rock.
+		if (m_nHealth <= 0)
+			m_bVisible = false;
 
-	// Rocks deal damage to eachother based on their health.
-	m_nHealth -= rock->GetHealth();
+		// Set the rock's position to it's preivous position.
+		SetPosition(m_v2PreviousPosition);
 
-	// If the rock's health reaches 0 or below -> disable the rock.
-	if (m_nHealth <= 0)
-		m_bVisible = false;
+		// Bounce the rock.
+		Bounce();
+	}
 
-	// Bounce the rock.
-	Bounce();
+	// If the rock collided with an enemy.
+	else if (gameObject->GetType() == GameObjectType::ENEMY)
+	{
+		// Decrease the health of the rock.
+		m_nHealth -= 50;
+
+		// If the rock has no health -> deactivate the rock.
+		if (m_nHealth <= 0)
+			m_bVisible = false;
+
+		// Set the rock's position to it's preivous position.
+		SetPosition(m_v2PreviousPosition);
+
+		// Bounce the rock.
+		Bounce();
+	}
 }
 
 void Rock::Bounce()

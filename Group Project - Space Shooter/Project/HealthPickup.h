@@ -16,11 +16,6 @@
 
 #include "Actor.h"
 
-class Player;
-class Rock;
-class Enemy;
-class Bullet;
-
 class HealthPickup : public Actor
 {
 public:
@@ -38,28 +33,10 @@ public:
 	void HealthPickup::Update(float deltaTime);
 
 	//----------------------------------------------------------------------------
-	// On collision with the player.
-	// Params: the player.
+	// On collision with another game object.
+	// Params: the game object.
 	//----------------------------------------------------------------------------
-	void OnCollision(Player* player);
-
-	//----------------------------------------------------------------------------
-	// On collision with a rock.
-	// Params: the rock.
-	//----------------------------------------------------------------------------
-	void OnCollision(Rock* rock);
-
-	//----------------------------------------------------------------------------
-	// On collision with an enemy.
-	// Params: the enemey.
-	//----------------------------------------------------------------------------
-	void OnCollision(Enemy* enemy);
-
-	//----------------------------------------------------------------------------
-	// On collision with a bullet.
-	// Params: the bullet.
-	//----------------------------------------------------------------------------
-	void OnCollision(Bullet* bullet);
+	void OnCollision(GameObject* gameObject);
 
 private:
 	//----------------------------------------------------------------------------
