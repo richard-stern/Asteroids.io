@@ -10,7 +10,7 @@ Blackboard* Blackboard::m_pBlackboard = nullptr;
 
 Blackboard* Blackboard::Instance()
 {
-	return nullptr;
+	return m_pBlackboard;
 }
 
 void Blackboard::Create()
