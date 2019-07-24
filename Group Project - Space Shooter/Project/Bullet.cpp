@@ -25,6 +25,9 @@ Bullet::Bullet() : Actor(GetPosition())
 	m_fSpeed = 500.0f;
 	m_nDamage = 50;
 	
+	//Set the object type
+	m_eType = GameObjectType::BULLET;
+
 	//Collider mumbojumbo 
 	m_pCollider = new CircleCollider(8.0f, ELayer::ECOLLISIONLAYER_BULLET);
 	CollisionManager::GetInstance()->AddObject(this); 	
@@ -37,6 +40,8 @@ Bullet::~Bullet()
 
 void Bullet::Update(float fDeltaTime)
 {
+	Actor::Update(fDeltaTime);		//Call the base class update to check the collider
+
 	m_fTimer += fDeltaTime; 
 
 	if (m_bVisible)
@@ -59,7 +64,7 @@ void Bullet::Update(float fDeltaTime)
 
 void Bullet::Shoot(Vector2 v2Pos, Vector2 v2Dir)
 {
-	m_fTimer = 0.0f;
+	m_fTimer = 0.0f;	//Reset the timer to 0 when shot
 
 	SetPosition(v2Pos);
 	SetRotation(v2Dir);
