@@ -40,8 +40,8 @@ void GameOverState ::Enter()
 bool GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 {
 	// dont think this right
-	Camera::Instance()->GetWindowWidth();
-	Camera::Instance()->GetWindowHeight();
+	Camera::Instance()->SetPosition(0.0f, 0.0f);
+	
 	//std::cout << "update game over state" << std::endl;
 	m_pStateMachine = p_StateMachine;
 	if (m_PlayAgianButton->Update())
