@@ -5,6 +5,7 @@ Actor::Actor() {}
 Actor::Actor(Vector2 Position)
 {
 	SetPosition(Position);
+	UpdateGlobalTransform();
 	m_pCollider = nullptr;
 }
 
