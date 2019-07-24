@@ -77,11 +77,9 @@ void Bullet::OnCollision(Actor* pOtherObject)
 	if (pOtherObject->GetType() == ENEMY || pOtherObject->GetType() == ROCK)
 	{
 		SetVisible(false); 
-		int nTempHealth; 
-		nTempHealth = GetHealth();
+		/*int nTempHealth; 
+		nTempHealth = pOtherObject->GetHealth();
 		nTempHealth -= m_nDamage; 
-		SetHealth(nTempHealth); 
-
-		std::cout << "Bullet Fired/n"; 
+		pOtherObject->SetHealth(nTempHealth); */
 	}
 }
