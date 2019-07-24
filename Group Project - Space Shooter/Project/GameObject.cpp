@@ -136,16 +136,17 @@ void GameObject::screenWrap()
 {
 	Vector2 myPosition = GetPosition();
 	Vector2 cameraPosition = m_pCamera->GetPosition();
+	Vector2 offsetPosition = cameraPosition - myPosition;
 
 	if (myPosition.x < cameraPosition.x)
-		SetPosition(Vector2(cameraPosition.x + m_v2ScreenSize.x, myPosition.y));
+		SetPosition(Vector2((cameraPosition.x + m_v2ScreenSize.x) - offsetPosition.x, myPosition.y));
 
 	if(myPosition.x > (cameraPosition.x + m_v2ScreenSize.x))
-		SetPosition(Vector2(cameraPosition.x, myPosition.y));
+		SetPosition(Vector2(cameraPosition.x + offsetPosition.x, myPosition.y));
 
 	if (myPosition.y < cameraPosition.y)
-		SetPosition(Vector2(myPosition.x, cameraPosition.y + m_v2ScreenSize.y));
+		SetPosition(Vector2(myPosition.x, (cameraPosition.y + m_v2ScreenSize.y) - offsetPosition.y));
 
 	if (myPosition.y > (cameraPosition.y + m_v2ScreenSize.y))
-		SetPosition(Vector2(myPosition.x, cameraPosition.y));
+		SetPosition(Vector2(myPosition.x, cameraPosition.y + offsetPosition.y));
 }
