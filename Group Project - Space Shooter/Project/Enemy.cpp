@@ -15,6 +15,11 @@ Enemy::Enemy(Player* pPlayer) : Actor(Vector2((float)(rand() % 1000), (float)(ra
 	TextureManager* pTxtMan = pTxtMan->Instance();
 	m_pTexture = pTxtMan->LoadTexture("Enemy.png");
 
+	//Setting the type of object the enemy is
+	//and sets the collision layer.
+	m_eType = GameObjectType::ENEMY;
+	//m_eLayer = ELayer::ECOLLISIONLAYER_ENEMY;
+
 	//Sets the health of the enemy.
 	//Referencing "Bullet.h", BULLET_DAMAGE = 50, making each enemy takes two hits to kill.
 	GUI::Instance()->SetHealth(100);
@@ -22,8 +27,9 @@ Enemy::Enemy(Player* pPlayer) : Actor(Vector2((float)(rand() % 1000), (float)(ra
 	//store pointers
 	m_pPlayer = pPlayer;
 
+	//Setting Collision Detection
 	Vector2 v2Extend = Vector2((float)(m_pTexture->GetWidth() / 2), (float)(m_pTexture->GetHeight() / 2));
-	m_pCollider = new BoxCollider(v2Extend);
+	m_pCollider = new BoxCollider(v2Extend, ELayer::ECOLLISIONLAYER_ENEMY);
 	CollisionManager::GetInstance()->AddObject(this);
 }
 
@@ -65,16 +71,20 @@ void Enemy::Update(float deltaTime)
 	//Vector that tracks the direction of the enemy.
 	Vector2 v2Direction = v2PlayerPos - v2EnemyPos;
 
+	
+
 	//Distance between the player and the enemy.
 	float fDistance = (v2PlayerPos - v2EnemyPos).magnitude();
 
 	//Normalisation of the direction.
 	v2Direction.normalise();
 
+	float fRotation = atan2f(v2Direction.y, v2Direction.x) - 1.5780f;
 	//Seeking function.
 	if (fDistance < 1000)
 	{
 		SetVisible(true);
 		this->SetPosition(v2EnemyPos + v2Direction * 75 * deltaTime);
+		this->SetRotation(fRotation);
 	}
 }
