@@ -7,8 +7,7 @@
 										GUI::Instance()->AddScore(int score)
 										GUI::Instance()->GetScore()
 										GUI::Instance()->SetLives(int lives)
-										GUI::Instance()->Draw(RenderManager* renderer)
-										GUI::Instance()->DisplayFPS(RenderManager* renderer)
+										
 
 							Made by Thomas
 */
@@ -28,7 +27,9 @@ public:
 	static GUI *Instance();
 	
 	void Draw(RenderManager* renderer);
+	// Doens't work yet
 	void DisplayFPS(RenderManager* renderer);
+
 	void SetHealth(int health);
 	void AddScore(int score);
 	int GetScore();
