@@ -62,26 +62,6 @@ void CollisionManager::Update(float fDeltaTime)
 				
 
 
-				//Check Collision
-
-
-
-				////Box - Box collision 
-				//if (pCollider->GetType() == pOtherCollider->GetType())
-				//{
-				//	pCollider->
-				//}
-				//else //Bullet - Box Collision
-				//{
-
-				//}
-
-
-
-
-
-
-
 
 				// If both objects are visible and intersect, then call both the object's OnCollision function,
 				// passing each other in as the parameter.

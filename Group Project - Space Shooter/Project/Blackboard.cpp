@@ -33,6 +33,16 @@ void Blackboard::SetLevel(Level* pLevel)
 	m_pLevel = pLevel;
 }
 
+Player* Blackboard::GetPlayer()
+{
+	return m_pPlayer;
+}
+
+void Blackboard::SetPlayer(Player* pPlayer)
+{
+	m_pPlayer = pPlayer;
+}
+
 Blackboard::Blackboard()
 {
 }

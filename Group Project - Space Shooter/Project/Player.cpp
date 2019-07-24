@@ -108,14 +108,7 @@ void Player::Update(float fDeltaTime)
 void Player::OnCollision(GameObject* pOtherObject)
 {
 	
- 	if (pOtherObject->GetType() == GameObjectType::ROCK) //If colliding with a Rock
-	{
-		//Seperate from object
-		SetPosition(m_v2PreviousPosition);
-		//Reverse the velocity
-		m_v2Velocity = Vector2(-m_v2Velocity.x, -m_v2Velocity.y);
-	}
-	if (pOtherObject->GetType() == GameObjectType::BULLET) //If colliding with a Bullet
+	if (pOtherObject->GetType() == GameObjectType::ROCK) //If colliding with a Rock
 	{
 		//Decrease Health
 		m_nHealth -= 25;
@@ -127,7 +120,8 @@ void Player::OnCollision(GameObject* pOtherObject)
 		//Reverse the velocity
 		m_v2Velocity = Vector2(-m_v2Velocity.x, -m_v2Velocity.y);
 
-
+		//Decrease Health
+		m_nHealth -= 25;
 
 	}
 	if (pOtherObject->GetType() == GameObjectType::HEALTH_PICKUP) //If colliding with a HealthPickup
@@ -144,7 +138,11 @@ void Player::OnCollision(GameObject* pOtherObject)
 
 	}
 
-
+	if (m_nHealth < 1)
+	{
+		m_nLives--;
+		m_nHealth = 100;
+	}
 
 
 }
