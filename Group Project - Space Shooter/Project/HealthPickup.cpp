@@ -30,6 +30,7 @@ HealthPickup::HealthPickup() : Actor(Vector2(100, 100))
 	//Collider
 	Vector2 v2Extend = Vector2(m_pTexture->GetWidth() / 2, m_pTexture->GetHeight() / 2);
 	m_pCollider = new BoxCollider(v2Extend, ELayer::ECOLLISIONLAYER_HEALTH);
+	m_eType = GameObjectType::HEALTH_PICKUP;
 }
 
 HealthPickup::~HealthPickup()
