@@ -75,8 +75,6 @@ Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 
 Rock::~Rock()
 {
-	delete m_pCollider;
-	m_pCollider = nullptr;
 }
 
 void Rock::Update(float deltaTime)
