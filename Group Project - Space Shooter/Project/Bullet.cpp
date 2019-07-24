@@ -69,9 +69,9 @@ void Bullet::Shoot(Vector2 v2Pos, Vector2 v2Dir)
 	SetVisible(true); 
 }
 
-void Bullet::OnCollision(Actor* pOtherObeject)
+void Bullet::OnCollision(Actor* pOtherObject)
 {
-	if (pOtherObeject->GetType() == ENEMY || pOtherObeject->GetType() == ROCK)
+	if (pOtherObject->GetType() == ENEMY || pOtherObject->GetType() == ROCK)
 	{
 		SetVisible(false); 
 		int nTempHealth; 

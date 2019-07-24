@@ -1,11 +1,13 @@
 #include "BulletManager.h"
 #include "Bullet.h"
+#include "Level.h"
 
-BulletManager::BulletManager(Turret* pTurret)
+BulletManager::BulletManager()
 {
 	for (int i = 0; i < BULLET_POOL_SIZE; ++i)	//Loop and create however many bullets
 	{
 		m_aBulletPool.push_back(new Bullet());	//Add a bullet to the pool
+		//pLevel->AddChild(m_aBulletPool[i]);
 	}
 }
 

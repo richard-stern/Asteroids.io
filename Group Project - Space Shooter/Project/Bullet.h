@@ -10,10 +10,7 @@ Usage:			Spawns the bullet at set location
 
 #pragma once
 #include "Actor.h"
-
 #include "Vector2.h" 
-
-
 
 class Bullet : public Actor
 {
@@ -22,17 +19,17 @@ public:
 	Bullet();
 	~Bullet();
 
-	//Updating the positon of the bullet 
-	//	and keeping track of it lifetime 
+	//Updating the position of the bullet 
+	//	and keeping track of its lifetime 
 	void Update(float fDeltaTime);
 
-	//Called to fire the bullet from a set postion 
+	//Called to fire the bullet from a set position 
 	//	in a given direction 
 	void Shoot(Vector2 v2Pos, Vector2 v2Dir);
 
 	//Deals damage to any enemies and rocks 
 	//	it collides with 
-	void OnCollision(Actor* pOtherObeject); 
+	void OnCollision(Actor* pOtherObject); 
 
 private:
 	//How long the bullet will be alive

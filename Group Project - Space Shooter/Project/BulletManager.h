@@ -12,7 +12,7 @@ class BulletManager
 {
 public:
 
-	BulletManager(Turret* pTurret);											//Constructor
+	BulletManager();											//Constructor
 	~BulletManager();											//Destructor
 
 	void ShootBullet(Vector2 v2StartPos, Vector2 v2StartDir);	//Finds an inactive bullet and calls the shoot function on it
