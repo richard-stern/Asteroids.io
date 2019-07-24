@@ -27,6 +27,9 @@ void GameObject::Draw(RenderManager* renderer)
 	if(m_bWrapAndRespawn)
 		screenWrap();
 
+	if (!m_bVisible)
+		return;
+
 	if (m_pTexture)
 		renderer->DrawSpriteTransformed3x3(m_pTexture, m_m3GlobalTransform);
 
