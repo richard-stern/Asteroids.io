@@ -65,7 +65,7 @@ Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 	// Set the collider.
 	Vector2 v2Extend = Vector2(m_pTexture->GetWidth() / 2, m_pTexture->GetHeight() / 2);
 	m_pCollider = new BoxCollider(v2Extend, ELayer::ECOLLISIONLAYER_ROCK);
-
+	m_eType = GameObjectType::ROCK;
 }
 
 Rock::~Rock()
@@ -160,5 +160,6 @@ void Rock::OnCollision(Rock* rock)
 void Rock::Bounce()
 {
 	// Bounce the rock.
+	//m_v2Velocity = Vector2(m_v2Velocity.y, -m_v2Velocity.x);
 	m_v2Velocity * -1;
 }
