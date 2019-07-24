@@ -28,8 +28,8 @@ void SoundManager::UnloadSound(Sound& sound){
 
 SoundManager* SoundManager::Create(){
 	if(Instance)return Instance;
-	Instance->_AM = AudioManager::Instance();
 	Instance = new SoundManager();
+	Instance->_AM = AudioManager::Instance();
 	return Instance;
 }
 

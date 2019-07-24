@@ -6,6 +6,9 @@
 #include "TextureManager.h"
 #include "Camera.h"
 #include "BulletManager.h"
+#include "SoundManager.h"
+
+static Sound Shot("./Sounds/Shoot.wav");
 
 Turret::Turret() : Actor(Vector2(0, 0))
 {
@@ -75,6 +78,8 @@ void Turret::Update(float deltaTime)
 	if (input->WasMouseButtonPressed(INPUT_MOUSE_BUTTON_LEFT))
 	{	
 		// Call the shoot bullet function of the bullet manager.
-		m_pBulletManager->ShootBullet(localPosition, m_m3GlobalTransform.forward());
+		m_pBulletManager->ShootBullet(localPosition, m_m3GlobalTransform.forward()); \
+
+		SoundManager::Instance->PlaySound(Shot);
 	}
 }

@@ -6,6 +6,7 @@
 #include "Camera.h"
 #include "TextureManager.h"
 #include "Blackboard.h"
+#include "SoundManager.h"
  
 Game::Game(unsigned int windowWidth, unsigned int windowHeight, bool fullscreen, const char *title) : Application(windowWidth, windowHeight, fullscreen, title)
 {
@@ -14,7 +15,7 @@ Game::Game(unsigned int windowWidth, unsigned int windowHeight, bool fullscreen,
 	m_pStateMachine = new StateMachine();
 	//Create the Blackboard for game use
 	Blackboard::Create();
-
+	SoundManager::Create();
 }
 
 Game::~Game()
@@ -22,7 +23,8 @@ Game::~Game()
 	delete m_pStateMachine;
 	TextureManager::Destroy();
 	Camera::Destroy();
-	
+	SoundManager::Destroy();
+
 	//Delete the Blackboard
 	Blackboard::Destroy();
 }
