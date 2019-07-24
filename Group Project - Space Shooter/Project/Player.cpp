@@ -18,6 +18,7 @@ Player::Player(Vector2 v2Position) : Actor(v2Position)
 	m_bWrapAndRespawn = false;
 	m_fSpeed = 350;
 	m_nHealth = 100;
+	m_nMaxHealth = 100;
 	m_nLives = 3;
 	m_eType = GameObjectType::PLAYER;
 	m_v2PreviousPosition = v2Position;
@@ -142,8 +143,8 @@ void Player::OnCollision(GameObject* pOtherObject)
 	}
 	if (pOtherObject->GetType() == GameObjectType::HEALTH_PICKUP) //If colliding with a HealthPickup
 	{
-		//Increase Health
-		m_nHealth += 25;
+		//Set health to full
+		m_nHealth = m_nMaxHealth;
 	}
 	if (pOtherObject->GetType() == GameObjectType::GENERIC) //If colliding with a Generic object
 	{
