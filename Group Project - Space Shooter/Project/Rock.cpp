@@ -51,6 +51,7 @@ Rock::Rock() : Actor(Vector2((float)(rand() % 1000), (float)(rand() % 1000)))
 		m_nHealth = 150;
 		break;
 	}
+	// FEATURE: each game, all the rocks spawn as different types, it's a rogue-lite!
 
 	// Set the forward direction to between 1 and 1000.
 	m_v2Forward.x = (float)(rand() % 1000 + 1);
