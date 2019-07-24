@@ -2,11 +2,12 @@
 // Leanne Vorster
 #include "GameOverState.h"
 #include <iostream>
-#include "GUI.h"
+//#include "GUI.h"
 #include "Camera.h"
 #include "StateMachine.h"
 #include "Application.h"
 #include "Texture.h"
+#include "Blackboard.h"
 GameOverState::GameOverState() : BaseState()
 {
 	m_font = new Font("./Fonts/hobo_32px.fnt");
@@ -64,10 +65,10 @@ void GameOverState ::Draw (RenderManager* pRenderManager)
 
 	// score
 	char endScoreText[32];
-	int totalscore = GUI::Instance()->GetScore();
+	int totalscore = Blackboard::Instance()->GetScore();
 	sprintf_s(endScoreText,  "your score is %i", totalscore);
 	pRenderManager->DrawText(m_font, endScoreText, 400, 500);
-
+	
 
 	//play again button
 	//pRenderManager->DrawText(m_font, "play again?", 400, 500);
