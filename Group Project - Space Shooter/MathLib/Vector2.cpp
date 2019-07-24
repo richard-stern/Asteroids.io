@@ -36,7 +36,7 @@ void Vector2::normalise()
 {
 	float mag = magnitude();
 
-	assert(mag != 0 && "normalise: divide by zero");
+	//assert(mag != 0 && "normalise: divide by zero");
 	if (mag != 0)
 	{
 		x /= mag;
