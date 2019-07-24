@@ -28,7 +28,7 @@ GameOverState::~GameOverState()
 }
 void GameOverState ::Enter()
 {
-	std::cout << "enter game over state" << std::endl;
+	//std::cout << "enter game over state" << std::endl;
 	int windowWidth = Camera::Instance()->GetWindowWidth();
 	int windowHeight = Camera::Instance()->GetWindowHeight();
 
@@ -38,7 +38,10 @@ void GameOverState ::Enter()
 }
 bool GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 {
-	std::cout << "update game over state" << std::endl;
+	// dont think this right
+	Camera::Instance()->GetWindowWidth();
+	Camera::Instance()->GetWindowHeight();
+	//std::cout << "update game over state" << std::endl;
 	m_pStateMachine = p_StateMachine;
 	if (m_PlayAgianButton->Update())
 	{
@@ -57,7 +60,7 @@ bool GameOverState ::Update(float deltaTime, StateMachine* p_StateMachine)
 }
 void GameOverState ::Draw (RenderManager* pRenderManager)
 {
-	std::cout << "draw game over state" << std::endl;
+	//std::cout << "draw game over state" << std::endl;
 
 	// score
 	char endScoreText[32];
@@ -79,7 +82,7 @@ void GameOverState ::Draw (RenderManager* pRenderManager)
 }
 void GameOverState ::Exit ()
 {
-	std::cout << "exit game over state" << std::endl;
+	//std::cout << "exit game over state" << std::endl;
 	delete m_font;
 	m_font = nullptr;
 
