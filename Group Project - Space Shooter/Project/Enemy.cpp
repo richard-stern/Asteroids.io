@@ -17,9 +17,7 @@ Enemy::Enemy(Player* pPlayer) : Actor(Vector2((float)(rand() % 1000), (float)(ra
 	m_pTexture = pTxtMan->LoadTexture("Enemy.png");
 
 	//Setting the type of object the enemy is
-	//and sets the collision layer.
 	m_eType = GameObjectType::ENEMY;
-	//m_eLayer = ELayer::ECOLLISIONLAYER_ENEMY;
 
 	//Sets the health of the enemy.
 	//Referencing "Bullet.h", BULLET_DAMAGE = 50, making each enemy takes two hits to kill.
@@ -42,6 +40,7 @@ Enemy::~Enemy()
 //Enemy's collision detections
 void Enemy::OnCollision(GameObject* pOtherObject)
 {
+	//If the enemy collides with the player.
 	if (pOtherObject->GetType() == GameObjectType::PLAYER)
 	{
 		//Sets the health of the enemy to 0.
@@ -50,11 +49,14 @@ void Enemy::OnCollision(GameObject* pOtherObject)
 		//Make it invisible.
 		SetVisible(false);
 	}
+	//If the enemy collides with the bullet.
 	else if (pOtherObject->GetType() == GameObjectType::BULLET)
 	{
+		//Deduct 50 from the enemy's health
 		SetHealth(m_nHealth - 50);
 
-		if (m_nHealth <= 20)
+		//If their health falls to or below 0, stop drawing the enemy.
+		if (m_nHealth <= 0)
 		{
 			SetVisible(false);
 		}
@@ -64,7 +66,10 @@ void Enemy::OnCollision(GameObject* pOtherObject)
 //Update function is used for steering behaviours.
 void Enemy::Update(float deltaTime)
 {
+	//Call the Actor's update function.
 	Actor::Update(deltaTime);
+
+	//If the enemy is dead, return.
 	if (GetVisible() == false)
 		return;
 
@@ -72,6 +77,7 @@ void Enemy::Update(float deltaTime)
 	Vector2 v2PlayerPos = m_pPlayer->GetPosition();
 	Vector2 v2EnemyPos = this->GetPosition();
 
+	//This Vector tracks the current velocity of the player.
 	Vector2 v2PlayerVelocity = m_pPlayer->GetVelocity();
 	
 	//Vector that tracks the direction of the player.
@@ -89,9 +95,6 @@ void Enemy::Update(float deltaTime)
 	//Seeking function.
 	if (fDistance < 1100)
 	{
-		//Visibility is set to true when in range.
-		//SetVisible(false);
-
 		//Rotation and Position are adjusted here.
 		this->SetPosition(v2EnemyPos + v2Direction * 75 * deltaTime);
 		this->SetRotation(fRotation);
