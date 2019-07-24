@@ -2,6 +2,8 @@
 #include "TextureManager.h"
 #include "CircleCollider.h"
 #include "CollisionManager.h"
+#include "Player.h"
+#include "Blackboard.h"
 #include <iostream>
 
 
@@ -20,7 +22,7 @@ Bullet::Bullet() : Actor(GetPosition())
 	m_pTexture = pTextMan->LoadTexture("Bullet.png"); 
 
 	//Assigning member variables their values 
-	m_fLifeTime = 5.0f;
+	m_fLifeTime = 1.0f;
 	m_fTimer = 0.0f;
 	m_fSpeed = 500.0f;
 	m_nDamage = 50;
@@ -51,7 +53,10 @@ void Bullet::Update(float fDeltaTime)
 		Vector2 v2Direction = m_m3LocalTransform.forward();		//Get the forward direction into a vector
 		v2Direction.normalise();								//Normalise to a unit vector
 
-		v2NewPosition += m_fSpeed * v2Direction * fDeltaTime;	//Add a vector with the magnitude of the speed in the direction of travel
+		Player* pPlayer = Blackboard::Instance()->GetPlayer();
+		Vector2 v2PlayerVelocity = pPlayer->GetVelocity();
+
+		v2NewPosition += ((m_fSpeed * v2Direction * fDeltaTime) + (v2PlayerVelocity * fDeltaTime));	//Add a vector with the magnitude of the speed in the direction of travel
 
 		SetPosition(v2NewPosition);								//Set the new position
 	}
@@ -74,9 +79,9 @@ void Bullet::Shoot(Vector2 v2Pos, Vector2 v2Dir)
 
 void Bullet::OnCollision(Actor* pOtherObject)
 {
-	if (pOtherObject->GetType() == ENEMY || pOtherObject->GetType() == ROCK)
+	if (pOtherObject->GetType() == ENEMY || pOtherObject->GetType() == ROCK || pOtherObject->GetType() == HEALTH_PICKUP)
 	{
-		SetVisible(false); 
+		SetVisible(false);
 		/*int nTempHealth; 
 		nTempHealth = pOtherObject->GetHealth();
 		nTempHealth -= m_nDamage; 
