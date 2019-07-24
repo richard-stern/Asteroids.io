@@ -35,7 +35,7 @@ class AudioManager
 {
 public:
 	//Get the singleton instance.
-	static AudioManager *Instance() { return m_pInstance; }
+	static AudioManager* Instance() { return m_pInstance; }
 
 	//Load a new sound file and return a pointer which can be used to control playback.
 	Audio* CreateSound(const char* filename);

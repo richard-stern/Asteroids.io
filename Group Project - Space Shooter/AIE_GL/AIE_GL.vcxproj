@@ -102,7 +102,7 @@
     <ClInclude Include="include\lodepng.h" />
     <ClInclude Include="include\RenderManager.h" />
     <ClInclude Include="include\RenderTexture.h" />
-    <ClInclude Include="include\SoundManager.h" />
+    <ClInclude Include="include\AudioManager.h" />
     <ClInclude Include="include\Texture.h" />
   </ItemGroup>
   <ItemGroup>
@@ -113,7 +113,7 @@
     <ClCompile Include="source\lodepng.cpp" />
     <ClCompile Include="source\RenderManager.cpp" />
     <ClCompile Include="source\RenderTexture.cpp" />
-    <ClCompile Include="source\SoundManager.cpp" />
+    <ClCompile Include="source\AudioManager.cpp" />
     <ClCompile Include="source\Texture.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
