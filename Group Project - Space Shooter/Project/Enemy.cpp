@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "CollisionManager.h"
 #include "BoxCollider.h"
+#include <iostream>
 
 //Enemy constructor, takes a texture from the texture manager.
 //Inherits from Actor class and calls it's GetPosition() function.
@@ -9,7 +10,7 @@ Enemy::Enemy(Player* pPlayer) : Actor(Vector2((float)(rand() % 1000), (float)(ra
 	//Allow the enemy to respawn after death and to wrap around the window when going offscreen.
 	SetWrapAndRespawn(true);
 	//The enemies will start as invisible because they start offscreen.
-	SetVisible(false);
+	SetVisible(true);
 
 	//Locating the texture file for the Enemy sprite. 
 	TextureManager* pTxtMan = pTxtMan->Instance();
@@ -22,7 +23,7 @@ Enemy::Enemy(Player* pPlayer) : Actor(Vector2((float)(rand() % 1000), (float)(ra
 
 	//Sets the health of the enemy.
 	//Referencing "Bullet.h", BULLET_DAMAGE = 50, making each enemy takes two hits to kill.
-	GUI::Instance()->SetHealth(100);
+	SetHealth(100);
 
 	//store pointers
 	m_pPlayer = pPlayer;
@@ -44,16 +45,16 @@ void Enemy::OnCollision(GameObject* pOtherObject)
 	if (pOtherObject->GetType() == GameObjectType::PLAYER)
 	{
 		//Sets the health of the enemy to 0.
-		GUI::Instance()->SetHealth(0);
+		SetHealth(100);
 
 		//Make it invisible.
 		SetVisible(false);
 	}
 	else if (pOtherObject->GetType() == GameObjectType::BULLET)
 	{
-		GUI::Instance()->SetHealth(m_nHealth - 50);
+		SetHealth(m_nHealth - 50);
 
-		if (m_nHealth <= 0)
+		if (m_nHealth <= 20)
 		{
 			SetVisible(false);
 		}
@@ -64,6 +65,8 @@ void Enemy::OnCollision(GameObject* pOtherObject)
 void Enemy::Update(float deltaTime)
 {
 	Actor::Update(deltaTime);
+	if (GetVisible() == false)
+		return;
 
 	//Vectors used to track the positions of the enemy and player.
 	Vector2 v2PlayerPos = m_pPlayer->GetPosition();
@@ -82,12 +85,12 @@ void Enemy::Update(float deltaTime)
 
 	//Rotation float, instead of using the Matrix rotate, atan2 is used on an already normalised vector.
 	float fRotation = atan2f(v2Direction.y, v2Direction.x) - 1.5780f;
-
+	
 	//Seeking function.
 	if (fDistance < 1100)
 	{
 		//Visibility is set to true when in range.
-		SetVisible(true);
+		//SetVisible(false);
 
 		//Rotation and Position are adjusted here.
 		this->SetPosition(v2EnemyPos + v2Direction * 75 * deltaTime);
