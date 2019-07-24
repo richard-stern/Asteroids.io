@@ -7,8 +7,8 @@ Camera::Camera(int nWindowWidth, int nWindowHeight)
 {
 	m_pRenderer = RenderManager::Instance();
 	
-	m_nWindowHeight = nWindowWidth;
-	m_nWindowWidth = nWindowHeight;
+	m_nWindowWidth = nWindowWidth;
+	m_nWindowHeight = nWindowHeight;
 }
 
 Camera::~Camera()
