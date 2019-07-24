@@ -10,7 +10,7 @@
 #include "Font.h"
 #include "Input.h"
 #include "RenderManager.h"
-#include "SoundManager.h"
+#include "AudioManager.h"
 
 Application::Application(unsigned int windowWidth, unsigned int windowHeight, bool fullscreen, const char *title)
 {
@@ -57,7 +57,7 @@ Application::Application(unsigned int windowWidth, unsigned int windowHeight, bo
 	SetVSync(true);
 
 	RenderManager::Create((float)windowWidth, (float)windowHeight);
-	SoundManager::Create();
+	AudioManager::Create();
 	Input::Create();
 }
 
@@ -66,7 +66,7 @@ Application::Application(unsigned int windowWidth, unsigned int windowHeight, bo
 Application::~Application()
 {
 	Input::Destroy();
-	SoundManager::Destroy();
+	AudioManager::Destroy();
 	RenderManager::Destroy();
 	glfwTerminate();
 }
@@ -87,7 +87,7 @@ void Application::RunGame()
 		Input::Instance()->Update();
 
 		//Update sound
-		SoundManager::Instance()->Update();
+		AudioManager::Instance()->Update();
 
 		// handles window events, and calls aproprate callback
 		// that have been provided to glfw, eg keyboard or mouse callback functions
