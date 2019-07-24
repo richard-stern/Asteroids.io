@@ -16,14 +16,14 @@ Player::Player(Vector2 v2Position) : Actor(v2Position)
 	TextureManager* pTextureManager = TextureManager::Instance();
 	m_pTexture = pTextureManager->LoadTexture("player.png");
 	m_bWrapAndRespawn = false;
-	m_fSpeed = 150;
+	m_fSpeed = 350;
 	m_nHealth = 100;
 	m_nLives = 3;
 	m_eType = GameObjectType::PLAYER;
 	m_v2PreviousPosition = v2Position;
 	m_pTurret = new Turret();
 	m_pTurret->SetParent(this);
-	m_fMaxSpeed = 800;
+	m_fMaxSpeed = 500;
 	//Create a varible for the collider, by getting pointer the texture manager, and return the player texture, and ask for its width 
 	//and divide it by 2. Then set that as the extend in the Box Collider
 	Vector2 v2Extend = Vector2((float)((m_pTexture->GetWidth()) / 2), (float)((m_pTexture->GetHeight()) / 2));
@@ -96,10 +96,13 @@ void Player::Update(float fDeltaTime)
 	std::cout << m_v2Velocity.magnitude() << std::endl;
 	system("CLS");
 
-
+	//Truncation of the players velocity
 	if (m_v2Velocity.magnitude() > m_fMaxSpeed)
 	{
+		//Normalise to set to 1
 		m_v2Velocity.normalise();
+
+		//Multiply by the max speed to create a truncation effect
 		m_v2Velocity = m_v2Velocity * m_fMaxSpeed;
 	}
 
