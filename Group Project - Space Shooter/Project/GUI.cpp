@@ -24,11 +24,11 @@ GUI::~GUI()
 		m_fontGUI = nullptr;
 	}
 
-	if (m_pInstance)
+	/*if (m_pInstance)
 	{
 		delete m_pInstance;
 		m_pInstance = nullptr;
-	}
+	}*/
 }
 
 GUI *GUI::Instance()
