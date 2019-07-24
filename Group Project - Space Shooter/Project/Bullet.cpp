@@ -44,16 +44,16 @@ void Bullet::Update(float fDeltaTime)
 
 	m_fTimer += fDeltaTime; 
 
-	if (m_bVisible)
+	if (m_bVisible)												//If the bullet is currently visible,
 	{
-		Vector2 v2NewPosition = GetPosition();
+		Vector2 v2NewPosition = GetPosition();					//Get the position into a vector
 		
-		Vector2 v2Direction = m_m3LocalTransform.forward();
-		v2Direction.normalise();
+		Vector2 v2Direction = m_m3LocalTransform.forward();		//Get the forward direction into a vector
+		v2Direction.normalise();								//Normalise to a unit vector
 
-		v2NewPosition += m_fSpeed * v2Direction * fDeltaTime;
+		v2NewPosition += m_fSpeed * v2Direction * fDeltaTime;	//Add a vector with the magnitude of the speed in the direction of travel
 
-		SetPosition(v2NewPosition);
+		SetPosition(v2NewPosition);								//Set the new position
 	}
 	
 	if (m_fTimer >= m_fLifeTime)
