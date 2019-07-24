@@ -25,7 +25,7 @@ MenuState::~MenuState()
 {
 	if (m_PlayButton)
 	{
-		m_PlayButton;
+		delete m_PlayButton;
 		m_PlayButton = nullptr;
 	}
 	if (m_QuitButton)
@@ -135,7 +135,7 @@ void MenuState::Exit()
 {
 	if (m_PlayButton)
 	{
-		m_PlayButton;
+		delete m_PlayButton;
 		m_PlayButton = nullptr;
 	}
 	if (m_QuitButton)
