@@ -24,7 +24,8 @@ void GameObject::Update(float deltaTime)
 
 void GameObject::Draw(RenderManager* renderer)
 {
-	screenWrap();
+	if(m_bWrapAndRespawn)
+		screenWrap();
 
 	if (m_pTexture)
 		renderer->DrawSpriteTransformed3x3(m_pTexture, m_m3GlobalTransform);
