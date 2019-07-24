@@ -53,13 +53,14 @@ void Bullet::Update(float fDeltaTime)
 	
 	if (m_fTimer >= m_fLifeTime)
 	{
-		SetVisible(false);
-		m_fTimer = 0; 
+		SetVisible(false); 
 	}
 }
 
 void Bullet::Shoot(Vector2 v2Pos, Vector2 v2Dir)
 {
+	m_fTimer = 0.0f;
+
 	SetPosition(v2Pos);
 	SetRotation(v2Dir);
 
