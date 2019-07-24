@@ -117,7 +117,11 @@ void Rock::OnCollision(GameObject* gameObject)
 
 		// If the rock has no health -> deactivate the rock.
 		if (m_nHealth <= 0)
+		{
 			m_bVisible = false;
+			GUI* gui = GUI::Instance();
+			gui->AddScore(m_nMaxHealth);
+		}
 
 		// Set the rock's position to it's preivous position.
 		SetPosition(m_v2PreviousPosition);
