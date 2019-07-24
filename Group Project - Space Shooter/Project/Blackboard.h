@@ -37,6 +37,7 @@ private:
 	static Blackboard* m_pBlackboard;
 	Level* m_pLevel;
 	Player* m_pPlayer;
-	int m_nScore;
+
+	int m_nScore = 0;
 };
 

@@ -18,8 +18,8 @@ public:
 private:
 	StateMachine* m_pStateMachine;
 	Font* m_font;
-	Button* m_ExitButtuon;
-	Button* m_PlayAgianButton;
+	Button* m_ExitButton;
+	Button* m_PlayAgainButton;
 	Texture* m_Richard;
 	float m_fWindowWidth;
 	float m_fWindowHeight;
