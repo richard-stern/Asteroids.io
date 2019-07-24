@@ -29,6 +29,7 @@ Star::~Star()
 void Star::Update(float deltaTime)
 {
 	f_timer += deltaTime;
+	GameObject::Update(deltaTime);
 
 	if (f_timer > 5.0f)
 	{
@@ -46,5 +47,4 @@ void Star::Update(float deltaTime)
 			m_pTexture = m_pStarUp;
 		}
 	}
-
 }
